@@ -1,0 +1,17 @@
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.csproj.AssemblyReference.cache
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.AssemblyInfoInputs.cache
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.AssemblyInfo.cs
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.csproj.CoreCompileInputs.cache
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\bin\Debug\net8.0\DuLich.Infrastructure.deps.json
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\bin\Debug\net8.0\DuLich.Infrastructure.runtimeconfig.json
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\bin\Debug\net8.0\DuLich.Infrastructure.dll
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\bin\Debug\net8.0\DuLich.Infrastructure.pdb
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\bin\Debug\net8.0\Dulich.Domain.dll
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\bin\Debug\net8.0\Dulich.Domain.pdb
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.I.E4E801D4.Up2Date
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.dll
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\refint\DuLich.Infrastructure.dll
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.pdb
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\DuLich.Infrastructure.genruntimeconfig.cache
+E:\Project\WebsiteDuLich\websiteDulich\DuLich.Infrastructure\obj\Debug\net8.0\ref\DuLich.Infrastructure.dll

@@ -1,0 +1,14 @@
+E:\Project\WebsiteDuLich\websiteDulich\Domain\bin\Debug\net8.0\Dulich.Domain.deps.json
+E:\Project\WebsiteDuLich\websiteDulich\Domain\bin\Debug\net8.0\Dulich.Domain.runtimeconfig.json
+E:\Project\WebsiteDuLich\websiteDulich\Domain\bin\Debug\net8.0\Dulich.Domain.dll
+E:\Project\WebsiteDuLich\websiteDulich\Domain\bin\Debug\net8.0\Dulich.Domain.pdb
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.csproj.AssemblyReference.cache
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.AssemblyInfoInputs.cache
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.AssemblyInfo.cs
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.csproj.CoreCompileInputs.cache
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.dll
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\refint\Dulich.Domain.dll
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.pdb
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.genruntimeconfig.cache
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\ref\Dulich.Domain.dll

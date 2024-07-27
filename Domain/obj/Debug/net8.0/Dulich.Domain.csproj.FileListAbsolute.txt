@@ -12,3 +12,4 @@ E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\refint\Dulich.Dom
 E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.pdb
 E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.genruntimeconfig.cache
 E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\ref\Dulich.Domain.dll
+E:\Project\WebsiteDuLich\websiteDulich\Domain\obj\Debug\net8.0\Dulich.Domain.sourcelink.json

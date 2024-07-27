@@ -1,12 +1,14 @@
-﻿
-using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Dulich.Domain.Models
+namespace Dulich.Domain.Models.ViewModel
 {
-    [Table("Menu")]
-    public class MenuModel : BaseModel   
+    public class MenuVM
     {
         [Description("Tên menu")]
         [Required]

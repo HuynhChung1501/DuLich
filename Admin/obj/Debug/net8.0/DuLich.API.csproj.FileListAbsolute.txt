@@ -139,8 +139,15 @@ E:\Project\WebsiteDuLich\websiteDulich\Admin\obj\Debug\net8.0\DuLich.API.pdb
 E:\Project\WebsiteDuLich\websiteDulich\Admin\obj\Debug\net8.0\DuLich.API.genruntimeconfig.cache
 E:\Project\WebsiteDuLich\websiteDulich\Admin\obj\Debug\net8.0\ref\DuLich.API.dll
 E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Dulich.Domain.dll
-E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\DuLich.Infrastructure.dll
-E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\DuLich.Infrastructure.pdb
 E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Dulich.Domain.pdb
 E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
 E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
+E:\Project\WebsiteDuLich\websiteDulich\Admin\obj\Debug\net8.0\DuLich.API.sourcelink.json
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\AutoMapper.dll
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Dulich.Service.dll
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Dulich.Service.pdb
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Dulich.Infrastructure.dll
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Dulich.Infrastructure.pdb
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+E:\Project\WebsiteDuLich\websiteDulich\Admin\bin\Debug\net8.0\Newtonsoft.Json.dll

@@ -1,29 +1,35 @@
-﻿@* @model MenuModel
+﻿@using Dulich.Domain.Models
+@model MenuModel
 <h1>Thêm mới menu</h1>
-<div class="w-100">
-    <form asp-action="Create" enctype="multipart/form-data">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label>Name</label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger" />
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="w-100">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger" />
+                </div>
 
-        <div class="form-group">
-            <label>Url</label>
-            <input asp-for="Url" class="form-control" />
-            <span asp-validation-for="Url" class="text-danger" />
+                <div class="form-group">
+                    <label>Url</label>
+                    <input asp-for="Url" class="form-control" />
+                    <span asp-validation-for="Url" class="text-danger" />
+                </div>
+                <div class="form-group">
+                    <label>icon</label>
+                    <input asp-for="icon" class="form-control" />
+                    <span asp-validation-for="icon" class="text-danger" />
+                </div>
+                <div class="form-group">
+                    <label>IDParent</label>
+                    <input asp-for="IDParent" class="form-control" />
+                </div>
+                <button class="btn btn-primary" type="submit">Lưu</button>
+            </form>
+            <a asp-action="index">Quay lại</a>
+            
         </div>
-        <div class="form-group">
-            <label>icon</label>
-            <input asp-for="icon" class="form-control" />
-            <span asp-validation-for="icon" class="text-danger" />
-        </div>
-        <div class="form-group">
-            <label>IDParent</label>
-            <input asp-for="IDParent" class="form-control" />
-        </div>
-        <button class="btn btn-primary" type="submit">Lưu</button>
-    </form>
-    <a asp-action="index">Quay lại</a>
-</div> *@
+    </div>
+</div>

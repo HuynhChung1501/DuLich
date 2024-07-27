@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj": {}
+    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj": {}
   },
   "projects": {
     "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj": {
@@ -46,6 +46,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -81,14 +85,14 @@
         }
       }
     },
-    "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj": {
+    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj",
-        "projectName": "DuLich.Infrastructure",
-        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj",
+        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj",
+        "projectName": "Dulich.Infrastructure",
+        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\obj\\",
+        "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chung.nguyenhuynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -127,11 +131,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[2.2.0, )"
             },
-            "Microsoft.EntityFrameworkCore.Abstractions": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.7, )"
             },
@@ -141,23 +145,23 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
-            "Microsoft.EntityFrameworkCore.Relational": {
-              "target": "Package",
-              "version": "[8.0.7, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.7, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer.Design": {
-              "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

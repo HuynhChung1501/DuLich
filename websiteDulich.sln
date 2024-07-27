@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "websiteDulich", "websiteDul
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuLich.API", "Admin\DuLich.API.csproj", "{CC9C12C9-5B43-4822-85F1-52877E7A2189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulich.Domain", "Domain\Dulich.Domain.csproj", "{FEAF236C-B6E7-4792-8640-48A756EC7916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dulich.Domain", "Domain\Dulich.Domain.csproj", "{FEAF236C-B6E7-4792-8640-48A756EC7916}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuLich.Infrastructure", "DuLich.Infrastructure\DuLich.Infrastructure.csproj", "{99A389E4-8428-4227-881D-9FB4B34518F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulich.Service", "Dulich.Service\Dulich.Service.csproj", "{80647B91-9AED-458B-9F7A-DE4177310068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulich.Infrastructure", "Dulich.Infrastructure\Dulich.Infrastructure.csproj", "{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +30,14 @@ Global
 		{FEAF236C-B6E7-4792-8640-48A756EC7916}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEAF236C-B6E7-4792-8640-48A756EC7916}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEAF236C-B6E7-4792-8640-48A756EC7916}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99A389E4-8428-4227-881D-9FB4B34518F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99A389E4-8428-4227-881D-9FB4B34518F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99A389E4-8428-4227-881D-9FB4B34518F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99A389E4-8428-4227-881D-9FB4B34518F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80647B91-9AED-458B-9F7A-DE4177310068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80647B91-9AED-458B-9F7A-DE4177310068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80647B91-9AED-458B-9F7A-DE4177310068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80647B91-9AED-458B-9F7A-DE4177310068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

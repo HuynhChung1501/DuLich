@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DuLich.Infrastructure.Migrations
+namespace Dulich.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class addThongTin : Migration
+    public partial class name1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

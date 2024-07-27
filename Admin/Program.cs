@@ -1,20 +1,31 @@
 
 
-using DuLich.Infrastructure.Contexts;
+using Dulich.Domain.AutoMapper;
+using Dulich.Infrastructure;
+using Dulich.Service.Interface;
+using Dulich.Service.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-string connectionString = builder.Configuration.GetConnectionString("DuLichContext");
 builder.Services.AddDbContext<DASContext>(options =>
 {
-options.UseSqlServer(connectionString, builder => builder.MigrationsAssembly("DuLich.Infrastructure"));
-options.UseSqlServer(connectionString);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DuLichContext"));
 });
 builder.Services.AddDbContext<DASContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthorization(); // This line adds authorization services
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+//Scoped
+builder.Services.AddScoped<IMenu, MenuService>();
+
+//Model Mapper
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 var app = builder.Build();
 

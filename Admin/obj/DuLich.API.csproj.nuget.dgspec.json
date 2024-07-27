@@ -32,8 +32,11 @@
               "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj": {
                 "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj"
               },
-              "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj": {
-                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj"
+              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj": {
+                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj"
+              },
+              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj": {
+                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj"
               }
             }
           }
@@ -53,6 +56,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -143,6 +150,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -178,14 +189,14 @@
         }
       }
     },
-    "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj": {
+    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj",
-        "projectName": "DuLich.Infrastructure",
-        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\DuLich.Infrastructure.csproj",
+        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj",
+        "projectName": "Dulich.Infrastructure",
+        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\DuLich.Infrastructure\\obj\\",
+        "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chung.nguyenhuynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -224,11 +235,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[2.2.0, )"
             },
-            "Microsoft.EntityFrameworkCore.Abstractions": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.7, )"
             },
@@ -238,25 +249,93 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
-            "Microsoft.EntityFrameworkCore.Relational": {
-              "target": "Package",
-              "version": "[8.0.7, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.7, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer.Design": {
-              "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj",
+        "projectName": "Dulich.Service",
+        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj",
+        "packagesPath": "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chung.nguyenhuynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj": {
+                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj"
+              },
+              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj": {
+                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",

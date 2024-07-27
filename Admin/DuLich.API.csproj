@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
       <PrivateAssets>all</PrivateAssets>
@@ -22,7 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Dulich.Domain.csproj" />
-    <ProjectReference Include="..\DuLich.Infrastructure\DuLich.Infrastructure.csproj" />
+    <ProjectReference Include="..\Dulich.Infrastructure\Dulich.Infrastructure.csproj" />
+    <ProjectReference Include="..\Dulich.Service\Dulich.Service.csproj" />
   </ItemGroup>
 
  

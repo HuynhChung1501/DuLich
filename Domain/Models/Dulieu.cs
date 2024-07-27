@@ -12,6 +12,5 @@ namespace Dulich.Domain.Models
     public class Dulieu : BaseModel
     {
         public string Name { get; set; }
-
     }
 }

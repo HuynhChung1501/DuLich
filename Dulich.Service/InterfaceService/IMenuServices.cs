@@ -11,7 +11,7 @@ namespace Dulich.Service.Interface
     public interface IMenuServices 
     {
         Task<Menu> Get(int id);
-
-        Task<List<Menu>> GetList();
+        Task<List<VMMenu>> GetList();
+        Task<List<VMMenu>> SearchByCondition(string searchName);
     }
 }

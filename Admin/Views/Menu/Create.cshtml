@@ -1,5 +1,8 @@
 ﻿@using Dulich.Domain.Models
 @model Menu
+@{
+    var msg = ViewData["SuccessMessage"] != null ? ViewData["SuccessMessage"] : null;
+}
 <h1>Thêm mới menu</h1>
 <div class="row">
     <div class="col-md-12">
@@ -26,7 +29,7 @@
                     <label>IDParent</label>
                     <input asp-for="IDParent" class="form-control" />
                 </div>
-                <button class="btn btn-primary" type="submit">Lưu</button>
+                <button class="btn btn-primary quickSubmit" type="submit">Lưu</button>
             </form>
             <a asp-action="index">Quay lại</a>
             

@@ -19,12 +19,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="toastr" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Travel.Domain.csproj" />
     <ProjectReference Include="..\Dulich.Infrastructure\Travel.Infrastructure.csproj" />
     <ProjectReference Include="..\Dulich.Service\Travel.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\plugins\" />
   </ItemGroup>
 
  

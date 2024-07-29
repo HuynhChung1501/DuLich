@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dulich.Application.ViewModels
 {
-    public class VMModel : BaseModel
+    public class VMMenu : BaseModel
     {
         [Description("Tên menu")]
         public string Name { get; set; }

@@ -14845,6 +14845,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\js\\Common.js",
+      "PackagePath": "staticwebassets\\js\\Common.js"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\js\\cus.js",
+      "PackagePath": "staticwebassets\\js\\cus.js"
+    },
+    {
       "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -15075,6 +15083,22 @@
     {
       "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.css",
+      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.js.map",
+      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.js.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.min.css",
+      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.min.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.min.js",
+      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.min.js"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Travel.API.Microsoft.AspNetCore.StaticWebAssets.props",

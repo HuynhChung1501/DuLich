@@ -32,9 +32,36 @@ namespace Dulich.Service.Service
             return await _travelRepo.Menu.FirstOrDefaultAsync(x => x.ID == id);
         }
 
-        public async Task<List<Menu>> GetList()
+        public async Task<List<VMMenu>> GetList()
         {
-            var menu = await _travelRepo.Menu.GetAll().AsNoTracking().ToListAsync();
+            var menu = await (from M in _travelRepo.Menu.GetAll().AsNoTracking()
+                              select new VMMenu
+                              {
+                                  Name = M.Name,
+                                  ID = M.ID,
+                                  Url = M.Url,
+                                  Icon = M.Icon,
+                                  IDParent = M.IDParent,
+                                  CreatedBy = M.CreatedBy,
+                                  CreatedDate = M.CreatedDate,
+                                  UpdatedBy = M.UpdatedBy,
+                                  UpdatedDate = M.UpdatedDate,
+                              }).ToListAsync();
+            return menu;
+        }
+
+        public async Task<List<VMMenu>> SearchByCondition(string searchName)
+        {
+            var menu = await(from M in _travelRepo.Menu.GetAll().AsNoTracking()
+                             where searchName != null ? searchName.ToLower() == M.Name.ToLower() : true
+                             select new VMMenu
+                             {
+                                 Name = M.Name,
+                                 ID = M.ID,
+                                 Url = M.Url,
+                                 Icon = M.Icon,
+                                 IDParent = M.IDParent,
+                             }).ToListAsync();
             return menu;
         }
     }

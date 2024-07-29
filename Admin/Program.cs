@@ -21,6 +21,8 @@ builder.Services.AddDbContext<DASContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthorization(); // This line adds authorization services
+builder.Services.AddLogging();
+
 
 //Scoped
 builder.Services.AddScoped<IMenuServices, MenuService>();
@@ -30,6 +32,9 @@ builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+
+
 
 var app = builder.Build();
 

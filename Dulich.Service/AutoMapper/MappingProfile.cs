@@ -15,7 +15,7 @@ namespace Dulich.Domain.AutoMapper
     {
         public MappingProfile() 
         {
-            CreateMap<VMModel, Menu>(); 
+            CreateMap<VMMenu, Menu>(); 
         }
     }
 }

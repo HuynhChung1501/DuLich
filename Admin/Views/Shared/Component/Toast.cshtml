@@ -1,0 +1,12 @@
+﻿@{
+    var msg = ViewData["SuccessMessage"] != null ? ViewData["SuccessMessage"] : null;
+}
+<script src="/Content/plugins/toastr/toastr.min.js"></script>
+@if (msg != null)
+{
+    <script>
+        toastr.success("@msg")
+    </script>
+}
+
+<h1>@msg</h1>

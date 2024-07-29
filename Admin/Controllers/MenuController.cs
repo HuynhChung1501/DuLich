@@ -2,49 +2,52 @@
 using AutoMapper;
 using Dulich.Domain.Models;
 using Dulich.Infrastructure;
+using Dulich.Service.Interface;
 using Dulich.Service.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Travel.Domain.Interface;
 
 namespace Admin.Controllers
 {
-    public class MenuController : Controller
+    public class MenuController :  Controller
     {
         private readonly IMapper _mapper;
-        private readonly DASContext _dasContext;
-        private readonly MenuService _menuService;
+        private readonly IMenuServices _menuServices;
+        private readonly ITravelRepositoryWrapper _travelRepo;
 
-        public MenuController(DASContext dasContext, IMapper mapper)
+        public MenuController(IMapper mapper, IMenuServices menuServices, ITravelRepositoryWrapper travelRepo)
         {
             _mapper = mapper;
-            _dasContext = dasContext;
+            _travelRepo = travelRepo;
+            _menuServices = menuServices;
         }
 
         #region search
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            
-            var rs = _menuService.GetAll();
-            if (rs != null )
+            List<Menu> MenuList = new List<Menu>();
+            MenuList = await _menuServices.GetList();
+            if (MenuList != null)
             {
-                return View(rs);
+                return View(MenuList);
+
             }
-            return View(new MenuModel());
+            return View(MenuList);
+
         }
         #endregion
 
         #region Thêm mới menu
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MenuModel menu)
+        public async Task<IActionResult> Create(Menu menu)
         {
-            var rs = _mapper.Map<MenuModel>(menu);
-            _dasContext.Add(rs);
-            _dasContext.SaveChanges();
+            var rs = _mapper.Map<Menu>(menu);
             return View(menu);
         }
         #endregion

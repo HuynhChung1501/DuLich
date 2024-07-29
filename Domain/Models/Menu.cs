@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Dulich.Domain.Models
 {
     [Table("Menu")]
-    public class MenuModel : BaseModel   
+    public class Menu : BaseModel   
     {
         [Description("Tên menu")]
         [Required]
@@ -17,7 +17,7 @@ namespace Dulich.Domain.Models
         public string Url { get; set; }
 
         [Description("Icon")]
-        public string icon { get; set; }
+        public string Icon { get; set; }
 
         [Description("ID cấp cha")] // nếu ib khác 0 thì là cấp con
         public int IDParent { get; set; } = 0;

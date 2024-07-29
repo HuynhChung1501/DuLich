@@ -5,13 +5,13 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "websiteDulich", "websiteDulich\websiteDulich.csproj", "{2E005AA1-C03A-46CF-BFCF-DC940C5BD21A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuLich.API", "Admin\DuLich.API.csproj", "{CC9C12C9-5B43-4822-85F1-52877E7A2189}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.API", "Admin\Travel.API.csproj", "{CC9C12C9-5B43-4822-85F1-52877E7A2189}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dulich.Domain", "Domain\Dulich.Domain.csproj", "{FEAF236C-B6E7-4792-8640-48A756EC7916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.Domain", "Domain\Travel.Domain.csproj", "{FEAF236C-B6E7-4792-8640-48A756EC7916}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulich.Service", "Dulich.Service\Dulich.Service.csproj", "{80647B91-9AED-458B-9F7A-DE4177310068}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel.Application", "Dulich.Service\Travel.Application.csproj", "{80647B91-9AED-458B-9F7A-DE4177310068}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulich.Infrastructure", "Dulich.Infrastructure\Dulich.Infrastructure.csproj", "{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel.Infrastructure", "Dulich.Infrastructure\Travel.Infrastructure.csproj", "{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

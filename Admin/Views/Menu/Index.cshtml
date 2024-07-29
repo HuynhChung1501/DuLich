@@ -1,8 +1,17 @@
 ﻿@using Dulich.Domain.Models
-@model MenuModel
+@model List<Menu>
 <a asp-controller="Menu" asp-action="Create">
     Thêm mới
 </a>
-
-<h1>@Model.Name</h1>
-<h1>@Model.Url</h1>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <h1>@item.Name</h1>
+        <h1>@item.Url</h1>
+    }
+}
+else
+{
+    <h1>Khoong cos du lieu</h1>
+}

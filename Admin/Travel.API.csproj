@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Dulich.Domain.csproj" />
-    <ProjectReference Include="..\Dulich.Infrastructure\Dulich.Infrastructure.csproj" />
-    <ProjectReference Include="..\Dulich.Service\Dulich.Service.csproj" />
+    <ProjectReference Include="..\Domain\Travel.Domain.csproj" />
+    <ProjectReference Include="..\Dulich.Infrastructure\Travel.Infrastructure.csproj" />
+    <ProjectReference Include="..\Dulich.Service\Travel.Application.csproj" />
   </ItemGroup>
 
  

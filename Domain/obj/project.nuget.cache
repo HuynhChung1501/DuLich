@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SzDvcxiD/NA=",
+  "dgSpecHash": "unEFifjULP8=",
   "success": true,
-  "projectFilePath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj",
+  "projectFilePath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

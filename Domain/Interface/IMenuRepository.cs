@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using Dulich.Domain.Models;
+using Dulich.Domain.Interface;
 
 namespace Dulich.Service.Interface
 {
-    public interface IMenu
+    public interface IMenuRepository : IBaseRepository<Menu>
     {
-        MenuModel GetAll();
     }
 }

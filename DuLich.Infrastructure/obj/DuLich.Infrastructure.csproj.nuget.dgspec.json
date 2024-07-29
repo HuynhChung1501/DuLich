@@ -4,12 +4,12 @@
     "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj": {}
   },
   "projects": {
-    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj": {
+    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj",
-        "projectName": "Dulich.Domain",
-        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj",
+        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj",
+        "projectName": "Travel.Domain",
+        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj",
         "packagesPath": "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\",
         "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\obj\\",
         "projectStyle": "PackageReference",
@@ -110,8 +110,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj": {
-                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Dulich.Domain.csproj"
+              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj": {
+                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj"
               }
             }
           }
@@ -131,6 +131,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "EFCore.BulkExtensions": {
+              "target": "Package",
+              "version": "[3.2.7, )"
+            },
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.2.0, )"

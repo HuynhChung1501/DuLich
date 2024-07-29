@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Dulich.Domain.csproj" />
-    <ProjectReference Include="..\Dulich.Infrastructure\Dulich.Infrastructure.csproj" />
+    <ProjectReference Include="..\Domain\Travel.Domain.csproj" />
+    <ProjectReference Include="..\Dulich.Infrastructure\Travel.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

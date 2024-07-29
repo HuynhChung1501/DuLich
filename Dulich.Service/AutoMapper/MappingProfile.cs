@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Dulich.Application.ViewModels;
 using Dulich.Domain.Models;
-using Dulich.Domain.Models.ViewModel;
 
 
 
@@ -15,7 +15,7 @@ namespace Dulich.Domain.AutoMapper
     {
         public MappingProfile() 
         {
-            CreateMap<MenuVM, MenuModel>(); 
+            CreateMap<VMModel, Menu>(); 
         }
     }
 }

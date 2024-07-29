@@ -1,11 +1,16 @@
 
 
 using Dulich.Domain.AutoMapper;
+using Dulich.Domain.Interface;
 using Dulich.Infrastructure;
+using Dulich.Infrastructure.Repositories;
 using Dulich.Service.Interface;
 using Dulich.Service.Service;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Travel.Domain.Interface;
+using Travel.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DASContext>(options =>
@@ -16,12 +21,11 @@ builder.Services.AddDbContext<DASContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthorization(); // This line adds authorization services
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-//Scoped
-builder.Services.AddScoped<IMenu, MenuService>();
 
+//Scoped
+builder.Services.AddScoped<IMenuServices, MenuService>();
+builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();
+//builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 //Model Mapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

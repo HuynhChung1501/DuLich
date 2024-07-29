@@ -15077,20 +15077,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DuLich.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Travel.API.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.DuLich.API.props",
-      "PackagePath": "build\\DuLich.API.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Travel.API.props",
+      "PackagePath": "build\\Travel.API.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.DuLich.API.props",
-      "PackagePath": "buildMultiTargeting\\DuLich.API.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Travel.API.props",
+      "PackagePath": "buildMultiTargeting\\Travel.API.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.DuLich.API.props",
-      "PackagePath": "buildTransitive\\DuLich.API.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Travel.API.props",
+      "PackagePath": "buildTransitive\\Travel.API.props"
     }
   ],
   "ElementsToRemove": []

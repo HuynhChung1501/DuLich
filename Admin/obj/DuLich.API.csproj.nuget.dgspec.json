@@ -35,8 +35,8 @@
               "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj": {
                 "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Infrastructure\\Dulich.Infrastructure.csproj"
               },
-              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj": {
-                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj"
+              "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Application.csproj": {
+                "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Application.csproj"
               }
             }
           }
@@ -235,6 +235,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "EFCore.BulkExtensions": {
+              "target": "Package",
+              "version": "[3.2.7, )"
+            },
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -288,12 +292,12 @@
         }
       }
     },
-    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj": {
+    "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj",
-        "projectName": "Dulich.Service",
-        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Service.csproj",
+        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Application.csproj",
+        "projectName": "Dulich.Application",
+        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\Dulich.Application.csproj",
         "packagesPath": "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\",
         "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Dulich.Service\\obj\\",
         "projectStyle": "PackageReference",

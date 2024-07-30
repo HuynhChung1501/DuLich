@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "O/zY5OlG9kc=",
+  "dgSpecHash": "fGSpCRezy0Y=",
   "success": true,
   "projectFilePath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\Travel.API.csproj",
   "expectedPackageFiles": [
@@ -215,7 +215,9 @@
     "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\toastr\\2.1.1\\toastr.2.1.1.nupkg.sha512"
+    "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\toastr\\2.1.1\\toastr.2.1.1.nupkg.sha512",
+    "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\x.pagedlist\\10.0.3\\x.pagedlist.10.0.3.nupkg.sha512",
+    "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\x.pagedlist.mvc.core\\10.0.3\\x.pagedlist.mvc.core.10.0.3.nupkg.sha512"
   ],
   "logs": []
 }

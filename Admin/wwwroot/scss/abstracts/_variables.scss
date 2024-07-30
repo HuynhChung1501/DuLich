@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Color system
+$primary: #248BCC !default;
+$info: #248BCC !default;
+$success: #16A34A !default;
+$warning: #D97706 !default;
+$danger: #DC2626  !default;
+$Purple : #9333EA !default;
+$secondary: #9CA3AF !default;
+$pink: #EC4899 !default;
+
+$hover-primary: #248BCC !default;
+$primary-2: #d93e34 !default;
+$body-color: #000 !default;
+$pri-color: #0094dc !default;
+$second-color: #d93e34 !default;
+$sub-color: #0094dc !default;
+$white: #fff !default;
+$black: #000 !default;
+$text-body: #111827 !default;
+$text-input: #333333 !default;
+$text-placeholder: #939ba2 !default;
+$text-disabled: #6c757d !default;
+$input-disabled: #e9ecef !default;
+$white: #fff !default;
+$black: #000;
+$gray-1: #f5f5f5 !default;
+$gray-2: #f0f0f0 !default;
+$gray-3: #cccccc !default;
+$gray-4: #d4d4d4 !default;
+$gray-5: #adb5bd !default;
+$blue: #3aa3ff !default;
+$orange: #e68410;
+$blue-2: #59d2ea !default;
+
+$dark-red: #c94840;
+$orange: #e68410;
+$yellow: #ffc750;
+$orange: #b66326;
+$color-primary: #2563EB;
+$bg-body: linear-gradient(72.85deg, #F3EDE7 -0.05%, #FFF7F1 99.95%);
+
+//color
+
+
+// Color palette
+$pri-blue: #2f80ed4d !default;
+$pri-green: #27ae604d !default;
+$pri-red: #eb57574d !default;
+$pri-orange: #f2994a4d !default;
+$light-blue: #2f80ed33;
+
+//color
+$color-state-50: #F8FAFC; 
+$color-state-100: #F1F5F9; 
+$color-state-200: #E2E8F0; 
+$color-state-300: #CBD5E1; 
+$color-state-400: #94A3B8; 
+$color-state-500: #64748B; 
+$color-state-600: #475569; 
+$color-state-700: #334155; 
+$color-state-800: #1E293B; 
+$color-state-900: #0F172A; 
+
+//input
+$input-border-color: $color-state-300 !default;
+$input-border--focus-color: $color-state-300 !default;
+$input-height: 38px !default;
+$input-height-sm: 32px !default;
+$border-radius-base: 6px !default;
+
+//height header page
+$heigh-header-page: 45px !default;
+$width-left-page: 250px !default;
+
+
+$button-height: 38px !default;
+$button-height-sm: 32px !default;
+
+//box shadow popup
+$box-shadow-popup: 0px 4px 8px rgba(0, 0, 0, 0.16) !default;
+
+//border-color
+$border-color: #e5e5e5 !default;
+$border-color-table: #f0f0f0 !default;
+
+$medium-blue: #0094dc !default;
+$heavy-blue: #1a6ab3 !default;
+$dark-blue: #00567f !default;
+$pri-purple: #7300ce !default;
+$pri-yellow: #f8b425 !default;
+$dark-orange: #d95c34 !default;
+$dark-coban: #738a9f !default;
+$pre-gray: #333333 !default;
+$dark-green: #2aaf47 !default;
+$primary-1: #00689d !default;
+$pre-gray-1: #dddddd !default;
+
+//Mono color
+$pri-blue-1: #004160 !default;
+$pri-blue-2: #00567f !default;
+$pri-blue-3: #006a9d !default;
+$pri-blue-4: #0094dc !default;
+$pri-blue-5: #08acfb !default;
+//font
+$font-family-base: "Inter","Roboto", sans-serif !default;
+$font-family-icons: "l-ione" !default;
+$font-size-base: 14px !default;
+$font-size-small: 10px !default;
+$line-height-base: $font-size-base * 1.5 !default;
+$font-weight-base: 400 !default;
+
+//size icon font
+$font-size-icon-1: 16px !default;
+$font-size-icon-2: 24px !default;
+
+//link
+$link-color: $pri-color !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 15%) !default;
+
+//height header page
+$heigh-header-page: 45px !default;
+$width-left-page: 250px !default;
+
+//box shadow popup
+$box-shadow-popup: 0px 4px 8px rgba(0, 0, 0, 0.16) !default;
+
+//border-color
+$border-color: #D1D5DB !default;
+$border-table: #E5E7EB !default;
+$focus_border-color: #248BCC !default;
+$border-color-table: #f0f0f0 !default;
+ 
+$page_block: #FFFFFF; 
+
+//button
+$btn-search: $primary;
+$hover-btn-search: #4296ca;
+$table-header-color: #6B7280;
+
+$bg-thead:#F1F5F9;
+// Class Background color
+// .light-blue {
+//     background-color: $light-blue;
+// }

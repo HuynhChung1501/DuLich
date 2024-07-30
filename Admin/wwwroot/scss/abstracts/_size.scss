@@ -1,0 +1,172 @@
+// Class Margin, Padding
+@for $i from 0 to 51 {
+    .mt-#{$i} {
+        margin-top: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .mb-#{$i} {
+        margin-bottom: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .ml-#{$i} {
+        margin-left: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .mr-#{$i} {
+        margin-right: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .my-#{$i} {
+        margin-top: #{$i}px !important;
+        margin-bottom: #{$i}px !important;
+    }
+}
+@for $i from 0 to 51 {
+    .mx-#{$i} {
+        margin-left: #{$i}px !important;
+        margin-right: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .pt-#{$i} {
+        padding-top: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .pb-#{$i} {
+        padding-bottom: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .pl-#{$i} {
+        padding-left: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .pr-#{$i} {
+        padding-right: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .py-#{$i} {
+        padding-top: #{$i}px !important;
+        padding-bottom: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 51 {
+    .px-#{$i} {
+        padding-left: #{$i}px !important;
+        padding-right: #{$i}px !important;
+    }
+}
+
+@for $i from 0 to 21 {
+    .gap-#{$i} {
+        gap: #{$i}px !important;
+    }
+}
+
+.text-wrap2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.grid12.row {
+    margin-left: -6px;
+    margin-right: -6px;
+}
+
+.grid12.row > [class^="col-"],
+.grid12.row > [class*="col-"] {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.grid24.row {
+    margin-left: -12px;
+    margin-right: -12px;
+}
+
+.grid24.row > [class^="col-"],
+.grid24.row > [class*="col-"] {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.border-none {
+    border: none !important;
+}
+
+.font-size {
+    &-12 {
+        font-size: 12px;
+    }
+    &-14 {
+        font-size: 14px;
+    }
+    &-16 {
+        font-size: 16px;
+    }
+    &-18 {
+        font-size: 18px;
+    }
+    &-20 {
+        font-size: 20px;
+    }
+}
+
+
+.font-weight {
+    &-200 {
+        font-weight: 200 !important;
+    }
+    &-300 {
+        font-weight: 300 !important;
+    }
+    &-400 {
+        font-weight: 400 !important;
+    }
+    &-500 {
+        font-weight: 500 !important;
+    }
+    &-600 {
+        font-weight: 600 !important;
+    }
+    &-700 {
+        font-weight: 700 !important;
+    }
+    &-800 {
+        font-weight: 800 !important;
+    }
+}
+.font-italic {
+    font-style: italic !important;
+}
+
+.text {
+    &-lowercase {
+        text-transform: lowercase !important
+    }
+    &-uppercase {
+        text-transform: uppercase !important
+    }
+    &-capitalize {
+        text-transform: capitalize!important
+    }
+}

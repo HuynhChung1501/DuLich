@@ -1,0 +1,12 @@
+﻿@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <h1>@item.Name</h1>
+        <h1>@item.Url</h1>
+    }
+}
+else
+{
+    <h1>Khoong cos du lieu</h1>
+}

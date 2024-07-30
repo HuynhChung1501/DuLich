@@ -1,0 +1,28 @@
+//abstracts
+@import './abstracts/_mixins';
+@import './abstracts/variables';
+
+//base 
+@import './base/reset';
+
+//layout 
+// @import './layout/_layout';
+// @import './layout/_menu-left';
+// @import './layout/_layout_Dashboard';
+// @import './layout/_layoutLicense';
+// @import './layout/_Login';
+
+//Component
+@import './components/_pagination';
+// @import './components/_table';
+// @import './components/_input';
+// @import './components/_button';
+// @import './components/_icon';
+// @import './components/_PairingProfile';
+// @import './components/_progress';
+// @import './components/_modal';
+// @import './components/_select2Custom';
+
+// @import '_style';
+// @import './components/_share';
+// @import './abstracts/_size';

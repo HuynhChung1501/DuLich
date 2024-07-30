@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Travel.API.Controllers;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
+using X.PagedList.Extensions;
 
 namespace Admin.Controllers
 {
@@ -27,16 +28,15 @@ namespace Admin.Controllers
         }
 
         #region List
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page, int pagesize)
         {
             List<VMMenu> MenuList = new List<VMMenu>();
             MenuList = await _menuServices.GetList();
-            if (MenuList != null)
-            {
-                return View(MenuList);
 
-            }
-            return View(MenuList);
+            int pageSize = pagesize == 0  ? 5 : pagesize;
+            int pageNumber = page == 0 ? 1 : page;
+            ViewData["page"] = MenuList.Count();
+            return View(MenuList.ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -49,7 +49,6 @@ namespace Admin.Controllers
                 return Json(MenuList);
             }
             return Json(MenuList);
-
         }
         #endregion
 

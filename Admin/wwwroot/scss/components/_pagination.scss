@@ -1,0 +1,15 @@
+.pagination-container {
+    .pagination {
+        li{
+            
+            &:not(.active):hover a{
+                background-color: $color-state-200;
+            }
+            a,span {
+                padding: 6px 12px;
+                border-radius: 4px;
+                display: block;
+            }
+        }
+    }
+}

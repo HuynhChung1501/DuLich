@@ -8,6 +8,7 @@ using Dulich.Service.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Travel.API.Controllers;
+using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
 using X.PagedList.Extensions;
@@ -36,7 +37,7 @@ namespace Admin.Controllers
             int pageSize = pagesize == 0  ? 5 : pagesize;
             int pageNumber = page == 0 ? 1 : page;
             ViewData["page"] = MenuList.Count();
-            return View(MenuList.ToPagedList(pageNumber, pageSize));
+            return Json(MenuList.ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -61,11 +62,60 @@ namespace Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Menu menu)
         {
-            var data = new JsonData();
             if (menu != null) {
                 return JSWarningResult("Thêm mới thành công");
             }
             return JSSuccessResult("Thêm mới không thành công");
+        }
+        #endregion
+
+        #region Delete
+        public async Task<IActionResult> Delete(int id) 
+        {
+            var rs = await _menuServices.Delete(id);
+            if (rs)
+            {
+                return JSSuccessResult("Thêm mới thành công");
+
+            }
+            return JSWarningResult("Thêm mới không thành công");
+        }
+
+        public async Task<IActionResult> Deletes(int[] ids)
+        {
+            var rs = await _menuServices.Deletes(ids);
+            if (rs)
+            {
+                return JSSuccessResult("Thêm mới thành công");
+
+            }
+            return JSWarningResult("Thêm mới không thành công");
+        }
+        #endregion
+
+        #region Update
+        public async Task<IActionResult> Update(int id)
+        {
+            var rs = _menuServices.Get(id);
+            if (rs == null)
+            {
+                return JSErrorResult("Menu không tồn tại");
+            }
+            return View("Create", rs);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(VMMenu vmmenu)
+        {
+            var value = new Menu();
+            var rs = await _menuServices.update(vmmenu);
+            if (!rs)
+            {
+                return JSErrorResult("Cập nhật Menu không thành công!");
+
+            }
+            return JSSuccessResult("Cập nhật thành công!");
+
         }
         #endregion
 

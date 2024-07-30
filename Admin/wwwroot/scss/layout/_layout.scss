@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: "Inter";
+}
+
+body .content-wrapper {
+    background-color: #f4fafd;
+}
+
+body .main-header {
+    box-shadow: 0px 1px 0px #e6eaf2;
+}
+
+.main-header .navbar-nav.ml-auto::after {
+    display: none;
+}
+
+.main-header .navbar-nav.ml-auto .nav-link {
+    color: $color-gray900;
+    font-weight: 600;
+    &:hover {
+        color: #4f4f4f;
+    }
+}
+
+.page_block {
+    background-color: $page_block;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    margin-bottom: 24px;
+    .page_block_header {
+        padding: 16px;
+        padding-top: 0px;
+    }
+    .page_block-title {
+        padding: 16px;
+        color: $color-gray900;
+    }
+    .page_block_body {
+        .page_block_body-sub {
+            padding: 16px;
+        }
+    }
+}
+
+.layout-navbar-fixed.layout-fixed .wrapper .sidebar,
+.layout-navbar-fixed .wrapper .content-wrapper {
+    margin-top: 4.1rem;
+}
+.layout-navbar-fixed.layoutLicense .wrapper .content-wrapper {
+    margin-left: 0 !important;
+}
+
+.layout-new {
+    .card {
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+        border-radius: 6px;
+        background-color: $white;
+        .card-header {
+            padding: 16px;
+        }
+    }
+}
+
+
+.box-doughnut_Statistics {
+    width: 200px;
+    margin: 40px 40px 40px 0;
+}
+.mining-statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 70%;
+    .mining-statistics-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: $color-gray900;
+        position: relative;
+        .mining-statistics-item_sub {
+            background-color: #ffffff;
+            z-index: 10;
+            &:first-child {
+                padding-right: 8px;
+            }
+            &:last-child {
+                padding-left: 8px;
+            }
+        }
+        &::before {
+            content: " ";
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            position: absolute;
+            border: 1px dotted #D1D5DB ;
+        }
+    }
+}
+.box-doughnut_Statistics {
+    .bg-doughnut_Statistics {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

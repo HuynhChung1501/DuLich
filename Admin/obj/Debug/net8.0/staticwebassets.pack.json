@@ -15085,20 +15085,204 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.css",
-      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.css"
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\SkinLogin\\ThemeLogin1.css",
+      "PackagePath": "staticwebassets\\scss\\SkinLogin\\ThemeLogin1.css"
     },
     {
-      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.js.map",
-      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.js.map"
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\SkinLogin\\ThemeLogin2.css",
+      "PackagePath": "staticwebassets\\scss\\SkinLogin\\ThemeLogin2.css"
     },
     {
-      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.min.css",
-      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.min.css"
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\SkinLogin\\ThemeLogin3.css",
+      "PackagePath": "staticwebassets\\scss\\SkinLogin\\ThemeLogin3.css"
     },
     {
-      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\plugins\\toastr\\toastr.min.js",
-      "PackagePath": "staticwebassets\\plugins\\toastr\\toastr.min.js"
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\SkinLogin\\ThemeLogin4.css",
+      "PackagePath": "staticwebassets\\scss\\SkinLogin\\ThemeLogin4.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\SkinLogin\\ThemeLogin5.css",
+      "PackagePath": "staticwebassets\\scss\\SkinLogin\\ThemeLogin5.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\SkinLogin\\ThemeLogin6.css",
+      "PackagePath": "staticwebassets\\scss\\SkinLogin\\ThemeLogin6.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\SkinLogin\\themeloginDefaut.css",
+      "PackagePath": "staticwebassets\\scss\\SkinLogin\\themeloginDefaut.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\_style.scss",
+      "PackagePath": "staticwebassets\\scss\\_style.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\abstracts\\_mixins.scss",
+      "PackagePath": "staticwebassets\\scss\\abstracts\\_mixins.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\abstracts\\_size.scss",
+      "PackagePath": "staticwebassets\\scss\\abstracts\\_size.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\abstracts\\_variables.scss",
+      "PackagePath": "staticwebassets\\scss\\abstracts\\_variables.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\base\\_reset.scss",
+      "PackagePath": "staticwebassets\\scss\\base\\_reset.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_Input.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_Input.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_PairingProfile.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_PairingProfile.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_button.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_button.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_icon.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_icon.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_modal.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_modal.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_progress.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_progress.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_select2Custom.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_select2Custom.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_share.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_share.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\components\\_table.scss",
+      "PackagePath": "staticwebassets\\scss\\components\\_table.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\layout\\_Login.scss",
+      "PackagePath": "staticwebassets\\scss\\layout\\_Login.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\layout\\_layout.scss",
+      "PackagePath": "staticwebassets\\scss\\layout\\_layout.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\layout\\_layoutLicense.scss",
+      "PackagePath": "staticwebassets\\scss\\layout\\_layoutLicense.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\layout\\_layout_Dashboard.scss",
+      "PackagePath": "staticwebassets\\scss\\layout\\_layout_Dashboard.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\layout\\_menu-left.scss",
+      "PackagePath": "staticwebassets\\scss\\layout\\_menu-left.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\main.css",
+      "PackagePath": "staticwebassets\\scss\\main.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\main.css.map",
+      "PackagePath": "staticwebassets\\scss\\main.css.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\main.scss",
+      "PackagePath": "staticwebassets\\scss\\main.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\style\\_custom.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\style\\_custom.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeBlue\\mainTheme.css",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeBlue\\mainTheme.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeBlue\\mainTheme.css.map",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeBlue\\mainTheme.css.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeBlue\\mainTheme.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeBlue\\mainTheme.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeBlue\\style\\_variable.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeBlue\\style\\_variable.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeCyan\\mainTheme.css",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeCyan\\mainTheme.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeCyan\\mainTheme.css.map",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeCyan\\mainTheme.css.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeCyan\\mainTheme.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeCyan\\mainTheme.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeCyan\\style\\_variable.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeCyan\\style\\_variable.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeGreen\\mainTheme.css",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeGreen\\mainTheme.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeGreen\\mainTheme.css.map",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeGreen\\mainTheme.css.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeGreen\\mainTheme.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeGreen\\mainTheme.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeGreen\\style\\_variable.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeGreen\\style\\_variable.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeIndigo\\mainTheme.css",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeIndigo\\mainTheme.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeIndigo\\mainTheme.css.map",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeIndigo\\mainTheme.css.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeIndigo\\mainTheme.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeIndigo\\mainTheme.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeIndigo\\style\\_variable.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeIndigo\\style\\_variable.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeYellow\\mainTheme.css",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeYellow\\mainTheme.css"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeYellow\\mainTheme.css.map",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeYellow\\mainTheme.css.map"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeYellow\\mainTheme.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeYellow\\mainTheme.scss"
+    },
+    {
+      "Id": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Admin\\wwwroot\\scss\\themeSkin\\themeYellow\\style\\_variable.scss",
+      "PackagePath": "staticwebassets\\scss\\themeSkin\\themeYellow\\style\\_variable.scss"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Travel.API.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -1,0 +1,112 @@
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+    .wspace {
+        white-space: pre-wrap !important;
+    }
+    thead {
+        tr {
+            border: 0 !important;
+            th {
+                background-color: $bg-thead !important;
+                color: $table-header-color !important;
+                font-size: 12px;
+                font-weight: 600;
+                border-color: $border-table !important;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                border-color: $border-table !important;
+                color: $text-input !important;
+                a.btn-link {
+                    color: $color-gray900 !important;
+                    font-weight: 700 ;
+                    transition: linear 0.2s;
+                    &:hover {
+                        opacity: .8;
+                    }
+                }
+            }
+        }
+    }
+
+    tfoot {
+        tr {
+            border: 1px !important;
+
+            th {
+                background: $input-disabled !important;
+                color: $text-input !important;
+                font-size: 12px;
+                font-weight: 500;
+                border-color: $border-table !important;
+            }
+        }
+    }
+
+}
+.table.data_table td, 
+.table.data_table th {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle!important;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th {
+    border-color: $border-table !important;
+    color: $text-input !important;
+}
+
+.table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border-color: $border-table !important;
+    white-space: nowrap;
+    padding: 8px 16px;
+}
+
+@mixin responsive_1366 {
+    .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+        padding: 6px 12px;
+
+    }
+}
+
+
+
+.table-bordered {
+    border-color: $border-table !important;
+}
+
+ul.important_action_btn.text-center {
+    justify-content: center !important;
+}
+
+
+.col-min {
+    width: 1%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: unset!important;
+}
+
+
+.table-mh250 {
+    .over_auto {
+        max-height: 250px;
+        @include scrollbars(0.5rem, rgb(170, 170, 170), transparent)
+    }
+}
+
+.col-star i {
+    font-size: 18px;
+    cursor: pointer;
+    color: #E5E7EB;
+    &.yellow {
+        color: $pri-yellow;
+    }
+}

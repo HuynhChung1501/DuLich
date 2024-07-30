@@ -1,0 +1,215 @@
+.user {
+    display: flex;
+    align-items: center;
+    .user-avatar {
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .user-info {
+        margin-left: 6px;
+        .user-info-name {
+            color: $color-gray600;
+            font-weight: 500;
+            line-height: 26px;
+        }
+        .user-info-desc {
+            color: $color-gray900;
+        }
+    }
+}
+
+.record-lable {
+    color: #718096;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.record-content {
+    color: #27272E;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    span {
+        word-break: break-word;
+    }
+}
+
+.block-left{
+    padding: 16px;
+    background-color: transparent;
+    box-shadow: none;
+    display: block;
+    width: 100%;
+    border-radius: 10px 0px 0px 10px;
+    background: linear-gradient(150.21deg, rgba(255, 255, 255, 0.04) -0.73%, rgba(255, 255, 255, 0.02) 96.96%);;
+    .title {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 16px;
+        font-family:var(--axt-font-inter) ;
+        color: #ffffff;
+        text-align: center;
+    }
+    .nav-tabs {
+        background-color: transparent;
+        box-shadow: none;
+        display: block;
+        li {
+            margin-bottom: 0;
+            a {
+                display: block;
+                &:first-child{ 
+                    border-left: 0;
+                }
+            }
+        }
+    }
+}
+.tab-statisticsWork-list {
+    margin-bottom: 8px !important;
+    .nav-link {
+        width: 100%;
+        display:block;
+        padding: 0;
+    }
+    a.active .tab-statisticsWork-item {
+        svg path {
+            fill: #ffffff;
+        }
+        p {
+            color: $color-gray900;
+        }
+        &.pri-blue {
+            background-color: $pri-blue;
+            &::after {
+                background-color: $pri-blue;
+            }
+        }
+        &.pri-green {
+            background-color: $pri-green;
+            &::after {
+                background-color: $pri-green;
+            }
+        }
+        &.pri-red {
+            background-color: $pri-red;
+            &::after {
+                background-color: $pri-red;
+            }
+        }
+        &.pri-orange {
+            background-color: $pri-orange;
+            &::after {
+                background-color: $pri-orange;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            right: -10.1px;
+            -webkit-clip-path: polygon(0 0, 0% 100%, 100% 50%);
+            clip-path: polygon(0 0, 0% 100%, 100% 50%);
+            width: 10px;
+            transform: translateY(-50%);
+            top: 50%;
+            height: 20px;
+        }
+    }
+}
+
+.tab-statisticsWork-item {
+    background-color: #ffffff;
+    box-shadow: 0px 8px 24px -4px rgba(27, 46, 94, 0.08);
+    border-radius: 10px;
+    padding: 8px;
+    color: #2e2e2e;
+    border: none;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    position: relative;
+    gap: 12px;
+
+    &.active {
+        background: #2f80edcc;
+    }
+    .btn {
+        width: 40px;
+        height: 40px;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn-info[disabled] {
+        background-color: #2f80ed4d !important;
+        border: none !important;
+    }
+    .btn-success[disabled] {
+        background-color: #27ae604d !important;
+        border: none !important;
+    }
+    .btn-warning[disabled] {
+        background-color: #f2994a4d !important;
+        border: none !important;
+    }
+    .btn-danger[disabled] {
+        background-color: #eb57574d !important;
+        border: none !important;
+    }
+}
+
+.todo-list-item {
+    text-align: center;
+    font-weight: 700;
+    color: #9CA3AF;
+    width: auto !important;
+    margin-right: 40px;
+    cursor: pointer;
+    transition: linear .3s;
+    &:hover {
+        color: #2375C0;
+        .btn-count-outline {
+            border-color:  #2375C0;
+            color: #2375C0 ;
+        }
+    }
+    &:first-child {
+        text-align: left;
+    }
+    &:last-child {
+        text-align: right;
+    }
+
+    &.active {
+    color: #2375C0;
+
+        .btn-count-outline {
+            border-color:  #2375C0;
+            color: #2375C0 ;
+        }
+    }
+}
+
+
+//slick
+.slick-prev:before, .slick-next:before {
+    color: #a1a1a1;
+}
+
+.slider {
+    margin: auto 30px;
+}
+
+.highcharts-credits {
+    display: none;
+}
+
+.highcharts-container {
+    width: 100% !important;
+}
+
+
+.custom-control-label::before {
+    background-color: #ffffff;
+    border: #c1c1c1 solid 1px;
+    border-radius: 4px !important;
+}

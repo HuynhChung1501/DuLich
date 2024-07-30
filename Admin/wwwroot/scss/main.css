@@ -163,6 +163,7 @@ buttonhover, button:focus, button:active {
 
 .pagination-container .pagination li:not(.active):hover a {
   background-color: #E2E8F0;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .pagination-container .pagination li a, .pagination-container .pagination li span {
   padding: 6px 12px;

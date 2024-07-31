@@ -12,8 +12,9 @@ table.table {
                 color: $table-header-color !important;
                 font-size: 12px;
                 font-weight: 600;
-                border-color: $border-table !important;
+                border:1px solid $border-table !important;
                 text-transform: uppercase;
+                text-align: center;
             }
         }
     }
@@ -24,7 +25,7 @@ table.table {
                 border-color: $border-table !important;
                 color: $text-input !important;
                 a.btn-link {
-                    color: $color-gray900 !important;
+                    color: $color-state-900 !important;
                     font-weight: 700 ;
                     transition: linear 0.2s;
                     &:hover {
@@ -110,3 +111,10 @@ ul.important_action_btn.text-center {
         color: $pri-yellow;
     }
 }
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8;
+}   

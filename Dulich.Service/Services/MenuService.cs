@@ -30,6 +30,18 @@ namespace Dulich.Service.Service
 
         }
 
+        public async Task<ServiceResult> Create(Menu menu)
+        {
+            if (menu == null)
+            {
+                return new ServiceResultError("Menu không được bỏ trống");
+            }
+            _DasContext.Add(menu);
+            _DasContext.SaveChanges();
+            return new ServiceResultSuccess("Thêm mới thành công");
+
+        }
+
         public async Task<bool> Delete(int id)
         {
             try

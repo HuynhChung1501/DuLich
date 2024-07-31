@@ -3,20 +3,26 @@
 @using X.PagedList.Mvc.Core;
 @model X.PagedList.IPagedList<VMMenu>
 
-<style>
+<div class="row">
+    <div class="col-12">
 
-</style>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Danh sách quản lý menu</h3>
+                <div class="card-tools">
+                    <a asp-controller="Menu" asp-action="Create" class="btn btn-tool" title="Thêm mới">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Menu" asp-action="Index">
+                    <div class="">
+                        @Html.Partial("_IndexPartial")
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<a asp-controller="Menu" asp-action="Create">
-    Thêm mới
-</a>
-<div class="">
-    @Html.Partial("_IndexPartial")
-</div>
-<div class="d-flex justify-content-between">
-    <div>
-        <span>Tổng số bản ghi </span>
-        <span>@ViewData["page"]</span>
     </div>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 </div>

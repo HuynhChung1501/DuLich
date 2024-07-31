@@ -45,4 +45,27 @@
         }
         return false;
     },
+    GetSerialize: function (form) {
+        //remove disable to get data
+        let disabled = form.find(':input:disabled').removeAttr('disabled');
+        let data = form.serializeArray();
+        disabled.attr('disabled', 'disabled'); //add disabled input
+
+        let rs = {};
+        for (let i in data) {
+            if (!rs.hasOwnProperty(data[i].name))
+                rs[data[i].name] = [];
+            rs[data[i].name].push(data[i].value.trim());// Trim D
+        }
+        for (let i in rs) {
+            if (rs[i].length === 1) {
+                rs[i] = rs[i].join(",");
+            }
+            else {
+                rs[i] = JSON.stringify(rs[i]);
+            }
+        }
+
+        return rs;
+    },
 }

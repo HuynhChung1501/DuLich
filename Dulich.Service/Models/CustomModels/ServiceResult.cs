@@ -26,11 +26,11 @@ namespace Travel.Domain.CustomModels
     {
         public ServiceResultSuccess()
         {
-            Code = CommonConst.SUCCESS;
+            Code = CommonConst.Success;
         }
         public ServiceResultSuccess(string msg)
         {
-            Code = CommonConst.SUCCESS;
+            Code = CommonConst.Success;
             Message = msg;
         }
         public ServiceResultSuccess(object data)

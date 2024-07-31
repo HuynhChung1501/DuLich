@@ -1,12 +1,54 @@
-﻿@if (Model != null)
-{
-    foreach (var item in Model)
-    {
-        <h1>@item.Name</h1>
-        <h1>@item.Url</h1>
-    }
-}
-else
-{
-    <h1>Khoong cos du lieu</h1>
-}
+﻿@using Dulich.Application.ViewModels
+@using X.PagedList
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<VMMenu>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Stt</th>
+                <th>Tên</th>
+                <th>Đường dẫn</th>
+                <th>Icon</th>
+                <th>Cấp bậc</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model != null)
+        {
+            var stt=1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@stt</td>
+                    <td>@item.Name</td>
+                    <td>@item.Url</td>
+                    <td>@Html.Raw(@item.Icon)</td>
+                    <td>@(item.ID > 0 ? item.ID : "Đang là menu cấp cha")</td>
+                    <td>
+                        <div class="btn-action">
+                            <a class="btn btn-icon" asp-action="Update"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-icon" asp-action="Delete"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tfoot>
+                <tr >
+                    <td class="text-center" colspan="6">Không có dữ liệu</td>
+                </tr>
+            </tfoot>
+        }
+        </tbody>
+    </table>
+<div class="d-flex justify-content-between">
+    <div>
+        <span>Tổng số bản ghi </span>
+        <span>@ViewData["page"]</span>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

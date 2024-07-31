@@ -37,7 +37,7 @@ namespace Admin.Controllers
             int pageSize = pagesize == 0  ? 5 : pagesize;
             int pageNumber = page == 0 ? 1 : page;
             ViewData["page"] = MenuList.Count();
-            return Json(MenuList.ToPagedList(pageNumber, pageSize));
+            return View(MenuList.ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -56,16 +56,17 @@ namespace Admin.Controllers
         #region Thêm mới menu
         public async Task<IActionResult> Create()
         {
+            ViewData["Title"] = "Thêm mới menu";
+            ViewData["linkSubmit"] = "Create";
             return View("Create");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Menu menu)
+        public async Task<IActionResult> Create([FromBody] Menu menu)
         {
-            if (menu != null) {
-                return JSWarningResult("Thêm mới thành công");
-            }
-            return JSSuccessResult("Thêm mới không thành công");
+            var rs = await _menuServices.Create(menu);
+
+            return CustJSonResult(rs);
         }
         #endregion
 
@@ -96,6 +97,8 @@ namespace Admin.Controllers
         #region Update
         public async Task<IActionResult> Update(int id)
         {
+            ViewData["Title"] = "Chỉnh menu";
+            ViewData["linkSubmit"] = "Update";
             var rs = _menuServices.Get(id);
             if (rs == null)
             {

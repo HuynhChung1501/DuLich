@@ -17,5 +17,6 @@ namespace Dulich.Service.Interface
         Task<bool> Delete(int id);
         Task<bool> Deletes(int[] ids);
         Task<bool> update(VMMenu vmmenu);
+        Task<ServiceResult> Create(Menu menu);
     }
 }

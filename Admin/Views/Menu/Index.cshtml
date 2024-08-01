@@ -1,7 +1,5 @@
 ﻿@using Dulich.Application.ViewModels
-@using X.PagedList
-@using X.PagedList.Mvc.Core;
-@model X.PagedList.IPagedList<VMMenu>
+@model List<VMMenu>
 
 <div class="row">
     <div class="col-12">
@@ -10,12 +8,17 @@
             <div class="card-header">
                 <h3 class="card-title">Danh sách quản lý menu</h3>
                 <div class="card-tools">
-                    <a asp-controller="Menu" asp-action="Create" class="btn btn-tool" title="Thêm mới">
+                    <a asp-controller="Menu" asp-action="Deletes" class="btn btn-danger quickDeletes" title="Xóa nhiều">
+                        <i class="fas fa-trash"></i>
+                    </a>
+
+                    <a asp-controller="Menu" asp-action="Create" class="btn btn-outline-success" title="Thêm mới">
                         <i class="fas fa-plus"></i>
                     </a>
+
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive p-0" style="height:75vh">
                 <form asp-controller="Menu" asp-action="Index">
                     <div class="">
                         @Html.Partial("_IndexPartial")
@@ -23,6 +26,5 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>

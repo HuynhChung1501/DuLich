@@ -29,15 +29,13 @@ namespace Admin.Controllers
         }
 
         #region List
-        public async Task<IActionResult> Index(int page, int pagesize)
+        public async Task<IActionResult> Index()
         {
             List<VMMenu> MenuList = new List<VMMenu>();
             MenuList = await _menuServices.GetList();
 
-            int pageSize = pagesize == 0  ? 10 : pagesize;
-            int pageNumber = page == 0 ? 1 : page;
             ViewData["page"] = MenuList.Count();
-            return View(MenuList.ToPagedList(pageNumber, pageSize));
+            return View("index", MenuList);
 
         }
 
@@ -77,7 +75,7 @@ namespace Admin.Controllers
             return CustJSonResult(rs);
         }
 
-        public async Task<IActionResult> Deletes(int[] ids)
+        public async Task<IActionResult> Deletes([FromBody] int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);
             return CustJSonResult(rs);

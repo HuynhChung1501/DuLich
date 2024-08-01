@@ -136,6 +136,13 @@ label {
     display: inline-block;
     margin-bottom: 5px;
 }
+input[type=checkbox], input[type=radio] {
+    width: 14px;
+    height: 14px;
+    &.form-check-input {
+        position: relative;
+    }
+}
 
 input[type="text"],
 input[type="password"],

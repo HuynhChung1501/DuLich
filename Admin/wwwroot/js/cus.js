@@ -16,8 +16,8 @@ $(".quickSubmit").click(function () {
 
 jQuery(document).on("click", ".quickUpdate", function () {
     let btn = $(this);
-    let url = "/Menu/Create"
     let form = btn.closest("form");
+    let url = form.attr("action")
     let data = Common.GetSerialize(form); //trimspace
 
     $.ajax({
@@ -51,6 +51,78 @@ jQuery(document).on("click", ".quickDelete", function () {
     });
     return false;
 }),
+
+jQuery(document).on("click", ".quickDeletes", function () {
+    let btn = $(this);
+    let url = btn.attr("href") || btn.attr("data-href");
+    let lstCheckBoxItem = $("table .onCheckItem")
+    var ids = [];
+    lstCheckBoxItem.each(function(index, element) {
+        if($(element).is(':checked')) {
+            ids.push($(element).attr("id"))
+        }
+    });
+    
+    
+    $.ajax({
+        url: url,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(ids),
+        success: function (response) {
+            showToast(response.message, response.status)
+        },
+        error: function (xhr, status, error) {
+        }
+    });
+    return false;
+}),
+
+jQuery(document).on("change", ".onCheckGroup", function () {
+    let obj = $(this);
+    let table = obj.closest("table")
+    let checkAll = obj.is(":checked")
+    let lstCheckBoxItem = table.find(".onCheckItem")
+    if(checkAll) {
+        lstCheckBoxItem.each(function(index, element) {
+            if(!$(element).is(':checked')) {
+                $(element).prop("checked", true)
+            }else {
+                return true;
+            }
+        });
+    }else {
+        lstCheckBoxItem.each(function(index, element) {
+            if($(element).is(':checked')) {
+                $(element).prop("checked", false)
+            }else {
+                return true;
+            }
+        });
+    }
+}),
+
+jQuery(document).on("change", ".onCheckItem", function () { 
+    let obj = $(this);
+    let table = obj.closest("table")
+    let checkAll = table.find(".onCheckGroup")
+    let lstCheckBoxItem = table.find(".onCheckItem")
+    let countCheck = 0;
+    let length = lstCheckBoxItem.length
+    lstCheckBoxItem.each(function(index, element) {
+        if(!$(element).prop('checked')) {
+            checkAll.prop("checked", false)
+            return false;
+        }else {
+            countCheck ++
+        }
+    });
+    if(countCheck == length) {
+        checkAll.prop("checked", true)
+    }
+
+}),
+
 
 jQuery.fn.extend({
     reset: function () {

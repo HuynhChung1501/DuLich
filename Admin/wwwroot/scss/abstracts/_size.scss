@@ -74,10 +74,11 @@
     }
 }
 
-@for $i from 0 to 21 {
+@for $i from 0 to 20 {
     .gap-#{$i} {
         gap: #{$i}px !important;
     }
+   
 }
 
 .text-wrap2 {
@@ -170,3 +171,47 @@
         text-transform: capitalize!important
     }
 }
+
+
+@for $i from 0 to 400 
+{
+    .wpx-#{$i}{
+        width: #{$i}px;
+    }
+    
+    .minw-#{$i}{
+        min-width: #{$i}px;
+    }
+    .hpx-#{$i}{
+        height: #{$i}px;
+    }
+    .mahpx-#{$i}{
+        max-height: #{$i}px;
+    }
+    
+    .mhpx-#{$i}{
+        max-height: #{$i}px;
+    }
+}
+
+
+// @while $index <= 400
+// {
+    
+    
+//     .minw-#{$index}{
+//         min-width: #{$index}px;
+//     }
+//     .hpx-#{$index}{
+//         height: #{$index}px;
+//     }
+//     .mahpx-#{$index}{
+//         max-height: #{$index}px;
+//     }
+    
+//     .mhpx-#{$index}{
+//         max-height: #{$index}px;
+//     }
+//     $index : ($index + 10);
+// }
+

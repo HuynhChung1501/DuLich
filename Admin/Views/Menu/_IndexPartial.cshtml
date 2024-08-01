@@ -1,12 +1,13 @@
-﻿@using Dulich.Application.ViewModels
-@using X.PagedList
-@using X.PagedList.Mvc.Core;
-@model X.PagedList.IPagedList<VMMenu>
-
-<table class="table">
+﻿
+<table class="table table-head-fixed">
     <thead>
         <tr>
-            <th>Stt</th>
+            <th class="wpx-70">Stt</th>
+            <th class="wpx-70">
+                <div class="form-check">
+                    <input class="form-check-input onCheckGroup" type="checkbox">
+                </div>
+            </th>
             <th>Tên</th>
             <th>Đường dẫn</th>
             <th>Icon</th>
@@ -21,7 +22,12 @@
             foreach (var item in Model)
             {
                 <tr>
-                    <td>@stt</td>
+                    <td class="text-center">@stt</td>
+                    <td class="text-center">
+                        <div class="form-check">
+                            <input class="form-check-input onCheckItem" id="@item.ID" type="checkbox">
+                        </div>
+                    </td>
                     <td>@item.Name</td>
                     <td>@item.Url</td>
                     <td>@Html.Raw(@item.Icon)</td>
@@ -33,6 +39,7 @@
                         </div>
                     </td>
                 </tr>
+                stt++;
             }
         }
     </tbody>
@@ -46,10 +53,3 @@
     }
 
 </table>
-<div class="d-flex justify-content-between">
-    <div>
-        <span>Tổng số bản ghi </span>
-        <span>@ViewData["page"]</span>
-    </div>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-</div>

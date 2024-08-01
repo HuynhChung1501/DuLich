@@ -13,40 +13,17 @@ $(".quickSubmit").click(function () {
     });
     return false;
 });
+
 jQuery(document).on("click", ".quickUpdate", function () {
     let btn = $(this);
-    let url = "/Menu/Create"
-    let form = btn.closest("form");
-    let data = Common.GetSerialize(form); //trimspace
-
-    //$(".quickSubmit").prop({ disabled: true });
-    //if (form.hasClass("validateForm")) {
-    //    let bootstrapValidator = form.data('bootstrapValidator');
-    //    if (bootstrapValidator) {
-    //        bootstrapValidator.validate();
-    //        if (!bootstrapValidator.isValid(true)) {
-    //            $(".quickSubmit").prop({ disabled: false });
-    //            if (bootstrapValidator.$invalidFields.length > 0)
-    //                $(bootstrapValidator.$invalidFields[0]).focus();
-
-    //            return false;
-    //        }
-    //    }
-    //}
-    //jQuery(".field-validation-valid").html("");
-
-    //{
-    //    Name: $('#Name').val(),
-    //    Url: $('#Url').val(),
-    //    Icon: $('#Icon').val(),
-    //    IDParent: $('#IDParent').val()
-    //};
-
+    let url = btn.attr("href") || btn.attr("data-href");
+    let id = btn.attr("data-id")
+    
     $.ajax({
         url: url,
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(data),
+        data: JSON.stringify(id),
         success: function (response) {
             showToast(response.message, response.status)
         },
@@ -54,7 +31,7 @@ jQuery(document).on("click", ".quickUpdate", function () {
         }
     });
     return false;
-});
+}),
 
 jQuery.fn.extend({
     reset: function () {
@@ -126,16 +103,16 @@ jQuery.fn.extend({
 
 });
 
-
-
-
-
-function showToast(message, type) {
-    toastr.options.positionClass = 'toast-top-right'; // Customize position
+function showToast(message, type, onLoad = true) {
+    toastr.options.positionClass = 'toast-bottom-right'; // Customize position
     toastr.options.closeButton = true;
     toastr.options.progressBar = true;
-    toastr.options.timeOut = 5000;
-    toastr.options.extendedTimeOut = 1200;
-
+    toastr.options.timeOut = 2000;
+    toastr.options.extendedTimeOut = 2000;
     toastr[type](message);
+    if (onLoad) {
+    setTimeout(function () {
+        window.location.reload();
+    }, 2000);
+    }
 }

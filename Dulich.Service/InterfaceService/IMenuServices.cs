@@ -14,8 +14,8 @@ namespace Dulich.Service.Interface
         Task<VMMenu> Get(int id);
         Task<List<VMMenu>> GetList();
         Task<List<VMMenu>> SearchByCondition(string searchName);
-        Task<bool> Delete(int id);
-        Task<bool> Deletes(int[] ids);
+        Task<ServiceResult> Delete(int id);
+        Task<ServiceResult> Deletes(int[] ids);
         Task<bool> update(VMMenu vmmenu);
         Task<ServiceResult> Create(Menu menu);
     }

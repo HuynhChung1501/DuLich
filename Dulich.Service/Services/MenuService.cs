@@ -11,6 +11,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Travel.Application.Contansts;
 using Travel.Application.Services;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
@@ -42,18 +43,19 @@ namespace Dulich.Service.Service
 
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<ServiceResult> Delete(int id)
         {
             try
             {
                 var menu = _travelRepo.Menu.Get(id);
-                if (menu != null)
+                if (menu == null)
                 {
-                    _travelRepo.Menu.Delete(menu);
-                    _DasContext.SaveChanges();
-                    return true;
+                    return new ServiceResultError("Menu không tồn tại");
                 }
-                return false;
+
+                _travelRepo.Menu.Delete(menu);
+                _DasContext.SaveChanges();
+                return new ServiceResultSuccess("Xóa Menu thành công");
             }
             catch (Exception e)
             {
@@ -61,20 +63,20 @@ namespace Dulich.Service.Service
             }
         }
 
-        public async Task<bool> Deletes(int[] ids)
+        public async Task<ServiceResult> Deletes(int[] ids)
         {
             try
             {
-                bool rs = false; 
                 foreach (var id in ids)
                 {
-                    rs = await Delete(id);  
-                    if (!rs)
+                    var rs = await Delete(id);
+                    if(rs.Code == CommonConst.error)
                     {
-                        return false;
+                        return new ServiceResultError($"ID: {id} không tồn tại");
+
                     }
                 }
-                return true;
+                return new ServiceResultSuccess("Xóa thành công");
 
             }
             catch (Exception e)

@@ -74,23 +74,13 @@ namespace Admin.Controllers
         public async Task<IActionResult> Delete(int id) 
         {
             var rs = await _menuServices.Delete(id);
-            if (rs)
-            {
-                return JSSuccessResult("Thêm mới thành công");
-
-            }
-            return JSWarningResult("Thêm mới không thành công");
+            return CustJSonResult(rs);
         }
 
         public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);
-            if (rs)
-            {
-                return JSSuccessResult("Thêm mới thành công");
-
-            }
-            return JSWarningResult("Thêm mới không thành công");
+            return CustJSonResult(rs);
         }
         #endregion
 

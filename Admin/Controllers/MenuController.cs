@@ -34,7 +34,7 @@ namespace Admin.Controllers
             List<VMMenu> MenuList = new List<VMMenu>();
             MenuList = await _menuServices.GetList();
 
-            int pageSize = pagesize == 0  ? 5 : pagesize;
+            int pageSize = pagesize == 0  ? 10 : pagesize;
             int pageNumber = page == 0 ? 1 : page;
             ViewData["page"] = MenuList.Count();
             return View(MenuList.ToPagedList(pageNumber, pageSize));

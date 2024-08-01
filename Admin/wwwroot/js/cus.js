@@ -16,6 +16,25 @@ $(".quickSubmit").click(function () {
 
 jQuery(document).on("click", ".quickUpdate", function () {
     let btn = $(this);
+    let url = "/Menu/Create"
+    let form = btn.closest("form");
+    let data = Common.GetSerialize(form); //trimspace
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function (response) {
+            showToast(response.message, response.status)
+        },
+        error: function (xhr, status, error) {
+        }
+    });
+    return false;
+});
+jQuery(document).on("click", ".quickDelete", function () {
+    let btn = $(this);
     let url = btn.attr("href") || btn.attr("data-href");
     let id = btn.attr("data-id")
     

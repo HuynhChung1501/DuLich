@@ -24,7 +24,7 @@ jQuery(document).on("click", ".quickUpdate", function () {
         url: url,
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(data),
+        data: data,
         success: function (response) {
             var isStatus = response.status == "error" ?  false : true 
             if( $('#myForm').valid()) {

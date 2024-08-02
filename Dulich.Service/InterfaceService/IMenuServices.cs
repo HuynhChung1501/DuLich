@@ -12,7 +12,7 @@ namespace Dulich.Service.Interface
     public interface IMenuServices 
     {
         Task<VMMenu> Get(int id);
-        Task<List<VMMenu>> GetList();
+        Task<List<Menu>> GetList();
         Task<List<VMMenu>> SearchByCondition(string searchName);
         Task<ServiceResult> Delete(int id);
         Task<ServiceResult> Deletes(int[] ids);

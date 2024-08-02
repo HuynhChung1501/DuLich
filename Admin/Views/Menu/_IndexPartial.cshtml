@@ -1,4 +1,9 @@
-﻿
+﻿@using Dulich.Application.ViewModels
+@using Dulich.Domain.Models
+@model VMMenu
+@{
+    var menus = Model.Menus ?? new List<Menu>();
+}
 <table class="table table-head-fixed">
     <thead>
         <tr>
@@ -16,10 +21,10 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model != null)
+        @if (menus != null)
         {
             var stt = 1;
-            foreach (var item in Model)
+            foreach (var item in menus)
             {
                 <tr>
                     <td class="text-center">@stt</td>
@@ -31,7 +36,7 @@
                     <td>@item.Name</td>
                     <td>@item.Url</td>
                     <td>@Html.Raw(@item.Icon)</td>
-                    <td>@(item.ID > 0 ? item.ID : "Đang là menu cấp cha")</td>
+                    <td>@(item.IDParent > 0 ? menus.FirstOrDefault(x => x.ID == item.IDParent).Name : "Menu cấp cha")</td>
                     <td>
                         <div class="btn-action">
                             <a class="btn btn-icon" asp-action="Update"><i class="fas fa-edit"></i></a>

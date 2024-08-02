@@ -31,10 +31,10 @@ namespace Admin.Controllers
         #region List
         public async Task<IActionResult> Index()
         {
-            List<VMMenu> MenuList = new List<VMMenu>();
-            MenuList = await _menuServices.GetList();
+            VMMenu MenuList = new VMMenu();
+            MenuList.Menus = await _menuServices.GetList();
 
-            ViewData["page"] = MenuList.Count();
+            ViewData["page"] = MenuList.Menus.Count();
             return View("index", MenuList);
 
         }
@@ -54,14 +54,17 @@ namespace Admin.Controllers
         #region Thêm mới menu
         public async Task<IActionResult> Create()
         {
+            var rs =  new VMMenu();
+            rs.Menus = _travelRepo.Menu.GetAllList().ToList() ?? new List<Menu>(); 
             ViewData["Title"] = "Thêm mới menu";
             ViewData["linkSubmit"] = "Create";
-            return View("Create");
+            return View("Create", rs);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Menu menu)
         {
+
             var rs = await _menuServices.Create(menu);
 
             return CustJSonResult(rs);

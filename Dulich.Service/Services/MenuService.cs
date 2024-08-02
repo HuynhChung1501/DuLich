@@ -37,9 +37,17 @@ namespace Dulich.Service.Service
             {
                 return new ServiceResultError("Thêm mới không thành công");
             }
-            _DasContext.Add(menu);
-            _DasContext.SaveChanges();
-            return new ServiceResultSuccess("Thêm mới thành công");
+            var valid = await validation(menu);
+            if (valid.Code == CommonConst.Success)
+            {
+                _DasContext.Add(menu);
+                _DasContext.SaveChanges();
+                return valid;
+            }
+            else {
+                validation(menu);
+            }
+            return valid;
 
         }
 
@@ -70,7 +78,7 @@ namespace Dulich.Service.Service
                 foreach (var id in ids)
                 {
                     var rs = await Delete(id);
-                    if(rs.Code == CommonConst.error)
+                    if (rs.Code == CommonConst.error)
                     {
                         return new ServiceResultError($"ID: {id} không tồn tại");
 
@@ -93,21 +101,10 @@ namespace Dulich.Service.Service
             return vmMenu;
         }
 
-        public async Task<List<VMMenu>> GetList()
+        public async Task<List<Menu>> GetList()
         {
             var menu = await (from M in _travelRepo.Menu.GetAll().AsNoTracking()
-                              select new VMMenu
-                              {
-                                  Name = M.Name,
-                                  ID = M.ID,
-                                  Url = M.Url,
-                                  Icon = M.Icon,
-                                  IDParent = M.IDParent,
-                                  CreatedBy = M.CreatedBy,
-                                  CreatedDate = M.CreatedDate,
-                                  UpdatedBy = M.UpdatedBy,
-                                  UpdatedDate = M.UpdatedDate,
-                              }).ToListAsync();
+                              select M).ToListAsync();
             return menu;
         }
 
@@ -137,6 +134,19 @@ namespace Dulich.Service.Service
             _travelRepo.Menu.UpdateAsync(menu);
             _DasContext.SaveChanges();
             return true;
+        }
+
+        public async Task<ServiceResult> validation(Menu menu)
+        {
+            if (menu.Name == string.Empty)
+            {
+                return new ServiceResultError("Tên không được bỏ trống");
+            }
+            if (menu.Url == string.Empty)
+            {
+                return new ServiceResultError("Đường đẫn không được bỏ trống");
+            }
+            return new ServiceResultSuccess("Thêm mới thành công");
         }
     }
 }

@@ -75,7 +75,7 @@ namespace Admin.Controllers
             return CustJSonResult(rs);
         }
 
-        public async Task<IActionResult> Deletes([FromBody] int[] ids)
+        public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);
             return CustJSonResult(rs);

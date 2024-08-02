@@ -12,23 +12,20 @@
                 <h3>@ViewData["Title"]</h3>
             </div>
             <div class="card-body">
-                <form id="myForm" asp-action="Create" enctype="multipart/form-data">
+                <form role="form" id="myForm" asp-action="Create" class="needs-validation" novalidate enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label>Name</label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger" />
+                        <input asp-for="Name" id="Name" class="form-control" required />
                     </div>
 
                     <div class="form-group">
                         <label>Url</label>
-                        <input asp-for="Url" class="form-control" />
-                        <span asp-validation-for="Url" class="text-danger" />
+                        <input asp-for="Url" id="Url" class="form-control" required />
                     </div>
                     <div class="form-group">
                         <label>icon</label>
-                        <input asp-for="Icon" class="form-control" />
-                        <span asp-validation-for="Icon" class="text-danger" />
+                        <input asp-for="Icon" class="form-control"  />
                     </div>
                     <div class="form-group">
                         <label>IDParent</label>

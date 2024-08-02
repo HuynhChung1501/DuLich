@@ -35,7 +35,7 @@ namespace Dulich.Service.Service
         {
             if (menu == null)
             {
-                return new ServiceResultError("Menu không được bỏ trống");
+                return new ServiceResultError("Thêm mới không thành công");
             }
             _DasContext.Add(menu);
             _DasContext.SaveChanges();

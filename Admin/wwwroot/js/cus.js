@@ -7,7 +7,7 @@ $(".quickSubmit").click(function () {
     $.ajax({
         type: 'POST',
         url: url, success: function (result) {
-            
+
             showToast(result.message, result.status)
         }
     });
@@ -26,7 +26,10 @@ jQuery(document).on("click", ".quickUpdate", function () {
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function (response) {
-            showToast(response.message, response.status)
+            var isStatus = response.status == "error" ?  false : true 
+            if( $('#myForm').valid()) {
+                showToast(response.message, response.status, isStatus )
+            }
         },
         error: function (xhr, status, error) {
         }
@@ -37,7 +40,7 @@ jQuery(document).on("click", ".quickDelete", function () {
     let btn = $(this);
     let url = btn.attr("href") || btn.attr("data-href");
     let id = btn.attr("data-id")
-    
+
     $.ajax({
         url: url,
         type: 'POST',
@@ -52,72 +55,92 @@ jQuery(document).on("click", ".quickDelete", function () {
     return false;
 }),
 
-jQuery(document).on("click", ".quickDeletes", function () {
-    let btn = $(this);
-    let url = btn.attr("href") || btn.attr("data-href");
-    let lstCheckBoxItem = $("table .onCheckItem")
-    var ids = [];
-    lstCheckBoxItem.each(function(index, element) {
-        if($(element).is(':checked')) {
-            ids.push($(element).attr("id"))
+    jQuery(document).on("click", ".quickDeletes", function () {
+        let btn = $(this);
+        let url = btn.attr("href") || btn.attr("data-href");
+        let lstCheckBoxItem = $("table .onCheckItem")
+        var ids = [];
+        lstCheckBoxItem.each(function (index, element) {
+            if ($(element).is(':checked')) {
+                ids.push($(element).attr("id"))
+            }
+        });
+
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(ids),
+            success: function (response) {
+                showToast(response.message, response.status)
+            },
+            error: function (xhr, status, error) {
+            }
+        });
+        return false;
+    }),
+
+    jQuery(document).on("change", ".onCheckGroup", function () {
+        let obj = $(this);
+        let table = obj.closest("table")
+        let checkAll = obj.is(":checked")
+        let lstCheckBoxItem = table.find(".onCheckItem")
+        if (checkAll) {
+            lstCheckBoxItem.each(function (index, element) {
+                if (!$(element).is(':checked')) {
+                    $(element).prop("checked", true)
+                } else {
+                    return true;
+                }
+            });
+        } else {
+            lstCheckBoxItem.each(function (index, element) {
+                if ($(element).is(':checked')) {
+                    $(element).prop("checked", false)
+                } else {
+                    return true;
+                }
+            });
         }
-    });
-    
-    
-    $.ajax({
-        url: url,
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(ids),
-        success: function (response) {
-            showToast(response.message, response.status)
+    }),
+
+
+    $('#myForm').validate({
+        rules: {
+            Name: {
+                required: true,
+            },
+            Url: {
+                required: true,
+            },
         },
-        error: function (xhr, status, error) {
-        }
+        messages: {
+            Name: {
+                required: "Trường name Không được bỏ trống",
+            },
+            Url: {
+                required: "Trường Url Không được bỏ trống",
+            },
+        },
     });
-    return false;
-}),
 
-jQuery(document).on("change", ".onCheckGroup", function () {
-    let obj = $(this);
-    let table = obj.closest("table")
-    let checkAll = obj.is(":checked")
-    let lstCheckBoxItem = table.find(".onCheckItem")
-    if(checkAll) {
-        lstCheckBoxItem.each(function(index, element) {
-            if(!$(element).is(':checked')) {
-                $(element).prop("checked", true)
-            }else {
-                return true;
-            }
-        });
-    }else {
-        lstCheckBoxItem.each(function(index, element) {
-            if($(element).is(':checked')) {
-                $(element).prop("checked", false)
-            }else {
-                return true;
-            }
-        });
-    }
-}),
-
-jQuery(document).on("change", ".onCheckItem", function () { 
+jQuery(document).on("change", ".onCheckItem", function () {
     let obj = $(this);
     let table = obj.closest("table")
     let checkAll = table.find(".onCheckGroup")
     let lstCheckBoxItem = table.find(".onCheckItem")
     let countCheck = 0;
     let length = lstCheckBoxItem.length
-    lstCheckBoxItem.each(function(index, element) {
-        if(!$(element).prop('checked')) {
+    lstCheckBoxItem.each(function (index, element) {
+        if (!$(element).prop('checked')) {
             checkAll.prop("checked", false)
             return false;
-        }else {
-            countCheck ++
+        } else {
+            countCheck++
         }
     });
-    if(countCheck == length) {
+    if (countCheck == length) {
         checkAll.prop("checked", true)
     }
 
@@ -202,8 +225,8 @@ function showToast(message, type, onLoad = true) {
     toastr.options.extendedTimeOut = 2000;
     toastr[type](message);
     if (onLoad) {
-    setTimeout(function () {
-        window.location.reload();
-    }, 2000);
+        setTimeout(function () {
+            window.location.reload();
+        }, 2000);
     }
 }

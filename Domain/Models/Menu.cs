@@ -9,11 +9,11 @@ namespace Dulich.Domain.Models
     public class Menu : BaseModel   
     {
         [Description("Tên menu")]
-        [Required]
+        [Required(ErrorMessage = "Tên không được bỏ trống")]
         public string Name { get; set; }
 
         [Description("Đường dẫn")]
-        [Required]
+        [Required(ErrorMessage = "Đường dẫn không được bỏ trống")]
         public string Url { get; set; }
 
         [Description("Icon")]

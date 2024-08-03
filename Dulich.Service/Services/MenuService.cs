@@ -9,12 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Travel.Application.Contansts;
 using Travel.Application.Services;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dulich.Service.Service
 {
@@ -60,6 +62,12 @@ namespace Dulich.Service.Service
                 {
                     return new ServiceResultError("Menu không tồn tại");
                 }
+                // Tìm đến các thằng nào mà là menu con của id hiện tại để xoa
+                var menuChildList = _travelRepo.Menu.GetAllList(x=>x.IDParent == id);
+                foreach (var item in menuChildList)
+                {
+                    _travelRepo.Menu.Delete(item);
+                }
 
                 _travelRepo.Menu.Delete(menu);
                 _DasContext.SaveChanges();
@@ -75,6 +83,11 @@ namespace Dulich.Service.Service
         {
             try
             {
+                if(ids.Length == 0)
+                {
+                    return new ServiceResultError($"Không có phần tử nào được xóa");
+
+                }
                 foreach (var id in ids)
                 {
                     var rs = await Delete(id);
@@ -93,18 +106,17 @@ namespace Dulich.Service.Service
             }
         }
 
-        public async Task<VMMenu> Get(int id)
+        public async Task<Menu> Get(int id)
         {
             var rs = await _travelRepo.Menu.FirstOrDefaultAsync(x => x.ID == id);
-            VMMenu vmMenu = new VMMenu();
-            _mapper.Map(rs, vmMenu);
-            return vmMenu;
+            return rs;
         }
 
         public async Task<List<Menu>> GetList()
         {
-            var menu = await (from M in _travelRepo.Menu.GetAll().AsNoTracking()
-                              select M).ToListAsync();
+            var menu = await (from M in _travelRepo.Menu.GetAll().AsNoTracking() 
+                              orderby  M.ID descending
+                              select M ).ToListAsync();
             return menu;
         }
 
@@ -122,18 +134,36 @@ namespace Dulich.Service.Service
                               }).ToListAsync();
             return menu;
         }
-
-        public async Task<bool> update(VMMenu vmmenu)
+        public async Task<VMMenu> GetVmMenu(int id)
         {
-            var menu = await _travelRepo.Menu.GetAsync(vmmenu.ID);
-            if (menu == null)
+            var menu = _travelRepo.Menu.FirstOrDefault(x => x.ID == id);
+            var vmMenu = new VMMenu();
+            vmMenu.Menu = menu;
+
+            return vmMenu;
+        }
+
+        public async Task<ServiceResult> update(Menu menu)
+        {
+            var menuOld = (from m in _travelRepo.Menu.GetAll()
+                           where m.ID == menu.ID
+                           select new Menu
+                           {
+                               Name = menu.Name,
+                               ID = menu.ID,
+                               Url = menu.Url,
+                               Icon = menu.Icon,
+                               IDParent = menu.IDParent,
+                           }
+                           );
+
+            if (menuOld == null)
             {
-                return false;
+                return new ServiceResultError("Menu hiện không tồn tại hoặc đã bị xóa");
             }
-            _mapper.Map(vmmenu, menu);
-            _travelRepo.Menu.UpdateAsync(menu);
+            await  _travelRepo.Menu.UpdateAsync(menuOld);
             _DasContext.SaveChanges();
-            return true;
+            return new ServiceResultSuccess("Chỉnh sửa thành công");
         }
 
         public async Task<ServiceResult> validation(Menu menu)

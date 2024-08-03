@@ -78,7 +78,7 @@ namespace Admin.Controllers
             return CustJSonResult(rs);
         }
 
-        public async Task<IActionResult> Deletes(int[] ids)
+        public async Task<IActionResult> Deletes([FromBody] int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);
             return CustJSonResult(rs);
@@ -88,27 +88,24 @@ namespace Admin.Controllers
         #region Update
         public async Task<IActionResult> Update(int id)
         {
-            ViewData["Title"] = "Chỉnh menu";
+            ViewData["Title"] = "Chỉnh sửa menu";
             ViewData["linkSubmit"] = "Update";
-            var rs = _menuServices.Get(id);
+
+            var rs = await _menuServices.GetVmMenu(id);
             if (rs == null)
             {
                 return JSErrorResult("Menu không tồn tại");
             }
-            return View("Create", rs);
+            rs.NameParent = _travelRepo.Menu.FirstOrDefault(x=>x.ID == rs.Menu.IDParent)?.Name;
+
+            rs.Menus = _travelRepo.Menu.GetAllList().ToList() ?? new List<Menu>();
+            return View("Update", rs);
         }
-
         [HttpPost]
-        public async Task<IActionResult> Update(VMMenu vmmenu)
+        public async Task<IActionResult> Update([FromBody] Menu menu)
         {
-            var value = new Menu();
-            var rs = await _menuServices.update(vmmenu);
-            if (!rs)
-            {
-                return JSErrorResult("Cập nhật Menu không thành công!");
-
-            }
-            return JSSuccessResult("Cập nhật thành công!");
+            var rs = await _menuServices.update(menu);
+            return CustJSonResult(rs);
 
         }
         #endregion

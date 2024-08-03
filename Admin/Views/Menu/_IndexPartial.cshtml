@@ -36,17 +36,17 @@
                     <td>@item.Name</td>
                     <td>@item.Url</td>
                     <td>@Html.Raw(@item.Icon)</td>
-                    <td>@(item.IDParent > 0 ? menus.FirstOrDefault(x => x.ID == item.IDParent).Name : "Menu cấp cha")</td>
+                    <td>@(item.IDParent > 0 ? (menus.FirstOrDefault(x => x.ID == item.IDParent)?.Name ?? "Menu cha đã bị xóa") : "Menu cấp cha")</td>
                     <td>
                         <div class="btn-action">
-                            <a class="btn btn-icon" asp-action="Update"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-icon" href="/Menu/Update?id=@item.ID"><i class="fas fa-edit"></i></a>
                             <a class="btn btn-icon quickDelete" data-id="@item.ID" href="/Menu/Delete?id=@item.ID"><i class="fas fa-trash"></i></a>
                         </div>
                     </td>
                 </tr>
                 stt++;
             }
-        }
+        } 
     </tbody>
     @if (Model == null)
     {

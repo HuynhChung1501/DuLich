@@ -11,12 +11,13 @@ namespace Dulich.Service.Interface
 {
     public interface IMenuServices 
     {
-        Task<VMMenu> Get(int id);
+        Task<Menu> Get(int id);
         Task<List<Menu>> GetList();
         Task<List<VMMenu>> SearchByCondition(string searchName);
+        Task<VMMenu> GetVmMenu(int id);
         Task<ServiceResult> Delete(int id);
         Task<ServiceResult> Deletes(int[] ids);
-        Task<bool> update(VMMenu vmmenu);
+        Task<ServiceResult> update(Menu vmmenu);
         Task<ServiceResult> Create(Menu menu);
     }
 }

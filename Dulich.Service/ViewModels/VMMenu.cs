@@ -24,6 +24,10 @@ namespace Dulich.Application.ViewModels
         [Description("ID cấp cha")] // nếu ib khác 0 thì là cấp con
         public int? IDParent { get; set; }
 
+        [Description("Tên cấp cha")] // nếu ib khác 0 thì là cấp con
+        public string? NameParent { get; set; }
+
         public List<Menu> Menus { get; set; }
+        public Menu Menu { get; set; }
     }
 }

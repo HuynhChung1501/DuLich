@@ -31,5 +31,18 @@ namespace Travel.Infrastructure.Repositories
                 return _menu;
             }
         }
+        private IPhuongTienRepository _PhuongTien;
+        public IPhuongTienRepository PhuongTien
+        {
+            get
+            {
+                if (_PhuongTien == null)
+                {
+                    _PhuongTien = new PhuongTienRepository(_repoContext);
+                }
+                return _PhuongTien;
+            }
+        }
+
     }
 }

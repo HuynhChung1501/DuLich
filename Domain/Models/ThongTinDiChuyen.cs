@@ -16,19 +16,19 @@ namespace Dulich.Domain.Models
         public DateTime StartDate { get; set; }
 
         [Description("Địa điểm đón khách")]
-        public string PickupLocation { get; set; }
+        public string? PickupLocation { get; set; }
 
         [Description("ID Phương tiện")]
-        public string IDTransport { get; set; }
+        public string? IDTransport { get; set; }
 
         [Description("Chỗ ngồi")]
-        public int Seating { get; set; }
+        public int? Seating { get; set; }
 
         [Description("Mô tả")]
         [MaxLength(2000)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Description("ID Tour")]
-        public int IDTour { get; set; }
+        public int? IDTour { get; set; }
     }
 }

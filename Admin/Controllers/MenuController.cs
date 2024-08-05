@@ -4,7 +4,6 @@ using Dulich.Application.ViewModels;
 using Dulich.Domain.Models;
 using Dulich.Infrastructure;
 using Dulich.Service.Interface;
-using Dulich.Service.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Travel.API.Controllers;
@@ -62,7 +61,7 @@ namespace Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Menu menu)
+        public async Task<IActionResult> Create(Menu menu)
         {
 
             var rs = await _menuServices.Create(menu);
@@ -78,7 +77,7 @@ namespace Admin.Controllers
             return CustJSonResult(rs);
         }
 
-        public async Task<IActionResult> Deletes([FromBody] int[] ids)
+        public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);
             return CustJSonResult(rs);
@@ -102,7 +101,7 @@ namespace Admin.Controllers
             return View("Update", rs);
         }
         [HttpPost]
-        public async Task<IActionResult> Update([FromBody] Menu menu)
+        public async Task<IActionResult> Update( Menu menu)
         {
             var rs = await _menuServices.update(menu);
             return CustJSonResult(rs);

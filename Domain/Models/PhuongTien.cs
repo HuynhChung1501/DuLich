@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dulich.Domain.Models
 {
-    [Table("ThongTinPhuongTien")]
-    public class ThongTinPhuongTien : BaseModel
+    [Table("PhuongTien")]
+    public class PhuongTien : BaseModel
     {
 
         [Description("Tên Phương tiện")]
@@ -13,35 +13,37 @@ namespace Dulich.Domain.Models
         public string Name { get; set; }
 
         [Description("Loại phương tiện")]
-        public int Type { get; set; }
+        [Required]
+
+        public int Type { get; set; } = 0;
 
         [Description("Mã phương tiện")]
         [Required]
         [MaxLength(50)]
-        public int Code { get; set; }
+        public string Code { get; set; }
 
         [Description("Chỗ ngồi")]
-        public int Seating { get; set; }
+        public int? Seating { get; set; }
 
         [Description("Biển số xe")]
         [Required]
         public string LicensePlates { get; set; }
 
         [Description("Màu sắc")]
-        public string Color { get; set; }
+        public string? Color { get; set; }
 
         [Description("Hãng sản xuất")]
-        public string Manufacturer { get; set; }
+        public string? Manufacturer { get; set; }
 
         [Description("Trạng thái sử dụng")]
-        public int Status { get; set; } = 0;
+        public int Status { get; set; } = 1;
 
         [Description("Mô tả")]
         [MaxLength(2000)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Description("Hoạt động")]
         [Required]
-        public int Active { get; set; }
+        public int Active { get; set; } = 1;
     }
 }

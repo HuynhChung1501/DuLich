@@ -10,5 +10,6 @@ namespace Travel.Domain.Interface
     public interface ITravelRepositoryWrapper
     {
         IMenuRepository Menu { get; }
+        IPhuongTienRepository PhuongTien { get; }
     }
 }

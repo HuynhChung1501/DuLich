@@ -9,15 +9,14 @@ using Travel.Domain.CustomModels;
 
 namespace Dulich.Service.Interface
 {
-    public interface IMenuServices
+    public interface IPhuongTienService
     {
-        Task<Menu> Get(int id);
-        Task<List<Menu>> GetList();
-        Task<List<VMMenu>> SearchByCondition(string searchName);
-        Task<VMMenu> GetVmMenu(int id);
+        Task<PhuongTien> Get(int id);
+        Task<List<PhuongTien>> GetList();
+        Task<VMPhuongTien> GetVmThongTinPhuongTien(int id);
         Task<ServiceResult> Delete(int id);
         Task<ServiceResult> Deletes(int[] ids);
-        Task<ServiceResult> update(Menu vmmenu);
-        Task<ServiceResult> Create(Menu menu);
+        Task<ServiceResult> update(PhuongTien vmmenu);
+        Task<ServiceResult> Create(PhuongTien menu);
     }
 }

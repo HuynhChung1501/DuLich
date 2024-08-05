@@ -5,10 +5,10 @@ using Dulich.Domain.Interface;
 using Dulich.Infrastructure;
 using Dulich.Infrastructure.Repositories;
 using Dulich.Service.Interface;
-using Dulich.Service.Service;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Travel.Application.Services;
 using Travel.Domain.Interface;
 using Travel.Infrastructure.Repositories;
 
@@ -25,6 +25,7 @@ builder.Services.AddLogging();
 
 
 //Scoped
+builder.Services.AddScoped<IPhuongTienService, PhuongTienService>();
 builder.Services.AddScoped<IMenuServices, MenuService>();
 builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();
 //builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));

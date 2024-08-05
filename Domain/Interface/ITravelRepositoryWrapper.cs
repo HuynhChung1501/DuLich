@@ -12,5 +12,10 @@ namespace Travel.Domain.Interface
         IMenuRepository Menu { get; }
         IPhuongTienRepository PhuongTien { get; }
         IThongTinChuyenDiRepository ThongTinChuyenDi { get; }
+        IDatPhongRepository DatPhongRepository { get; }
+        IKhachSanRepository KhachSanRepository { get; }
+        ILoaiPhongRepository LoaiPhongRepository { get; }
+        IPhongKSRepository PhongKSRepository { get; }
+        ITienIchPhongRepository TienIchPhongRepository { get; }
     }
 }

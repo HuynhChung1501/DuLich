@@ -31,6 +31,7 @@ namespace Travel.Infrastructure.Repositories
                 return _menu;
             }
         }
+
         private IPhuongTienRepository _phuongTien;
         public IPhuongTienRepository PhuongTien
         {
@@ -43,6 +44,7 @@ namespace Travel.Infrastructure.Repositories
                 return _phuongTien;
             }
         }
+
         private IThongTinChuyenDiRepository _thongTinChuyenDi;
         public IThongTinChuyenDiRepository ThongTinChuyenDi
         {
@@ -53,6 +55,71 @@ namespace Travel.Infrastructure.Repositories
                     _thongTinChuyenDi = new ThongTinChuyenDiRepository(_repoContext);
                 }
                 return _thongTinChuyenDi;
+            }
+        }
+
+        private IDatPhongRepository _datPhongRepository;
+        public IDatPhongRepository DatPhongRepository
+        {
+            get
+            {
+                if (_datPhongRepository == null)
+                {
+                    _datPhongRepository = new DatPhongRepository(_repoContext);
+                }
+                return _datPhongRepository;
+            }
+        }
+
+        private IKhachSanRepository _khachSanRepository;
+        public IKhachSanRepository KhachSanRepository
+        {
+            get
+            {
+                if (_khachSanRepository == null)
+                {
+                    _khachSanRepository = new KhachSanRepository(_repoContext);
+                }
+                return _khachSanRepository;
+            }
+        }
+
+        private ILoaiPhongRepository _loaiPhongRepository;
+        public ILoaiPhongRepository LoaiPhongRepository
+        {
+            get
+            {
+                if (_loaiPhongRepository == null)
+                {
+                    _loaiPhongRepository = new LoaiPhongRepository(_repoContext);
+                }
+                return _loaiPhongRepository;
+            }
+        }
+
+        private IPhongKSRepository _phongKSRepository;
+        public IPhongKSRepository PhongKSRepository
+        {
+            get
+            {
+                if (_phongKSRepository == null)
+                {
+                    _phongKSRepository = new PhongKSRepository(_repoContext);
+                }
+                return _phongKSRepository;
+            }
+        }
+
+        private ITienIchPhongRepository _tienIchPhongRepository;
+        public ITienIchPhongRepository TienIchPhongRepository
+        {
+            get
+            {
+                if (_tienIchPhongRepository == null)
+                {
+                    _tienIchPhongRepository = new TienIchPhongRepository(_repoContext);
+                }
+                return _tienIchPhongRepository;
             }
         }
 

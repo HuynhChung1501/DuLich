@@ -31,16 +31,28 @@ namespace Travel.Infrastructure.Repositories
                 return _menu;
             }
         }
-        private IPhuongTienRepository _PhuongTien;
+        private IPhuongTienRepository _phuongTien;
         public IPhuongTienRepository PhuongTien
         {
             get
             {
-                if (_PhuongTien == null)
+                if (_phuongTien == null)
                 {
-                    _PhuongTien = new PhuongTienRepository(_repoContext);
+                    _phuongTien = new PhuongTienRepository(_repoContext);
                 }
-                return _PhuongTien;
+                return _phuongTien;
+            }
+        }
+        private IThongTinChuyenDiRepository _thongTinChuyenDi;
+        public IThongTinChuyenDiRepository ThongTinChuyenDi
+        {
+            get
+            {
+                if (_thongTinChuyenDi == null)
+                {
+                    _thongTinChuyenDi = new ThongTinChuyenDiRepository(_repoContext);
+                }
+                return _thongTinChuyenDi;
             }
         }
 

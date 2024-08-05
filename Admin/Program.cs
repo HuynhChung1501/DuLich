@@ -26,6 +26,7 @@ builder.Services.AddLogging();
 
 //Scoped
 builder.Services.AddScoped<IPhuongTienService, PhuongTienService>();
+builder.Services.AddScoped<IThongTinChuyenDiService, ThongTinChuyenDiService>();
 builder.Services.AddScoped<IMenuServices, MenuService>();
 builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();
 //builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));

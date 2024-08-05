@@ -11,5 +11,6 @@ namespace Travel.Domain.Interface
     {
         IMenuRepository Menu { get; }
         IPhuongTienRepository PhuongTien { get; }
+        IThongTinChuyenDiRepository ThongTinChuyenDi { get; }
     }
 }

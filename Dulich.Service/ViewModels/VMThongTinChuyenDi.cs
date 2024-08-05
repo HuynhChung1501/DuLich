@@ -1,11 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Dulich.Domain.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
 
-namespace Dulich.Domain.Models
+namespace Dulich.Application.ViewModels
 {
-    [Table("ThongTinDiChuyen")]
-    public class ThongTinDiChuyen : BaseModel
+    public class VMThongTinChuyenDi : BaseModel
     {
         [Description("Chiều di chuyển")]
         [Required]
@@ -30,5 +35,8 @@ namespace Dulich.Domain.Models
 
         [Description("ID Tour")]
         public int? IDTour { get; set; }
+
+        public List<ThongTinChuyenDi> ThongTinChuyenDis { get; set; }
+        public ThongTinChuyenDi thongTinChuyenDi { get; set; }
     }
 }

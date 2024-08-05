@@ -145,7 +145,7 @@ namespace Travel.Application.Services
 
         public async Task<ServiceResult> update(Menu menu)
         {
-            var menuOld = from m in _travelRepo.Menu.GetAll()
+            var menuOld = (from m in _travelRepo.Menu.GetAll()
                            where m.ID == menu.ID
                            select new Menu
                            {
@@ -154,8 +154,7 @@ namespace Travel.Application.Services
                                Url = menu.Url,
                                Icon = menu.Icon,
                                IDParent = menu.IDParent,
-                           }
-                           ;
+                           }).FirstOrDefault();
 
             if (menuOld == null)
             {

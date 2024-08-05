@@ -10,27 +10,27 @@ using Travel.Domain.Interface;
 
 namespace Travel.API.Controllers
 {
-    public class PhuongTienController : BaseController
+    public class ThongTinChuyenDiController : BaseController
     {
         private readonly IMapper _mapper;
-        private readonly IPhuongTienService _PhuongTienService;
+        private readonly IThongTinChuyenDiService _ThongTinChuyenDiService;
         private readonly ITravelRepositoryWrapper _travelRepo;
 
-        public PhuongTienController(IMapper mapper, IPhuongTienService thongTienPhuongTien, ITravelRepositoryWrapper travelRepo)
+        public ThongTinChuyenDiController(IMapper mapper, IThongTinChuyenDiService thongTinDiChuyenService, ITravelRepositoryWrapper travelRepo)
         {
             _mapper = mapper;
             _travelRepo = travelRepo;
-            _PhuongTienService = thongTienPhuongTien;
+            _ThongTinChuyenDiService = thongTinDiChuyenService;
         }
 
         #region List
         public async Task<IActionResult> Index()
         {
-            VMPhuongTien phuongTien = new VMPhuongTien();
-            phuongTien.PhuongTiens = await _PhuongTienService.GetList();
+            VMThongTinChuyenDi thongTinDiChuyen = new VMThongTinChuyenDi();
+            thongTinDiChuyen.ThongTinChuyenDis = await _ThongTinChuyenDiService.GetList();
 
-            ViewData["page"] = phuongTien.PhuongTiens.Count();
-            return Json(phuongTien.PhuongTiens);
+            ViewData["page"] = thongTinDiChuyen.ThongTinChuyenDis.Count();
+            return Json(thongTinDiChuyen.ThongTinChuyenDis);
 
         }
         #endregion
@@ -42,9 +42,9 @@ namespace Travel.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(PhuongTien PhuongTien)
+        public async Task<IActionResult> Create(ThongTinChuyenDi thongTinChuyenDi)
         {
-            var rs = await _PhuongTienService.Create(PhuongTien);
+            var rs = await _ThongTinChuyenDiService.Create(thongTinChuyenDi);
 
             return CustJSonResult(rs);
         }
@@ -53,19 +53,19 @@ namespace Travel.API.Controllers
         #region Update
         public async Task<IActionResult> Update(int id)
         {
-            var vm = new VMPhuongTien();
-            vm.PhuongTien = await _PhuongTienService.Get(id);
-            if (vm.PhuongTien == null)
+            var vm = new VMThongTinChuyenDi();
+            vm.thongTinChuyenDi = await _ThongTinChuyenDiService.Get(id);
+            if (vm.thongTinChuyenDi == null)
             {
-                return JSErrorResult("Phương tiện không tồn tại hoặc đã bị xóa");
+                return JSErrorResult("Chuyến đi không tồn tại hoặc đã bị xóa");
             }
             return View("Update", vm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(PhuongTien PhuongTien)
+        public async Task<IActionResult> Update(ThongTinChuyenDi thongTinChuyenDi)
         {
-            var rs = await _PhuongTienService.update(PhuongTien);
+            var rs = await _ThongTinChuyenDiService.update(thongTinChuyenDi);
 
             return CustJSonResult(rs);
         }
@@ -75,14 +75,14 @@ namespace Travel.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            var rs = await _PhuongTienService.Delete(id);
+            var rs = await _ThongTinChuyenDiService.Delete(id);
             return CustJSonResult(rs);
         }
 
         [HttpDelete]
         public async Task<IActionResult> Deletes(int[] ids)
         {
-            var rs = await _PhuongTienService.Deletes(ids);
+            var rs = await _ThongTinChuyenDiService.Deletes(ids);
             return CustJSonResult(rs);
         }
         #endregion

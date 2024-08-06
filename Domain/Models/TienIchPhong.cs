@@ -11,13 +11,16 @@ namespace Dulich.Domain.Models
         public int? CountBed { get; set; }
 
         [Description("Nóng lạnh")]
-        public int? NongLanh { get; set; }
+        public bool NongLanh { get; set; }
 
         [Description("Điều hòa")]
-        public int? DieuHoa { get; set; }
+        public bool DieuHoa { get; set; }
+        
+        [Description("Tủ lạnh")]
+        public bool TuLanh { get; set; }
 
         [Description("Tiện ích nâng cao")]
         [MaxLength(1000)]
-        public string TienIchNangCao { get; set; }
+        public string? TienIchNangCao { get; set; }
     }
 }

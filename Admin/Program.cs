@@ -8,8 +8,10 @@ using Dulich.Service.Interface;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Travel.Application.InterfaceService;
 using Travel.Application.Services;
 using Travel.Domain.Interface;
+using Travel.Domain.Models;
 using Travel.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,8 @@ builder.Services.AddDbContext<DASContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthorization(); // This line adds authorization services
 builder.Services.AddLogging();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
 
 
 //Scoped

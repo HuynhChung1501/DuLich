@@ -1,4 +1,4 @@
-
+﻿
 
 using Dulich.Domain.AutoMapper;
 using Dulich.Domain.Interface;
@@ -8,10 +8,9 @@ using Dulich.Service.Interface;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Travel.Application.InterfaceService;
+using Microsoft.OpenApi.Models;
 using Travel.Application.Services;
 using Travel.Domain.Interface;
-using Travel.Domain.Models;
 using Travel.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,9 +23,14 @@ builder.Services.AddDbContext<DASContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthorization(); // This line adds authorization services
 builder.Services.AddLogging();
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
-builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
-
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("V1", new OpenApiInfo { Title = "swagger", Version = "V1" });
+});
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 //Scoped
 builder.Services.AddScoped<IPhuongTienService, PhuongTienService>();
@@ -45,20 +49,19 @@ builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/V1/swagger.json", "swagger");
+    });
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
 
-app.UseAuthorization(); // This line ensures that authorization middleware is used
+app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllers();
 
 app.Run();

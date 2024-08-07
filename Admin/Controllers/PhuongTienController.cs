@@ -10,6 +10,8 @@ using Travel.Domain.Interface;
 
 namespace Travel.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PhuongTienController : BaseController
     {
         private readonly IMapper _mapper;
@@ -24,6 +26,8 @@ namespace Travel.API.Controllers
         }
 
         #region List
+        [HttpGet]
+        [Route("List-PhuongTien")]
         public async Task<IActionResult> Index()
         {
             VMPhuongTien phuongTien = new VMPhuongTien();
@@ -36,12 +40,14 @@ namespace Travel.API.Controllers
         #endregion
 
         #region Create
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
+        //sử dụng khi nào dụng web
+        //public async Task<IActionResult> Create()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
+        [HttpPut]
+        [Route("Create-PhuongTien")]
         public async Task<IActionResult> Create(PhuongTien PhuongTien)
         {
             var rs = await _PhuongTienService.Create(PhuongTien);
@@ -51,18 +57,20 @@ namespace Travel.API.Controllers
         #endregion
 
         #region Update
-        public async Task<IActionResult> Update(int id)
-        {
-            var vm = new VMPhuongTien();
-            vm.PhuongTien = await _PhuongTienService.Get(id);
-            if (vm.PhuongTien == null)
-            {
-                return JSErrorResult("Phương tiện không tồn tại hoặc đã bị xóa");
-            }
-            return View("Update", vm);
-        }
+        //sử dụng khi nào dụng web
+        //public async Task<IActionResult> Update(int id)
+        //{
+        //    var vm = new VMPhuongTien();
+        //    vm.PhuongTien = await _PhuongTienService.Get(id);
+        //    if (vm.PhuongTien == null)
+        //    {
+        //        return JSErrorResult("Phương tiện không tồn tại hoặc đã bị xóa");
+        //    }
+        //    return View("Update", vm);
+        //}
 
-        [HttpPost]
+        [HttpPut]
+        [Route("Update-PhuongTien")]
         public async Task<IActionResult> Update(PhuongTien PhuongTien)
         {
             var rs = await _PhuongTienService.update(PhuongTien);
@@ -73,6 +81,7 @@ namespace Travel.API.Controllers
 
         #region Delete
         [HttpDelete]
+        [Route("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _PhuongTienService.Delete(id);
@@ -80,6 +89,7 @@ namespace Travel.API.Controllers
         }
 
         [HttpDelete]
+        [Route("Deletes")]
         public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _PhuongTienService.Deletes(ids);

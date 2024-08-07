@@ -10,6 +10,8 @@ using Travel.Domain.Interface;
 
 namespace Travel.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ThongTinChuyenDiController : BaseController
     {
         private readonly IMapper _mapper;
@@ -24,6 +26,8 @@ namespace Travel.API.Controllers
         }
 
         #region List
+        [HttpGet]
+        [Route("List-ThongTinChuyenDi")]
         public async Task<IActionResult> Index()
         {
             VMThongTinChuyenDi thongTinDiChuyen = new VMThongTinChuyenDi();
@@ -36,12 +40,14 @@ namespace Travel.API.Controllers
         #endregion
 
         #region Create
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
+        //sử dụng khi nào dựng web
+        //public async Task<IActionResult> Create()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
+        [HttpPut]
+        [Route("Create-ThongTinChuyenDi")]
         public async Task<IActionResult> Create(ThongTinChuyenDi thongTinChuyenDi)
         {
             var rs = await _ThongTinChuyenDiService.Create(thongTinChuyenDi);
@@ -51,18 +57,20 @@ namespace Travel.API.Controllers
         #endregion
 
         #region Update
-        public async Task<IActionResult> Update(int id)
-        {
-            var vm = new VMThongTinChuyenDi();
-            vm.thongTinChuyenDi = await _ThongTinChuyenDiService.Get(id);
-            if (vm.thongTinChuyenDi == null)
-            {
-                return JSErrorResult("Chuyến đi không tồn tại hoặc đã bị xóa");
-            }
-            return View("Update", vm);
-        }
+        //sử dụng khi nào dựng web
+        //public async Task<IActionResult> Update(int id)
+        //{
+        //    var vm = new VMThongTinChuyenDi();
+        //    vm.thongTinChuyenDi = await _ThongTinChuyenDiService.Get(id);
+        //    if (vm.thongTinChuyenDi == null)
+        //    {
+        //        return JSErrorResult("Chuyến đi không tồn tại hoặc đã bị xóa");
+        //    }
+        //    return View("Update", vm);
+        //}
 
-        [HttpPost]
+        [HttpPut]
+        [Route("Update-ThongTinChuyenDi")]
         public async Task<IActionResult> Update(ThongTinChuyenDi thongTinChuyenDi)
         {
             var rs = await _ThongTinChuyenDiService.update(thongTinChuyenDi);
@@ -73,6 +81,7 @@ namespace Travel.API.Controllers
 
         #region Delete
         [HttpDelete]
+        [Route("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _ThongTinChuyenDiService.Delete(id);
@@ -80,6 +89,7 @@ namespace Travel.API.Controllers
         }
 
         [HttpDelete]
+        [Route("Deletes")]
         public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _ThongTinChuyenDiService.Deletes(ids);

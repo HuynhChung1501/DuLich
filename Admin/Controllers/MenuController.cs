@@ -12,8 +12,10 @@ using Travel.Domain.Interface;
 using Travel.Domain.Models;
 using X.PagedList.Extensions;
 
-namespace Admin.Controllers
+namespace Travel.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class MenuController :  BaseController
     {
         private readonly IMapper _mapper;
@@ -28,55 +30,78 @@ namespace Admin.Controllers
         }
 
         #region List
+        [HttpGet]
+        [Route("List-Menu")]
         public async Task<IActionResult> Index()
         {
             VMMenu MenuList = new VMMenu();
             MenuList.Menus = await _menuServices.GetList();
 
             ViewData["page"] = MenuList.Menus.Count();
-            return View("index", MenuList);
-
-        }
-
-        public async Task<IActionResult> SearchByCondition(string searchName)
-        {
-            List<VMMenu> MenuList = new List<VMMenu>();
-            MenuList = await _menuServices.SearchByCondition(searchName);
-            if (MenuList != null)
-            {
-                return Json(MenuList);
-            }
             return Json(MenuList);
+
         }
         #endregion
 
         #region Thêm mới menu
-        public async Task<IActionResult> Create()
-        {
-            var rs =  new VMMenu();
-            rs.Menus = _travelRepo.Menu.GetAllList().ToList() ?? new List<Menu>(); 
-            ViewData["Title"] = "Thêm mới menu";
-            ViewData["linkSubmit"] = "Create";
-            return View("Create", rs);
-        }
+        //[httppost(name = "thêm mới menu")]
+        //public async task<iactionresult> create()
+        //{
+        //    var rs = new vmmenu();
+        //    rs.menus = _travelrepo.menu.getalllist().tolist() ?? new list<menu>();
+        //    viewdata["title"] = "thêm mới menu";
+        //    viewdata["linksubmit"] = "create";
+        //    return view("create", rs);
+        //}
 
         [HttpPost]
+        [Route("Create-Menu")]
         public async Task<IActionResult> Create(Menu menu)
         {
-
             var rs = await _menuServices.Create(menu);
-
             return CustJSonResult(rs);
         }
         #endregion
 
+        #region Update
+        //sử dụng khi dựng web
+        //public async Task<IActionResult> Update(int id)
+        //{
+        //    ViewData["Title"] = "Chỉnh sửa menu";
+        //    ViewData["linkSubmit"] = "Update";
+
+        //    var rs = await _menuServices.GetVmMenu(id);
+        //    if (rs == null)
+        //    {
+        //        return JSErrorResult("Menu không tồn tại");
+        //    }
+        //    rs.NameParent = _travelRepo.Menu.FirstOrDefault(x => x.ID == rs.Menu.IDParent)?.Name;
+
+        //    rs.Menus = _travelRepo.Menu.GetAllList().ToList() ?? new List<Menu>();
+        //    return View("Update", rs);
+        //}
+
+        [HttpPut]
+        [Route("Delete")]
+        public async Task<IActionResult> Update(Menu menu)
+        {
+            var rs = await _menuServices.update(menu);
+            return CustJSonResult(rs);
+
+        }
+        #endregion
+
         #region Delete
-        public async Task<IActionResult> Delete(int id) 
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> Delete(int id)
         {
             var rs = await _menuServices.Delete(id);
             return CustJSonResult(rs);
         }
 
+        [HttpDelete]
+        [Route("Deletes")]
         public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);
@@ -84,30 +109,7 @@ namespace Admin.Controllers
         }
         #endregion
 
-        #region Update
-        public async Task<IActionResult> Update(int id)
-        {
-            ViewData["Title"] = "Chỉnh sửa menu";
-            ViewData["linkSubmit"] = "Update";
-
-            var rs = await _menuServices.GetVmMenu(id);
-            if (rs == null)
-            {
-                return JSErrorResult("Menu không tồn tại");
-            }
-            rs.NameParent = _travelRepo.Menu.FirstOrDefault(x=>x.ID == rs.Menu.IDParent)?.Name;
-
-            rs.Menus = _travelRepo.Menu.GetAllList().ToList() ?? new List<Menu>();
-            return View("Update", rs);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Update( Menu menu)
-        {
-            var rs = await _menuServices.update(menu);
-            return CustJSonResult(rs);
-
-        }
-        #endregion
+        
 
     }
 }

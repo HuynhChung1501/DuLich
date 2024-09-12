@@ -1,0 +1,30 @@
+.statistical-progress {
+    .progress-label {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #111827;
+        font-weight: 500;
+        line-height: 28px;
+    }
+    .progress {
+        height: 4px;
+        background-color: #e6eefd;
+        margin-bottom: 6px;
+        .progress-bar {
+            &.bg-blue {
+                background-color: #3b82f6;
+            }
+            &.bg-green {
+                background-color: #10b981 ;
+            }
+            &.bg-purple {
+                background-color: #7c3aed ;
+            }
+            &.bg-yellow {
+                background-color: #f59e0b ;
+            }
+        }
+    }
+}

@@ -35,9 +35,13 @@ namespace Dulich.Infrastructure
         #region DbSet
 
         public DbSet<Dulieu> DuLieus { get; set; }
-        public DbSet<ThongTinDiChuyen> ThongTinDiChuyens { get; set; }
-        public DbSet<ThongTinPhuongTien> ThongTinPhuongTiens { get; set; }
-        public DbSet<Menu> MenuModels { get; set; }    
+        public DbSet<ThongTinChuyenDi> ThongTinChuyenDis { get; set; }
+        public DbSet<PhuongTien> PhuongTiens { get; set; }
+        public DbSet<DatPhong> DatPhong { get; set; } 
+        public DbSet<KhachSan> KhachSan { get; set; } 
+        public DbSet<LoaiPhong> LoaiPhong { get; set; } 
+        public DbSet<PhongKS> PhongKS { get; set; } 
+        public DbSet<TienIchPhong> TienIchPhong { get; set; } 
 
         #endregion
         //RenderHere

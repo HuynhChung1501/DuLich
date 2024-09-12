@@ -1,0 +1,57 @@
+﻿@using Dulich.Application.ViewModels
+@using Dulich.Domain.Models
+@model VMMenu
+@{
+    var msg = ViewData["SuccessMessage"] != null ? ViewData["SuccessMessage"] : null;
+    var menus = Model.Menus ?? new List<Menu>();
+    var menu = Model.Menu ?? new Menu();
+}
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="card">
+            <div class="card-header">
+                <h3>@ViewData["Title"]</h3>
+            </div>
+            <div class="card-body">
+                <form role="form" id="myForm" asp-action="Update" class="needs-validation" novalidate enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input asp-for="Name" id="Name" class="form-control" value="@menu.Name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Url</label>
+                        <input asp-for="Url" id="Url" class="form-control" value="@menu.Url" required />
+                    </div>
+                    <div class="form-group">
+                        <label>icon</label>
+                        <input asp-for="Icon" class="form-control" value="@menu.Icon" />
+                    </div>
+                    <div class="form-group">
+                        <label>Menu cha</label>
+                        <select class="select2 w-100" asp-for="IDParent" data-placeholder="Any">
+                            <option selected value="@menu.IDParent">@(Model.NameParent)</option>
+                            @{
+                                if (menus != null)
+                                {
+                                    @foreach (var item in menus)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                }
+                            }
+                           
+                        </select>
+                    </div>
+                    <input hidden asp-for="ID">
+                    <button class="btn btn-primary quickUpdate" type="submit">Lưu</button>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+             <a asp-action="index">Quay lại</a>
+        </div>
+    </div>
+</div>

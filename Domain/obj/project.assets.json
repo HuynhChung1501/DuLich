@@ -7744,19 +7744,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\": {}
+    "C:\\Users\\Chung\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj",
+      "projectUniqueName": "D:\\project\\DuLich\\Domain\\Travel.Domain.csproj",
       "projectName": "Travel.Domain",
-      "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\Travel.Domain.csproj",
-      "packagesPath": "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\",
-      "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\Domain\\obj\\",
+      "projectPath": "D:\\project\\DuLich\\Domain\\Travel.Domain.csproj",
+      "packagesPath": "C:\\Users\\Chung\\.nuget\\packages\\",
+      "outputPath": "D:\\project\\DuLich\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\chung.nguyenhuynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Chung\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7823,7 +7823,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,60 @@
+﻿@using Dulich.Application.ViewModels
+@using Dulich.Domain.Models
+@model VMMenu
+@{
+    var menus = Model.Menus ?? new List<Menu>();
+}
+<table class="table table-head-fixed">
+    <thead>
+        <tr>
+            <th class="wpx-70">Stt</th>
+            <th class="wpx-70">
+                <div class="form-check">
+                    <input class="form-check-input onCheckGroup" type="checkbox">
+                </div>
+            </th>
+            <th>Tên</th>
+            <th>Đường dẫn</th>
+            <th>Icon</th>
+            <th>Cấp bậc</th>
+            <th class="wpx-100">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (menus != null)
+        {
+            var stt = 1;
+            foreach (var item in menus)
+            {
+                <tr>
+                    <td class="text-center">@stt</td>
+                    <td class="text-center">
+                        <div class="form-check">
+                            <input class="form-check-input onCheckItem" id="@item.ID" type="checkbox">
+                        </div>
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Url</td>
+                    <td>@Html.Raw(@item.Icon)</td>
+                    <td>@(item.IDParent > 0 ? (menus.FirstOrDefault(x => x.ID == item.IDParent)?.Name ?? "Menu cha đã bị xóa") : "Menu cấp cha")</td>
+                    <td>
+                        <div class="btn-action">
+                            <a class="btn btn-icon" href="/Menu/Update?id=@item.ID"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-icon quickDelete" data-id="@item.ID" href="/Menu/Delete?id=@item.ID"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                stt++;
+            }
+        } 
+    </tbody>
+    @if (Model == null)
+    {
+        <tfoot>
+            <tr>
+                <td class="text-center" colspan="6">Không có dữ liệu</td>
+            </tr>
+        </tfoot>
+    }
+
+</table>

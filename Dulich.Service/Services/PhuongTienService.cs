@@ -3,7 +3,6 @@ using Dulich.Application.ViewModels;
 using Dulich.Domain.Interface;
 using Dulich.Domain.Models;
 using Dulich.Infrastructure;
-using Dulich.Infrastructure.Migrations;
 using Dulich.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;

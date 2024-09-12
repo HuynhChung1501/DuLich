@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Dulich.Infrastructure.Migrations
+namespace Travel.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class new1 : Migration
+    public partial class importdata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,6 +31,23 @@ namespace Dulich.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DatPhong", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Dulieu",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<int>(type: "int", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dulieu", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,6 +100,26 @@ namespace Dulich.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Menu",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IDParent = table.Column<int>(type: "int", nullable: true, defaultValue: 0),
+                    CreatedBy = table.Column<int>(type: "int", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Menu", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PhongKS",
                 columns: table => new
                 {
@@ -105,15 +142,65 @@ namespace Dulich.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PhuongTien",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Seating = table.Column<int>(type: "int", nullable: true),
+                    LicensePlates = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Manufacturer = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
+                    Active = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<int>(type: "int", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PhuongTien", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ThongTinChuyenDi",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PickupLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IDTransport = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Seating = table.Column<int>(type: "int", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
+                    IDTour = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<int>(type: "int", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ThongTinChuyenDi", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TienIchPhong",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CountBed = table.Column<int>(type: "int", nullable: true),
-                    NongLanh = table.Column<int>(type: "int", nullable: true),
-                    DieuHoa = table.Column<int>(type: "int", nullable: true),
-                    TienIchNangCao = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    NongLanh = table.Column<bool>(type: "bit", nullable: false),
+                    DieuHoa = table.Column<bool>(type: "bit", nullable: false),
+                    TuLanh = table.Column<bool>(type: "bit", nullable: false),
+                    TienIchNangCao = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -132,13 +219,25 @@ namespace Dulich.Infrastructure.Migrations
                 name: "DatPhong");
 
             migrationBuilder.DropTable(
+                name: "Dulieu");
+
+            migrationBuilder.DropTable(
                 name: "KhachSan");
 
             migrationBuilder.DropTable(
                 name: "LoaiPhong");
 
             migrationBuilder.DropTable(
+                name: "Menu");
+
+            migrationBuilder.DropTable(
                 name: "PhongKS");
+
+            migrationBuilder.DropTable(
+                name: "PhuongTien");
+
+            migrationBuilder.DropTable(
+                name: "ThongTinChuyenDi");
 
             migrationBuilder.DropTable(
                 name: "TienIchPhong");

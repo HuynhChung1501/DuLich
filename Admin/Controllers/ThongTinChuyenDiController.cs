@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Dulich.Application.ViewModels;
 using Dulich.Domain.Models;
-using Dulich.Infrastructure.Migrations;
 using Dulich.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;

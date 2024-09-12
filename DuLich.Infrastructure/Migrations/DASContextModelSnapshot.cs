@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Dulich.Infrastructure.Migrations
+namespace Travel.Infrastructure.Migrations
 {
     [DbContext(typeof(DASContext))]
     partial class DASContextModelSnapshot : ModelSnapshot
@@ -17,7 +17,7 @@ namespace Dulich.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.7")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

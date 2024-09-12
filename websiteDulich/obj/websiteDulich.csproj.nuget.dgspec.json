@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\WebsiteDuLich\\websiteDulich\\websiteDulich\\websiteDulich.csproj": {}
+    "D:\\project\\DuLich\\websiteDulich\\websiteDulich.csproj": {}
   },
   "projects": {
-    "E:\\Project\\WebsiteDuLich\\websiteDulich\\websiteDulich\\websiteDulich.csproj": {
+    "D:\\project\\DuLich\\websiteDulich\\websiteDulich.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\WebsiteDuLich\\websiteDulich\\websiteDulich\\websiteDulich.csproj",
+        "projectUniqueName": "D:\\project\\DuLich\\websiteDulich\\websiteDulich.csproj",
         "projectName": "websiteDulich",
-        "projectPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\websiteDulich\\websiteDulich.csproj",
-        "packagesPath": "C:\\Users\\chung.nguyenhuynh\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\WebsiteDuLich\\websiteDulich\\websiteDulich\\obj\\",
+        "projectPath": "D:\\project\\DuLich\\websiteDulich\\websiteDulich.csproj",
+        "packagesPath": "C:\\Users\\Chung\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\DuLich\\websiteDulich\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\chung.nguyenhuynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Chung\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,6 +45,18 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -64,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

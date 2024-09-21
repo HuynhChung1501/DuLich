@@ -8,8 +8,9 @@ namespace Travel.Domain.Models
 {
     public class ApiResponse
     {
+        public int StatusCode { get; set; } = 200; // HTTP status code
         public bool Success { get; set; } = true;
         public string? Message { get; set; }
-        public Object? Data { get; set; }    
+        public object? Data { get; set; }    
     }
 }

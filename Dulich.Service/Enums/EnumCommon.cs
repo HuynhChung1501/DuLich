@@ -15,7 +15,6 @@ namespace Travel.Application.Enums
             InActive = 0, 
             [Description("Hiệu lực")]
             Active = 1,
-
         }
     }
 }

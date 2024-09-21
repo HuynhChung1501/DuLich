@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Travel.Application.Helpers;
 using Travel.Application.InterfaceService;
 using Travel.Application.Services;
 using Travel.Domain.Interface;
@@ -43,6 +44,7 @@ builder.Services.AddScoped<IThongTinChuyenDiService, ThongTinChuyenDiService>();
 builder.Services.AddScoped<IMenuServices, MenuService>();
 builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 //builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 //Model Mapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
@@ -83,8 +85,10 @@ if (app.Environment.IsDevelopment())
     {
         options.SwaggerEndpoint("/swagger/V1/swagger.json", "swagger");
     });
+    app.UseMiddleware<ErrorHandlerMiddleware>();
 }
 
+app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Dulich.Application.ViewModels;
 using Dulich.Domain.Models;
+using Travel.Application.ViewModels;
+using Travel.Domain.Models;
 
 
 
@@ -17,6 +19,7 @@ namespace Dulich.Domain.AutoMapper
         {
             CreateMap<VMMenu, Menu>(); 
             CreateMap<VMPhuongTien, PhuongTien>(); 
+            CreateMap<VMAccount, Account>(); 
         }
     }
 }

@@ -1,0 +1,93 @@
+
+//Bootstrap Button - Custom
+@mixin custom-bootstrap-btns {
+  //Button Text Color
+  %lightTextColor { color: darken(#fff, 50%); }
+  %darkTextColor { color: #fff; }
+  //Button Styles
+  .btn {
+    transition: all 0.5s ease-in-out;
+    $buttonColor: #fff;
+    font-size: 12px; @extend %lightTextColor; 
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: none;
+    background: $buttonColor;
+    position: relative;
+    display: inline-block;
+    
+    &:hover {
+      @extend %darkTextColor;
+      background: lighten($primary, 10%);
+      text-decoration: none;
+    }
+    &:focus {
+      @extend %lightTextColor;
+      outline: none;
+    }
+  }
+  //Button Colors
+  $buttonColors: primary $primary, info $info, success $success, warning $warning, danger $danger, pink $pink, purple  $Purple,secondary $secondary, orange $orange, default $info;
+  @each $className in $buttonColors {
+    .btn-#{nth($className, 1)} {
+      $buttonColor: nth($className, 2);
+      @extend %darkTextColor;
+      background: $buttonColor;
+      &:hover {
+        @extend %darkTextColor;
+        background: lighten($buttonColor, 10%);
+      }
+
+    }
+  }
+  
+   @each $className in $buttonColors {
+    .btn-outline-#{nth($className, 1)} {
+      $buttonColor: nth($className, 2);
+      @extend %darkTextColor;
+      background: tranparent;
+      border: 1px solid $buttonColor;
+      color: $buttonColor;
+      &:hover {
+        @extend %darkTextColor;
+        background: lighten($buttonColor, 10%);
+        
+      }
+    }
+  }
+   @each $className in $buttonColors {
+    .btn-hover-#{nth($className, 1)} {
+      $buttonColor: nth($className, 2);
+      @extend %darkTextColor;
+      &:hover {
+        @extend %darkTextColor;
+        border: 1px solid $buttonColor;
+        color: $buttonColor;
+        background: lighten($buttonColor, 50%);
+
+      }
+      &.btn-action:hover i.icon{
+        background-color: $buttonColor;
+      }
+    }
+  }
+  //Button Sizes
+  .btn-lg {
+    font-size: 18px;
+    padding: 12px 22px 10px;
+  }
+  .btn-md {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  .btn-sm {
+    font-size: 11px;
+    padding: 5px;
+    line-height: 1.27;
+  }
+}
+
+//Boostrap Custom Buttons Mixin Call
+@include custom-bootstrap-btns;
+

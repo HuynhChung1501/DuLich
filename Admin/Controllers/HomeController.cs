@@ -3,8 +3,11 @@ using Dulich.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Admin.Controllers
+namespace Travel.API.Controllers
 {
+
+    [ApiController]
+    [Route("[controller]")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,21 +17,10 @@ namespace Admin.Controllers
             _logger = logger;
         }
 
+        [HttpPost(Name = "SendEmail")]
         public IActionResult Index()
         {
             return View();
-        }
-        [HttpDelete]
-        public IActionResult Privacy(int id)
-        {
-
-            return Ok();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

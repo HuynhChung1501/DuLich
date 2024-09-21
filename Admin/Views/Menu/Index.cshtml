@@ -1,17 +1,30 @@
-﻿@using Dulich.Domain.Models
-@model List<Menu>
-<a asp-controller="Menu" asp-action="Create">
-    Thêm mới
-</a>
-@if (Model != null)
-{
-    foreach (var item in Model)
-    {
-        <h1>@item.Name</h1>
-        <h1>@item.Url</h1>
-    }
-}
-else
-{
-    <h1>Khoong cos du lieu</h1>
-}
+﻿@using Dulich.Application.ViewModels
+@model VMMenu
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Danh sách quản lý menu</h3>
+                <div class="card-tools">
+                    <a asp-controller="Menu" asp-action="Deletes" class="btn btn-danger btn-sm quickDeletes" title="Xóa nhiều">
+                        <i class="fas fa-trash"></i>
+                    </a>
+
+                    <a asp-controller="Menu" asp-action="Create" class="btn btn-sm btn-outline-success" title="Thêm mới">
+                        <i class="fas fa-plus"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0" style="height:75vh">
+                <form asp-controller="Menu" asp-action="Index">
+                    <div class="">
+                        @Html.Partial("_IndexPartial")
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

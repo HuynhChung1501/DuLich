@@ -1,35 +1,53 @@
-﻿@using Dulich.Domain.Models
-@model Menu
-<h1>Thêm mới menu</h1>
+﻿@using Dulich.Application.ViewModels
+@model VMMenu
+@{
+    var msg = ViewData["SuccessMessage"] != null ? ViewData["SuccessMessage"] : null;
+}
 <div class="row">
-    <div class="col-md-12">
-        <div class="w-100">
-            <form asp-action="Create" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger" />
-                </div>
+    <div class="col-lg-12">
 
-                <div class="form-group">
-                    <label>Url</label>
-                    <input asp-for="Url" class="form-control" />
-                    <span asp-validation-for="Url" class="text-danger" />
-                </div>
-                <div class="form-group">
-                    <label>icon</label>
-                    <input asp-for="Icon" class="form-control" />
-                    <span asp-validation-for="Icon" class="text-danger" />
-                </div>
-                <div class="form-group">
-                    <label>IDParent</label>
-                    <input asp-for="IDParent" class="form-control" />
-                </div>
-                <button class="btn btn-primary" type="submit">Lưu</button>
-            </form>
-            <a asp-action="index">Quay lại</a>
-            
+        <div class="card">
+            <div class="card-header">
+                <h3>@ViewData["Title"]</h3>
+            </div>
+            <div class="card-body">
+                <form role="form" id="myForm" asp-action="Create" class="needs-validation" novalidate enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input asp-for="Name" id="Name" class="form-control" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Url</label>
+                        <input asp-for="Url" id="Url" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label>icon</label>
+                        <input asp-for="Icon" class="form-control"  />
+                    </div>
+                    <div class="form-group">
+                        <label>Menu cha</label>
+                        <select class="select2" asp-for="IDParent" data-placeholder="Any" style="width: 100%;">
+                            <option selected value="0">--Chọn Menu cha--</option>
+                            @{
+                                if (Model.Menus != null)
+                                {
+                                    @foreach (var item in Model.Menus)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                }
+                            }
+                           
+                        </select>
+                    </div>
+                    <button class="btn btn-primary quickUpdate" type="submit">Lưu</button>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+             <a asp-action="index">Quay lại</a>
         </div>
     </div>
 </div>

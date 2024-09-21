@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dulich.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using Travel.Domain.Models;
 
 namespace Dulich.Infrastructure
 {
@@ -42,6 +43,7 @@ namespace Dulich.Infrastructure
         public DbSet<LoaiPhong> LoaiPhong { get; set; } 
         public DbSet<PhongKS> PhongKS { get; set; } 
         public DbSet<TienIchPhong> TienIchPhong { get; set; } 
+        public DbSet<Account> Accounts { get; set; } 
 
         #endregion
         //RenderHere

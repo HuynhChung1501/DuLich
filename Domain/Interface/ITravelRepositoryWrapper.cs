@@ -17,5 +17,6 @@ namespace Travel.Domain.Interface
         ILoaiPhongRepository LoaiPhongRepository { get; }
         IPhongKSRepository PhongKSRepository { get; }
         ITienIchPhongRepository TienIchPhongRepository { get; }
+        IAccountRepository Account { get; }
     }
 }

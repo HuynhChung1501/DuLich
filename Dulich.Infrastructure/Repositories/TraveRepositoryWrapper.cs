@@ -32,6 +32,19 @@ namespace Travel.Infrastructure.Repositories
             }
         }
 
+        private IAccountRepository _account;
+        public IAccountRepository Account
+        {
+            get
+            {
+                if (_account == null)
+                {
+                    _account = new AccountRepository(_repoContext);
+                }
+                return _account;
+            }
+        }
+
         private IPhuongTienRepository _phuongTien;
         public IPhuongTienRepository PhuongTien
         {
@@ -122,6 +135,7 @@ namespace Travel.Infrastructure.Repositories
                 return _tienIchPhongRepository;
             }
         }
+       
 
     }
 }

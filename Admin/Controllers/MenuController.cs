@@ -4,6 +4,8 @@ using Dulich.Application.ViewModels;
 using Dulich.Domain.Models;
 using Dulich.Infrastructure;
 using Dulich.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Travel.API.Controllers;
@@ -29,17 +31,23 @@ namespace Travel.API.Controllers
             _menuServices = menuServices;
         }
 
-        #region List
+        #region search
         [HttpGet]
         [Route("List-Menu")]
-        public async Task<IActionResult> Index()
+        [Authorize]
+        public async Task<IActionResult> Index(string search = "")
         {
-            VMMenu MenuList = new VMMenu();
-            MenuList.Menus = await _menuServices.GetList();
+            try
+            {
+                var Menus = await _menuServices.Search(search);
 
-            ViewData["page"] = MenuList.Menus.Count();
-            return Json(MenuList);
+                return Ok(Menus);
+            }
+            catch (Exception)
+            {
 
+                return BadRequest();
+            }
         }
         #endregion
 
@@ -56,6 +64,7 @@ namespace Travel.API.Controllers
 
         [HttpPost]
         [Route("Create-Menu")]
+        [Authorize]
         public async Task<IActionResult> Create(Menu menu)
         {
             var rs = await _menuServices.Create(menu);
@@ -83,6 +92,7 @@ namespace Travel.API.Controllers
 
         [HttpPut]
         [Route("Delete")]
+        [Authorize]
         public async Task<IActionResult> Update(Menu menu)
         {
             var rs = await _menuServices.update(menu);
@@ -94,6 +104,7 @@ namespace Travel.API.Controllers
         #region Delete
         [HttpDelete]
         [Route("Delete")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _menuServices.Delete(id);
@@ -102,6 +113,7 @@ namespace Travel.API.Controllers
 
         [HttpDelete]
         [Route("Deletes")]
+        [Authorize]
         public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);

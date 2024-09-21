@@ -37,12 +37,11 @@ namespace Travel.API.Controllers
         /// <returns></returns>
         protected IActionResult JSSuccessResult(string msg)
         {
-            var a = new JsonData()
+            return Ok(new JsonData()
             {
                 Status = CommonConst.Success,
                 Message = msg
-            };
-            return Json(a);
+            });
         }
 
         /// <summary>
@@ -53,13 +52,12 @@ namespace Travel.API.Controllers
         /// <returns></returns>
         protected IActionResult JSSuccessResult<T>(string msg, T val)
         {
-            var a = new JsonData()
+            return Ok(new JsonData()
             {
                 Status = CommonConst.Success,
                 Message = msg,
                 Data = val
-            };
-            return Json(a);
+            });
         }
 
         /// <summary>
@@ -69,12 +67,11 @@ namespace Travel.API.Controllers
         /// <returns></returns>
         protected IActionResult JSErrorResult(string msg)
         {
-            var a = new JsonData()
+            return BadRequest(new JsonData()
             {
                 Status = CommonConst.error,
                 Message = msg
-            };
-            return Json(a);
+            });
         }
 
         /// <summary>

@@ -43,6 +43,7 @@ namespace Travel.Application.Services
             {
                 _DasContext.Add(menu);
                 _DasContext.SaveChanges();
+                valid.Data = menu;
                 return valid;
             }
             else
@@ -118,6 +119,17 @@ namespace Travel.Application.Services
                               orderby M.ID descending
                               select M).ToListAsync();
             return menu;
+        }
+
+        public async Task<List<Menu>> Search(string search)
+        {
+
+            var menus = await (from M in _travelRepo.Menu.GetAll().AsNoTracking()
+                               where (string.IsNullOrEmpty(search) ? true : (M.Name.Contains(search)))
+                               orderby M.ID descending
+                               select M).ToListAsync();
+
+            return menus;
         }
 
         public async Task<List<VMMenu>> SearchByCondition(string searchName)

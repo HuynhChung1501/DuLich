@@ -4,6 +4,7 @@ using Dulich.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Travel.Infrastructure.Migrations
 {
     [DbContext(typeof(DASContext))]
-    partial class DASContextModelSnapshot : ModelSnapshot
+    [Migration("20240921164452_phuongtin")]
+    partial class phuongtin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +65,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("DatPhong", (string)null);
+                    b.ToTable("DatPhong");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.Dulieu", b =>
@@ -91,7 +94,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Dulieu", (string)null);
+                    b.ToTable("Dulieu");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.KhachSan", b =>
@@ -154,7 +157,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("KhachSan", (string)null);
+                    b.ToTable("KhachSan");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.LoaiPhong", b =>
@@ -195,7 +198,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("LoaiPhong", (string)null);
+                    b.ToTable("LoaiPhong");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.Menu", b =>
@@ -236,7 +239,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Menu", (string)null);
+                    b.ToTable("Menu");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.PhongKS", b =>
@@ -281,7 +284,67 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PhongKS", (string)null);
+                    b.ToTable("PhongKS");
+                });
+
+            modelBuilder.Entity("Dulich.Domain.Models.PhuongTien", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("LicensePlates")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Manufacturer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Seating")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UpdatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PhuongTien");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.ThongTinChuyenDi", b =>
@@ -339,7 +402,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("ThongTinChuyenDi", (string)null);
+                    b.ToTable("ThongTinChuyenDi");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.TienIchPhong", b =>
@@ -380,7 +443,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("TienIchPhong", (string)null);
+                    b.ToTable("TienIchPhong");
                 });
 
             modelBuilder.Entity("Travel.Domain.Models.Account", b =>
@@ -434,67 +497,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Account", (string)null);
-                });
-
-            modelBuilder.Entity("Travel.Domain.Models.ThongTinPhuongTien", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("BienSoXe")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ChoNgoi")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("HangXe")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IsActive")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LoaiPhuongTien")
-                        .HasMaxLength(250)
-                        .HasColumnType("int");
-
-                    b.Property<string>("MauXe")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mota")
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)");
-
-                    b.Property<string>("Ten")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<int>("TinhTrang")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ThongTinPhuongTien", (string)null);
+                    b.ToTable("Account");
                 });
 #pragma warning restore 612, 618
         }

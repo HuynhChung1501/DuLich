@@ -133,31 +133,31 @@ namespace Travel.Application.Services
 
         public async Task<ServiceResult> update(ThongTinChuyenDi chuyenDi)
         {
-            var phuongTienOld = (from m in _travelRepo.ThongTinChuyenDi.GetAll()
-                                where m.ID == chuyenDi.ID
-                                select new ThongTinChuyenDi
-                                {
-                                    Name = chuyenDi.Name,
-                                    ID = chuyenDi.ID,
-                                    StartDate = chuyenDi.StartDate,
-                                    PickupLocation = chuyenDi.PickupLocation,
-                                    IDTransport = chuyenDi.IDTransport,
-                                    Description = chuyenDi.Description,
-                                    IDTour = chuyenDi.IDTour,
-                                }).FirstOrDefault();
-                           ;
+            //var phuongTienOld = (from m in _travelRepo.ThongTinChuyenDi.GetAll()
+            //                    where m.ID == chuyenDi.ID
+            //                    select new ThongTinChuyenDi
+            //                    {
+            //                        Name = chuyenDi.Name,
+            //                        ID = chuyenDi.ID,
+            //                        StartDate = chuyenDi.StartDate,
+            //                        PickupLocation = chuyenDi.PickupLocation,
+            //                        IDTransport = chuyenDi.IDTransport,
+            //                        Description = chuyenDi.Description,
+            //                        IDTour = chuyenDi.IDTour,
+            //                    }).FirstOrDefault();
+            //               ;
 
-            if (phuongTienOld == null)
-            {
-                return new ServiceResultError("Chuyến đi hiện không tồn tại hoặc đã bị xóa");
-            }
-            var valid = await validation(chuyenDi);
-            if (valid.Code == CommonConst.error)
-            {
-                return valid;
-            }
-            await _travelRepo.ThongTinChuyenDi.UpdateAsync(phuongTienOld);
-            _DasContext.SaveChanges();
+            //if (phuongTienOld == null)
+            //{
+            //    return new ServiceResultError("Chuyến đi hiện không tồn tại hoặc đã bị xóa");
+            //}
+            //var valid = await validation(chuyenDi);
+            //if (valid.Code == CommonConst.error)
+            //{
+            //    return valid;
+            //}
+            //await _travelRepo.ThongTinChuyenDi.UpdateAsync(phuongTienOld);
+            //_DasContext.SaveChanges();
             return new ServiceResultSuccess("Chỉnh sửa thành công");
         }
 

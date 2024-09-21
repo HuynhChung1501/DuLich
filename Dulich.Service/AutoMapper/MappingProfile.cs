@@ -18,7 +18,7 @@ namespace Dulich.Domain.AutoMapper
         public MappingProfile() 
         {
             CreateMap<VMMenu, Menu>(); 
-            CreateMap<VMPhuongTien, PhuongTien>(); 
+            CreateMap<ThongTinPhuongTien, ThongTinPhuongTien>(); 
             CreateMap<VMAccount, Account>(); 
         }
     }

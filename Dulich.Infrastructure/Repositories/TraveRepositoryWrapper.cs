@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Travel.Domain.Interface;
+using Travel.Domain.Models;
 
 namespace Travel.Infrastructure.Repositories
 {
@@ -45,16 +46,16 @@ namespace Travel.Infrastructure.Repositories
             }
         }
 
-        private IPhuongTienRepository _phuongTien;
-        public IPhuongTienRepository PhuongTien
+        private IThongTinPhuongTienRepository _thongTinPhuongTien;
+        public IThongTinPhuongTienRepository ThongTinPhuongTien
         {
             get
             {
-                if (_phuongTien == null)
+                if (_thongTinPhuongTien == null)
                 {
-                    _phuongTien = new PhuongTienRepository(_repoContext);
+                    _thongTinPhuongTien = new ThongTinPhuongTienRepository(_repoContext);
                 }
-                return _phuongTien;
+                return _thongTinPhuongTien;
             }
         }
 
@@ -135,7 +136,6 @@ namespace Travel.Infrastructure.Repositories
                 return _tienIchPhongRepository;
             }
         }
-       
 
     }
 }

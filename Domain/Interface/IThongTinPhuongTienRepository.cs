@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using Dulich.Domain.Models;
 using Dulich.Domain.Interface;
+using Travel.Domain.Models;
 
 namespace Dulich.Service.Interface
 {
-    public interface IPhuongTienRepository : IBaseRepository<PhuongTien>
+    public interface IThongTinPhuongTienRepository : IBaseRepository<ThongTinPhuongTien>
     {
     }
 }

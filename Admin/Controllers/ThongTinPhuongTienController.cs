@@ -2,20 +2,22 @@
 using Dulich.Application.ViewModels;
 using Dulich.Domain.Models;
 using Dulich.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Travel.Domain.Interface;
+using Travel.Domain.Models;
 
 namespace Travel.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
-    public class PhuongTienController : BaseController
+    public class ThongTinPhuongTienController : BaseController
     {
         private readonly IMapper _mapper;
-        private readonly IPhuongTienService _PhuongTienService;
+        private readonly IThongTinPhuongTienService _PhuongTienService;
         private readonly ITravelRepositoryWrapper _travelRepo;
 
-        public PhuongTienController(IMapper mapper, IPhuongTienService thongTienPhuongTien, ITravelRepositoryWrapper travelRepo)
+        public ThongTinPhuongTienController(IMapper mapper, IThongTinPhuongTienService thongTienPhuongTien, ITravelRepositoryWrapper travelRepo)
         {
             _mapper = mapper;
             _travelRepo = travelRepo;
@@ -24,32 +26,35 @@ namespace Travel.API.Controllers
 
         #region List
         [HttpGet]
-        [Route("List-PhuongTien")]
-        public async Task<IActionResult> Index()
+        [Route("List-ThongTinPhuongTien")]
+        [Authorize]
+        public async Task<IActionResult> GetList(string? searchMeta)
         {
-            VMPhuongTien phuongTien = new VMPhuongTien();
-            phuongTien.PhuongTiens = await _PhuongTienService.GetList();
+            var phuongTien = await _PhuongTienService.Search(searchMeta);
+            return Ok(phuongTien);
+        }
+        #endregion
 
-            ViewData["page"] = phuongTien.PhuongTiens.Count();
-            return Json(phuongTien.PhuongTiens);
-
+        #region GET
+        [HttpGet]
+        [Route("GetID")]
+        [Authorize]
+        public async Task<IActionResult> GetID(int id)
+        {
+            var phuongTien = await _PhuongTienService.Get(id);
+            return Ok(phuongTien);
         }
         #endregion
 
         #region Create
-        //sử dụng khi nào dụng web
-        //public async Task<IActionResult> Create()
-        //{
-        //    return View();
-        //}
-
-        [HttpPut]
-        [Route("Create-PhuongTien")]
-        public async Task<IActionResult> Create(PhuongTien PhuongTien)
+        [HttpPost]
+        [Route("Create-ThongTinPhuongTien")]
+        [Authorize]
+        public async Task<IActionResult> Create([FromBody]ThongTinPhuongTien PhuongTien)
         {
             var rs = await _PhuongTienService.Create(PhuongTien);
 
-            return CustJSonResult(rs);
+            return Ok(rs);
         }
         #endregion
 
@@ -67,30 +72,33 @@ namespace Travel.API.Controllers
         //}
 
         [HttpPut]
+        [Authorize]
         [Route("Update-PhuongTien")]
-        public async Task<IActionResult> Update(PhuongTien PhuongTien)
+        public async Task<IActionResult> Update(ThongTinPhuongTien PhuongTien)
         {
             var rs = await _PhuongTienService.update(PhuongTien);
 
-            return CustJSonResult(rs);
+            return Ok(rs);
         }
         #endregion
 
         #region Delete
         [HttpDelete]
+        [Authorize]
         [Route("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _PhuongTienService.Delete(id);
-            return CustJSonResult(rs);
+            return Ok(new { message = rs });
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("Deletes")]
         public async Task<IActionResult> Deletes(int[] ids)
         {
             var rs = await _PhuongTienService.Deletes(ids);
-            return CustJSonResult(rs);
+            return Ok(new { message = rs });
         }
         #endregion
     }

@@ -9,26 +9,37 @@ namespace Dulich.Domain.Models
     {
         [Description("Chiều di chuyển")]
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Description("Thời gian khởi hành")]
         [Required]
-        public DateTime StartDate { get; set; }
+        public DateTime? GioKhoiHanh { get; set; }
 
         [Description("Địa điểm đón khách")]
-        public string? PickupLocation { get; set; }
+        public string? DiemDon { get; set; }
 
+        [Description("Giờ trả khách")]
+        public DateTime? GioTraKhach { get; set; }
+
+        [Description("Địa điểm trả khách")]
+        public string? DiemTraKhach { get; set; }
+
+        [Required]
         [Description("ID Phương tiện")]
-        public string? IDTransport { get; set; }
+        public required int IDPhuongTien { get; set; }
 
         [Description("Chỗ ngồi")]
-        public int? Seating { get; set; }
+        public int? ChoNgoi { get; set; }
 
         [Description("Mô tả")]
         [MaxLength(2000)]
-        public string? Description { get; set; }
+        public string? MoTa { get; set; }
 
         [Description("ID Tour")]
         public int? IDTour { get; set; }
+
+        [Description("Hiện đang hoạt động")]
+        public int IsActive { get; set; } = 1; 
+        
     }
 }

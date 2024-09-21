@@ -4,6 +4,7 @@ using Dulich.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Travel.Infrastructure.Migrations
 {
     [DbContext(typeof(DASContext))]
-    partial class DASContextModelSnapshot : ModelSnapshot
+    [Migration("20240921181126_phuongtin1")]
+    partial class phuongtin1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +65,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("DatPhong", (string)null);
+                    b.ToTable("DatPhong");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.Dulieu", b =>
@@ -91,7 +94,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Dulieu", (string)null);
+                    b.ToTable("Dulieu");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.KhachSan", b =>
@@ -154,7 +157,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("KhachSan", (string)null);
+                    b.ToTable("KhachSan");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.LoaiPhong", b =>
@@ -195,7 +198,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("LoaiPhong", (string)null);
+                    b.ToTable("LoaiPhong");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.Menu", b =>
@@ -236,7 +239,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Menu", (string)null);
+                    b.ToTable("Menu");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.PhongKS", b =>
@@ -281,7 +284,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PhongKS", (string)null);
+                    b.ToTable("PhongKS");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.ThongTinChuyenDi", b =>
@@ -339,7 +342,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("ThongTinChuyenDi", (string)null);
+                    b.ToTable("ThongTinChuyenDi");
                 });
 
             modelBuilder.Entity("Dulich.Domain.Models.TienIchPhong", b =>
@@ -380,7 +383,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("TienIchPhong", (string)null);
+                    b.ToTable("TienIchPhong");
                 });
 
             modelBuilder.Entity("Travel.Domain.Models.Account", b =>
@@ -434,7 +437,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Account", (string)null);
+                    b.ToTable("Account");
                 });
 
             modelBuilder.Entity("Travel.Domain.Models.ThongTinPhuongTien", b =>
@@ -494,7 +497,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("ThongTinPhuongTien", (string)null);
+                    b.ToTable("ThongTinPhuongTien");
                 });
 #pragma warning restore 612, 618
         }

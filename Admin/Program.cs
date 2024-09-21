@@ -39,7 +39,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Scoped
-builder.Services.AddScoped<IPhuongTienService, PhuongTienService>();
+builder.Services.AddScoped<IThongTinPhuongTienService, ThongTinPhuongTienService>();
 builder.Services.AddScoped<IThongTinChuyenDiService, ThongTinChuyenDiService>();
 builder.Services.AddScoped<IMenuServices, MenuService>();
 builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("websiteDulich")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+483a95401eba0386938c31f9395a71e43fe33723")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98518c78613b8b1dbe02379bef7ba20cd86ec139")]
 [assembly: System.Reflection.AssemblyProductAttribute("websiteDulich")]
 [assembly: System.Reflection.AssemblyTitleAttribute("websiteDulich")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

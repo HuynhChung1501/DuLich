@@ -19,6 +19,7 @@ namespace Dulich.Domain.AutoMapper
         {
             CreateMap<VMMenu, Menu>(); 
             CreateMap<ThongTinPhuongTien, ThongTinPhuongTien>(); 
+            CreateMap<ThongTinChuyenDi, ThongTinChuyenDi>(); 
             CreateMap<VMAccount, Account>(); 
         }
     }

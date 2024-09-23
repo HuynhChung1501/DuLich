@@ -39,8 +39,8 @@ namespace Travel.Application.Services
         {
             try
             {
-                _DasContext.Add(phuongTien);
-                _DasContext.SaveChanges();
+                 await _DasContext.AddAsync(phuongTien);
+                 await _DasContext.SaveChangesAsync();
                 return phuongTien;
             }
             catch (Exception ex)

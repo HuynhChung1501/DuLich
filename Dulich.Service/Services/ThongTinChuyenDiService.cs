@@ -14,6 +14,8 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Travel.Application.Contansts;
+using Travel.Application.Enums;
+using Travel.Application.Helpers;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -33,68 +35,45 @@ namespace Travel.Application.Services
 
         }
 
-        public async Task<ServiceResult> Create(ThongTinChuyenDi chuyenDi)
+        public async Task<ThongTinChuyenDi> Create(ThongTinChuyenDi chuyenDi)
         {
-            if (chuyenDi == null)
-            {
-                return new ServiceResultError("Thêm mới không thành công");
-            }
-            var valid = await validation(chuyenDi);
-            if (valid.Code == CommonConst.error)
-            {
-                return valid;
-            }
-            _DasContext.Add(chuyenDi);
-            _DasContext.SaveChanges();
-            return valid;
+           await _DasContext.AddAsync(chuyenDi);
+           await _DasContext.SaveChangesAsync();
+            return chuyenDi;
 
         }
 
-        public async Task<ServiceResult> Delete(int id)
+        public async Task<string> Delete(int id)
         {
             try
             {
                 var ThongTinChuyenDi = _travelRepo.ThongTinChuyenDi.Get(id);
                 if (ThongTinChuyenDi == null)
                 {
-                    return new ServiceResultError("Chuyến đi không tồn tại hoặc đã bị xóa");
+                    throw new AppException($"Chuyến đi không tồn tại hoặc đã bị xóa");
                 }
 
                 _travelRepo.ThongTinChuyenDi.Delete(ThongTinChuyenDi);
                 _DasContext.SaveChanges();
-                return new ServiceResultSuccess("Xóa Chuyến đi thành công");
+                return "Xóa Chuyến đi thành công";
             }
             catch (Exception e)
             {
-                throw e;
+                throw new AppException(e.Message);
             }
         }
 
-        public async Task<ServiceResult> Deletes(int[] ids)
+        public async Task<string> Deletes(int[] ids)
         {
-            try
+            if (ids.Length == 0)
             {
-                if (ids.Length == 0)
-                {
-                    return new ServiceResultError($"Không có phần tử nào được xóa");
-
-                }
-                foreach (var id in ids)
-                {
-                    var rs = await Delete(id);
-                    if (rs.Code == CommonConst.error)
-                    {
-                        return new ServiceResultError($"ID: {id} không tồn tại");
-
-                    }
-                }
-                return new ServiceResultSuccess("Xóa thành công");
-
+                throw new AppException("Chuyến đi không tồn tại hoặc đã bị xóa");
             }
-            catch (Exception e)
+            foreach (var id in ids)
             {
-                throw e;
+                var rs = await Delete(id);
             }
+            return "Xóa thành công";
         }
 
         public async Task<ThongTinChuyenDi> Get(int id)
@@ -103,80 +82,38 @@ namespace Travel.Application.Services
             return rs;
         }
 
-        public async Task<List<ThongTinChuyenDi>> GetList()
+        public async Task<List<ThongTinChuyenDi>> Search(string? searchMeta)
         {
             var chuyenDi = await (from M in _travelRepo.ThongTinChuyenDi.GetAll().AsNoTracking()
                                     orderby M.ID descending
                                     select M).ToListAsync();
+            if (!chuyenDi.Any()) throw new KeyNotFoundException("Không tìm thấy dữ liệu phù hợp");
+
             return chuyenDi;
         }
 
-        public async Task<List<VMThongTinChuyenDi>> SearchByCondition(string searchName)
+        public async Task<ThongTinChuyenDi> update(ThongTinChuyenDi model)
         {
-            var chuyenDi = await (from M in _travelRepo.ThongTinChuyenDi.GetAll().AsNoTracking()
-                                    where searchName != null ? searchName.ToLower() == M.Name.ToLower() : true
-                                    select new VMThongTinChuyenDi
-                                    {
-                                        Name = M.Name,
-                                        ID = M.ID,
-                                    }).ToListAsync();
-            return chuyenDi;
-        }
-        public async Task<VMThongTinChuyenDi> GetVmThongTinPhuongTien(int id)
-        {
-            var chuyenDi = _travelRepo.ThongTinChuyenDi.FirstOrDefault(x => x.ID == id);
-            var vmChuyenDi = new VMThongTinChuyenDi();
-            vmChuyenDi.thongTinChuyenDi = chuyenDi;
-
-            return vmChuyenDi;
-        }
-
-        public async Task<ServiceResult> update(ThongTinChuyenDi chuyenDi)
-        {
-            //var phuongTienOld = (from m in _travelRepo.ThongTinChuyenDi.GetAll()
-            //                    where m.ID == chuyenDi.ID
-            //                    select new ThongTinChuyenDi
-            //                    {
-            //                        Name = chuyenDi.Name,
-            //                        ID = chuyenDi.ID,
-            //                        StartDate = chuyenDi.StartDate,
-            //                        PickupLocation = chuyenDi.PickupLocation,
-            //                        IDTransport = chuyenDi.IDTransport,
-            //                        Description = chuyenDi.Description,
-            //                        IDTour = chuyenDi.IDTour,
-            //                    }).FirstOrDefault();
-            //               ;
-
-            //if (phuongTienOld == null)
-            //{
-            //    return new ServiceResultError("Chuyến đi hiện không tồn tại hoặc đã bị xóa");
-            //}
-            //var valid = await validation(chuyenDi);
-            //if (valid.Code == CommonConst.error)
-            //{
-            //    return valid;
-            //}
-            //await _travelRepo.ThongTinChuyenDi.UpdateAsync(phuongTienOld);
-            //_DasContext.SaveChanges();
-            return new ServiceResultSuccess("Chỉnh sửa thành công");
-        }
-
-        public async Task<ServiceResult> validation(ThongTinChuyenDi chuyenDi)
-        {
-            var checkName = (from m in _travelRepo.ThongTinChuyenDi.GetAll().AsNoTracking()
-                             where m.Name == chuyenDi.Name
-                             select m).ToList();
-            if (checkName.Count() > 0)
+            try
             {
-                return new ServiceResultError($"{chuyenDi.Name} đã tồn tại");
+                var chuyenDi = await (from m in _travelRepo.ThongTinChuyenDi.GetAll()
+                                        where m.ID == model.ID 
+                                        select m).FirstOrDefaultAsync();
 
+                if (chuyenDi == null)
+                {
+                    throw new AppException("Chuyến đi hiện không tồn tại hoặc đã bị xóa");
+                }
+                _mapper.Map(model, chuyenDi);
+                 _DasContext.ThongTinChuyenDis.Update(chuyenDi);
+                await _DasContext.SaveChangesAsync();
+                return chuyenDi;
             }
-            if (chuyenDi.Name == string.Empty || chuyenDi.Name == null)
+            catch (Exception e)
             {
-                return new ServiceResultError("Tên không được bỏ trống");
-            }
 
-            return new ServiceResultSuccess("Thêm mới thành công");
+                throw new AppException(e.Message);
+            }
         }
     }
 }

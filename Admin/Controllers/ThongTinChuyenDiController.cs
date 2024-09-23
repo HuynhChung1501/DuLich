@@ -2,6 +2,7 @@
 using Dulich.Application.ViewModels;
 using Dulich.Domain.Models;
 using Dulich.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Travel.Application.Services;
@@ -9,8 +10,8 @@ using Travel.Domain.Interface;
 
 namespace Travel.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class ThongTinChuyenDiController : BaseController
     {
         private readonly IMapper _mapper;
@@ -26,73 +27,58 @@ namespace Travel.API.Controllers
 
         #region List
         [HttpGet]
-        [Route("List-ThongTinChuyenDi")]
-        public async Task<IActionResult> Index()
+        [Route("List")]
+        [Authorize]
+        public async Task<IActionResult> GetList(string? searchMeta)
         {
-            VMThongTinChuyenDi thongTinDiChuyen = new VMThongTinChuyenDi();
-            thongTinDiChuyen.ThongTinChuyenDis = await _ThongTinChuyenDiService.GetList();
+            var chuyendi = await _ThongTinChuyenDiService.Search(searchMeta);
 
-            ViewData["page"] = thongTinDiChuyen.ThongTinChuyenDis.Count();
-            return Json(thongTinDiChuyen.ThongTinChuyenDis);
+            return Ok(chuyendi);
 
         }
         #endregion
 
         #region Create
-        //sử dụng khi nào dựng web
-        //public async Task<IActionResult> Create()
-        //{
-        //    return View();
-        //}
-
-        [HttpPut]
-        [Route("Create-ThongTinChuyenDi")]
+        [HttpPost]
+        [Route("Create")]
+        [Authorize]
         public async Task<IActionResult> Create(ThongTinChuyenDi thongTinChuyenDi)
         {
             var rs = await _ThongTinChuyenDiService.Create(thongTinChuyenDi);
 
-            return CustJSonResult(rs);
+            return Ok(rs);
         }
         #endregion
 
         #region Update
-        //sử dụng khi nào dựng web
-        //public async Task<IActionResult> Update(int id)
-        //{
-        //    var vm = new VMThongTinChuyenDi();
-        //    vm.thongTinChuyenDi = await _ThongTinChuyenDiService.Get(id);
-        //    if (vm.thongTinChuyenDi == null)
-        //    {
-        //        return JSErrorResult("Chuyến đi không tồn tại hoặc đã bị xóa");
-        //    }
-        //    return View("Update", vm);
-        //}
-
+        [Authorize]
         [HttpPut]
-        [Route("Update-ThongTinChuyenDi")]
+        [Route("Update")]
         public async Task<IActionResult> Update(ThongTinChuyenDi thongTinChuyenDi)
         {
             var rs = await _ThongTinChuyenDiService.update(thongTinChuyenDi);
 
-            return CustJSonResult(rs);
+            return Ok(rs);
         }
         #endregion
 
         #region Delete
         [HttpDelete]
         [Route("Delete")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _ThongTinChuyenDiService.Delete(id);
-            return CustJSonResult(rs);
+            return Ok(new { message = rs });
         }
 
         [HttpDelete]
         [Route("Deletes")]
-        public async Task<IActionResult> Deletes(int[] ids)
+        [Authorize]
+        public async Task<IActionResult> Deletes([FromQuery] int[] ids)
         {
             var rs = await _ThongTinChuyenDiService.Deletes(ids);
-            return CustJSonResult(rs);
+            return Ok(new { message = rs });
         }
         #endregion
     }

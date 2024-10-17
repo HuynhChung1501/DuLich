@@ -95,6 +95,23 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+
+//app.Use(async (context, next) =>
+//{
+//    Console.WriteLine("go to 1");
+//    await next.Invoke();  
+//    Console.WriteLine("return 1");
+//});
+
+//app.Use(async (context, next) =>
+//{
+//    Console.WriteLine("go to 2");
+//    await next.Invoke();
+//    Console.WriteLine("return 2");
+//});
+
+
+
 app.MapControllers();
 
 app.Run();

@@ -9,7 +9,7 @@ namespace Dulich.Domain.Models
     {
         [Description("Phòng khách sạn")]
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Description("ID khách sạn")]
         [Required]

@@ -4,6 +4,7 @@ using Dulich.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Travel.Infrastructure.Migrations
 {
     [DbContext(typeof(DASContext))]
-    partial class DASContextModelSnapshot : ModelSnapshot
+    [Migration("20240925054119_Khachhang")]
+    partial class Khachhang
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -354,22 +357,6 @@ namespace Travel.Infrastructure.Migrations
                     b.ToTable("TienIchPhong");
                 });
 
-            modelBuilder.Entity("Travel.Domain.ChucNang", b =>
-                {
-                    b.Property<string>("MaChucNang")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("NhomChucNang")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenChucNang")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MaChucNang");
-
-                    b.ToTable("ChucNang");
-                });
-
             modelBuilder.Entity("Travel.Domain.Models.Account", b =>
                 {
                     b.Property<int>("ID")
@@ -573,7 +560,7 @@ namespace Travel.Infrastructure.Migrations
                     b.ToTable("KhachHang");
                 });
 
-            modelBuilder.Entity("Travel.Domain.Models.PhanQuyen", b =>
+            modelBuilder.Entity("Travel.Domain.Models.LichSuTour", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -587,15 +574,14 @@ namespace Travel.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IDAccount")
+                    b.Property<int>("IDDatTour")
                         .HasColumnType("int");
 
-                    b.Property<string>("MaChucNang")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IDKhachhang")
+                        .HasColumnType("int");
 
-                    b.Property<string>("MoTa")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TrangThai")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
@@ -605,7 +591,7 @@ namespace Travel.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PhanQuyen");
+                    b.ToTable("LichSuTour");
                 });
 
             modelBuilder.Entity("Travel.Domain.Models.ThongTinPhuongTien", b =>

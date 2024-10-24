@@ -63,6 +63,7 @@ namespace Dulich.Infrastructure
         public DbSet<PhanQuyen> PhanQuyen { get; set; } 
         public DbSet<ChucNang> ChucNang { get; set; } 
         public DbSet<Tour> Tours{ get; set; } 
+        public DbSet<Menu> Menus{ get; set; } 
 
         #endregion
         //RenderHere

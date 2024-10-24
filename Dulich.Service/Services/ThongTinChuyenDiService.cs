@@ -85,7 +85,8 @@ namespace Travel.Application.Services
         public async Task<List<ThongTinChuyenDi>> Search(string? searchMeta)
         {
             var chuyenDi = await (from M in _travelRepo.ThongTinChuyenDi.GetAll().AsNoTracking()
-                                    orderby M.ID descending
+                                  where (string.IsNullOrEmpty(searchMeta) || M.Name.Contains(searchMeta))
+                                  orderby M.ID descending
                                     select M).ToListAsync();
             if (!chuyenDi.Any()) throw new KeyNotFoundException("Không tìm thấy dữ liệu phù hợp");
 

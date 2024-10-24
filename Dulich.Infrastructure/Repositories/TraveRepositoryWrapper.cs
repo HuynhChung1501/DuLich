@@ -20,16 +20,16 @@ namespace Travel.Infrastructure.Repositories
             _repoContext = repositoryContext;   
         }
 
-        private IMenuRepository _menu;
-        public IMenuRepository Menu
+        private IMenuRepository _menuRepository;
+        public IMenuRepository MenuRepository
         {
             get
             {
-                if (_menu == null)
+                if (_menuRepository == null)
                 {
-                    _menu = new MenuRepository(_repoContext);
+                    _menuRepository = new MenuRepository(_repoContext);
                 }
-                return _menu;
+                return _menuRepository;
             }
         }
 

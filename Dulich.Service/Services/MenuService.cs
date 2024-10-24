@@ -13,6 +13,9 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Travel.Application.Contansts;
+using Travel.Application.Enums;
+using Travel.Application.Helpers;
+using Travel.Application.ViewModels;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -32,162 +35,115 @@ namespace Travel.Application.Services
 
         }
 
-        public async Task<ServiceResult> Create(Menu menu)
-        {
-            if (menu == null)
-            {
-                return new ServiceResultError("Thêm mới không thành công");
-            }
-            var valid = await validation(menu);
-            if (valid.Code == CommonConst.Success)
-            {
-                _DasContext.Add(menu);
-                _DasContext.SaveChanges();
-                valid.Data = menu;
-                return valid;
-            }
-            else
-            {
-                validation(menu);
-            }
-            return valid;
-
-        }
-
-        public async Task<ServiceResult> Delete(int id)
+        public async Task<Menu> Create(Menu menu)
         {
             try
             {
-                var menu = _travelRepo.Menu.Get(id);
-                if (menu == null)
-                {
-                    return new ServiceResultError("Menu không tồn tại");
-                }
-                // Tìm đến các thằng nào mà là menu con của id hiện tại để xoa
-                var menuChildList = _travelRepo.Menu.GetAllList(x => x.IDParent == id);
-                foreach (var item in menuChildList)
-                {
-                    _travelRepo.Menu.Delete(item);
-                }
-
-                _travelRepo.Menu.Delete(menu);
-                _DasContext.SaveChanges();
-                return new ServiceResultSuccess("Xóa Menu thành công");
+                await _DasContext.AddAsync(menu);
+                await _DasContext.SaveChangesAsync();
+                return menu;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                throw new AppException(ex.Message);
             }
         }
 
-        public async Task<ServiceResult> Deletes(int[] ids)
+        public async Task<string> Delete(int id)
+        {
+            try
+            {
+                var menu = await _travelRepo.MenuRepository.FirstOrDefaultAsync(x => x.ID == id);
+                if (menu == null) throw new AppException("Menu không tồn tại hoặc đã bị xóa");
+
+                _travelRepo.MenuRepository.Delete(menu);
+                _DasContext.SaveChanges();
+                return $"Xóa Menu: {menu.Name} thành công";
+            }
+            catch (Exception ex)
+            {
+                throw new AppException(ex.Message);
+            }
+        }
+
+        public async Task<string> Deletes(int[] ids)
         {
             try
             {
                 if (ids.Length == 0)
                 {
-                    return new ServiceResultError($"Không có phần tử nào được xóa");
-
+                    throw new AppException($"Không có phần tử nào được xóa");
                 }
                 foreach (var id in ids)
                 {
                     var rs = await Delete(id);
-                    if (rs.Code == CommonConst.error)
-                    {
-                        return new ServiceResultError($"ID: {id} không tồn tại");
-
-                    }
                 }
-                return new ServiceResultSuccess("Xóa thành công");
+                return ("Xóa thành công");
 
             }
             catch (Exception e)
             {
-                throw e;
+                throw new AppException(e.Message);
             }
         }
 
         public async Task<Menu> Get(int id)
         {
-            var rs = await _travelRepo.Menu.FirstOrDefaultAsync(x => x.ID == id);
-            return rs;
-        }
-
-        public async Task<List<Menu>> GetList()
-        {
-            var menu = await (from M in _travelRepo.Menu.GetAll().AsNoTracking()
-                              orderby M.ID descending
-                              select M).ToListAsync();
-            return menu;
-        }
-
-        public async Task<List<Menu>> Search(string search)
-        {
-
-            var menus = await (from M in _travelRepo.Menu.GetAll().AsNoTracking()
-                               where (string.IsNullOrEmpty(search) ? true : (M.Name.Contains(search)))
-                               orderby M.ID descending
-                               select M).ToListAsync();
-
-            return menus;
-        }
-
-        public async Task<List<VMMenu>> SearchByCondition(string searchName)
-        {
-            var menu = await (from M in _travelRepo.Menu.GetAll().AsNoTracking()
-                              where searchName != null ? searchName.ToLower() == M.Name.ToLower() : true
-                              select new VMMenu
-                              {
-                                  Name = M.Name,
-                                  ID = M.ID,
-                                  Url = M.Url,
-                                  Icon = M.Icon,
-                                  IDParent = M.IDParent,
-                              }).ToListAsync();
-            return menu;
-        }
-        public async Task<VMMenu> GetVmMenu(int id)
-        {
-            var menu = _travelRepo.Menu.FirstOrDefault(x => x.ID == id);
-            var vmMenu = new VMMenu();
-            vmMenu.Menu = menu;
-
-            return vmMenu;
-        }
-
-        public async Task<ServiceResult> update(Menu menu)
-        {
-            var menuOld = (from m in _travelRepo.Menu.GetAll()
-                           where m.ID == menu.ID
-                           select new Menu
-                           {
-                               Name = menu.Name,
-                               ID = menu.ID,
-                               Url = menu.Url,
-                               Icon = menu.Icon,
-                               IDParent = menu.IDParent,
-                           }).FirstOrDefault();
-
-            if (menuOld == null)
+            try
             {
-                return new ServiceResultError("Menu hiện không tồn tại hoặc đã bị xóa");
+                var menu = await _travelRepo.MenuRepository.FirstOrDefaultAsync(x => x.ID == id);
+                if (menu == null) throw new AppException("Menu không tồn tại hoặc đã bị xóa");
+                return menu;
             }
-            await _travelRepo.Menu.UpdateAsync(menuOld);
-            _DasContext.SaveChanges();
-            return new ServiceResultSuccess("Chỉnh sửa thành công");
+            catch (Exception e)
+            {
+                throw new AppException(e.Message);
+            }
+
         }
 
-        public async Task<ServiceResult> validation(Menu menu)
+        public async Task<List<Menu>> Search(string? searchMeta)
         {
-            if (menu.Name == string.Empty)
+            try
             {
-                return new ServiceResultError("Tên không được bỏ trống");
+                var menu = await (from M in _travelRepo.MenuRepository.GetAll().AsNoTracking()
+                                  where (string.IsNullOrEmpty(searchMeta) || M.Name.Contains(searchMeta))
+                                  && M.IsActive == (int)EnumCommon.Status.Active
+                                  orderby M.ID descending
+                                  select M).ToListAsync();
+                if (!menu.Any()) throw new AppException("Không tìm thấy dữ liệu phù hợp");
+
+                return menu;
             }
-            if (menu.Url == string.Empty)
+            catch (Exception e)
             {
-                return new ServiceResultError("Đường đẫn không được bỏ trống");
+                throw new AppException(e.Message);
             }
-            return new ServiceResultSuccess("Thêm mới thành công");
+
+        }
+
+        public async Task<Menu> update(VMMenu model)
+        {
+            try
+            {
+                var menu = await (from m in _travelRepo.MenuRepository.GetAll()
+                                  where m.ID == model.ID
+                                  select m).FirstOrDefaultAsync();
+                if (menu == null)
+                {
+                    throw new AppException("Menu hiện không tồn tại hoặc đã bị xóa");
+                }
+                _mapper.Map(model, menu);
+                _DasContext.Menus.Update(menu);
+                _DasContext.SaveChanges();
+                return menu;
+            }
+            catch (Exception e)
+            {
+
+                throw new AppException(e.Message);
+            }
+
         }
     }
 }

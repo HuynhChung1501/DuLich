@@ -30,7 +30,7 @@ namespace Travel.API.Controllers
         }
 
         [HttpGet]
-        [Route("List-Account")]
+        [Route("List")]
         [Authorize]
         public async Task<IActionResult> ListAcount(string? search)
         {

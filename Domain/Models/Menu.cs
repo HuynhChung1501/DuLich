@@ -21,5 +21,8 @@ namespace Dulich.Domain.Models
 
         [Description("ID cấp cha")] // nếu ib khác 0 thì là cấp con
         public int? IDParent { get; set; } = 0;
+
+        [Description("Trạng thái hoạt động")]
+        public int IsActive { get; set; } = 1;
     }
 }

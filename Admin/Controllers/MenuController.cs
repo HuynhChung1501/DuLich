@@ -12,12 +12,13 @@ using Travel.API.Controllers;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
+using Travel.Infrastructure.Migrations;
 using X.PagedList.Extensions;
 
 namespace Travel.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class MenuController :  BaseController
     {
         private readonly IMapper _mapper;
@@ -33,21 +34,13 @@ namespace Travel.API.Controllers
 
         #region search
         [HttpGet]
-        [Route("List-Menu")]
+        [Route("List")]
         [Authorize]
-        public async Task<IActionResult> Index(string search = "")
+        public async Task<IActionResult> Index(string? searchMeta = "")
         {
-            try
-            {
-                var Menus = await _menuServices.Search(search);
+            var Menus = await _menuServices.Search(searchMeta);
 
-                return Ok(Menus);
-            }
-            catch (Exception)
-            {
-
-                return BadRequest();
-            }
+            return Ok(Menus);
         }
         #endregion
 
@@ -63,12 +56,13 @@ namespace Travel.API.Controllers
         //}
 
         [HttpPost]
-        [Route("Create-Menu")]
+        [Route("Create")]
         [Authorize]
         public async Task<IActionResult> Create(Menu menu)
         {
             var rs = await _menuServices.Create(menu);
-            return CustJSonResult(rs);
+
+            return Ok(rs);
         }
         #endregion
 
@@ -93,10 +87,10 @@ namespace Travel.API.Controllers
         [HttpPut]
         [Route("Delete")]
         [Authorize]
-        public async Task<IActionResult> Update(Menu menu)
+        public async Task<IActionResult> Update(VMMenu menu)
         {
             var rs = await _menuServices.update(menu);
-            return CustJSonResult(rs);
+            return Ok(rs);
 
         }
         #endregion
@@ -108,20 +102,20 @@ namespace Travel.API.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _menuServices.Delete(id);
-            return CustJSonResult(rs);
+            return Ok(rs);
         }
 
         [HttpDelete]
         [Route("Deletes")]
         [Authorize]
-        public async Task<IActionResult> Deletes(int[] ids)
+        public async Task<IActionResult> Deletes([FromQuery] int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);
-            return CustJSonResult(rs);
+            return Ok(new { message = rs });
         }
         #endregion
 
-        
+
 
     }
 }

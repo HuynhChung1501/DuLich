@@ -26,7 +26,7 @@ namespace Travel.API.Controllers
 
         #region List
         [HttpGet]
-        [Route("List-ThongTinPhuongTien")]
+        [Route("List")]
         [Authorize]
         public async Task<IActionResult> GetList(string? searchMeta)
         {
@@ -48,7 +48,7 @@ namespace Travel.API.Controllers
 
         #region Create
         [HttpPost]
-        [Route("Create-ThongTinPhuongTien")]
+        [Route("Create")]
         [Authorize]
         public async Task<IActionResult> Create([FromBody]ThongTinPhuongTien PhuongTien)
         {
@@ -73,7 +73,7 @@ namespace Travel.API.Controllers
 
         [HttpPut]
         [Authorize]
-        [Route("Update-PhuongTien")]
+        [Route("Update")]
         public async Task<IActionResult> Update(ThongTinPhuongTien PhuongTien)
         {
             var rs = await _PhuongTienService.update(PhuongTien);
@@ -95,7 +95,7 @@ namespace Travel.API.Controllers
         [HttpDelete]
         [Authorize]
         [Route("Deletes")]
-        public async Task<IActionResult> Deletes(int[] ids)
+        public async Task<IActionResult> Deletes([FromQuery] int[] ids)
         {
             var rs = await _PhuongTienService.Deletes(ids);
             return Ok(new { message = rs });

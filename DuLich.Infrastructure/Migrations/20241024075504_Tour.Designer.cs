@@ -4,6 +4,7 @@ using Dulich.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Travel.Infrastructure.Migrations
 {
     [DbContext(typeof(DASContext))]
-    partial class DASContextModelSnapshot : ModelSnapshot
+    [Migration("20241024075504_Tour")]
+    partial class Tour
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -705,9 +708,6 @@ namespace Travel.Infrastructure.Migrations
                     b.Property<int>("IDThongtinChuyenDi")
                         .HasColumnType("int");
 
-                    b.Property<int>("IsActive")
-                        .HasColumnType("int");
-
                     b.Property<int>("KhoiHanh")
                         .HasColumnType("int");
 
@@ -721,7 +721,6 @@ namespace Travel.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TenTour")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ThoiGian")

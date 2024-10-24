@@ -137,5 +137,18 @@ namespace Travel.Infrastructure.Repositories
             }
         }
 
+        private ITourRepository _tourRepository;
+        public ITourRepository TourRepository
+        {
+            get
+            {
+                if (_tourRepository == null)
+                {
+                    _tourRepository = new TourRepository(_repoContext);
+                }
+                return _tourRepository;
+            }
+        }
+
     }
 }

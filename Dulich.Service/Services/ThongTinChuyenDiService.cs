@@ -104,8 +104,8 @@ namespace Travel.Application.Services
                 {
                     throw new AppException("Chuyến đi hiện không tồn tại hoặc đã bị xóa");
                 }
-                _mapper.Map(model, chuyenDi);
-                 _DasContext.ThongTinChuyenDis.Update(chuyenDi);
+                 _mapper.Map(model, chuyenDi);
+                _DasContext.ThongTinChuyenDis.Update(chuyenDi);
                 await _DasContext.SaveChangesAsync();
                 return chuyenDi;
             }

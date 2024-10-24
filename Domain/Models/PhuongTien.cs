@@ -10,7 +10,7 @@ namespace Dulich.Domain.Models
 
         [Description("Tên Phương tiện")]
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Description("Loại phương tiện")]
         [Required]
@@ -20,14 +20,14 @@ namespace Dulich.Domain.Models
         [Description("Mã phương tiện")]
         [Required]
         [MaxLength(50)]
-        public string Code { get; set; }
+        public required string Code { get; set; }
 
         [Description("Chỗ ngồi")]
         public int? Seating { get; set; }
 
         [Description("Biển số xe")]
         [Required]
-        public string LicensePlates { get; set; }
+        public required string LicensePlates { get; set; }
 
         [Description("Màu sắc")]
         public string? Color { get; set; }

@@ -45,6 +45,7 @@ builder.Services.AddScoped<IMenuServices, MenuService>();
 builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ITourServicesService, TourService>();
 //builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 //Model Mapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

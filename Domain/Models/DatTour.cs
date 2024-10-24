@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,18 @@ namespace Travel.Domain.Models
     {
         [Description("ID thông tin khách hàng")]
         public int IDKhachhang { get; set; }
+
+        [Description("Họ tên khách hàng")]
+        public string? Hoten { get; set; }
+
+        [Description("Email khách hàng")]
+        public string? Email { get; set; }
+        
+        [Description("Diện thoại khách hàng")]
+        public string? DienThoai { get; set; }
+        
+        [Description("Địa chỉ khách hàng")]
+        public string? ĐiaChi { get; set; }
 
         [Description("id Tour")]
         public int IDTour { get; set; }
@@ -42,7 +55,10 @@ namespace Travel.Domain.Models
         [Description("Tổng giá ")]
         public decimal TongGia { get; set; }
 
+        [Description("Tình trạng thanh toán ")]
+        public int TinhTrang { get; set; }
+
         [Description("Khuyến mại")]
-        public int Khuyenmai { get; set; }
+        public decimal Khuyenmai { get; set; }
     }
 }

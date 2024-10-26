@@ -16,7 +16,9 @@ namespace Dulich.Service.Interface
         Task<List<Menu>> Search(string? searchMeta);
         Task<string> Delete(int id);
         Task<string> Deletes(int[] ids);
-        Task<Menu> update(VMMenu model);
+        Task<VMMenu> update(VMMenu model);
         Task<Menu> Create(Menu model);
+        Task<VMMenu> GetById(int model);
+        Task<List<Menu>> GetMenuChild(int idParent);
     }
 }

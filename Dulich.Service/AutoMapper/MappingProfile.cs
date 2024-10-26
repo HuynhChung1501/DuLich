@@ -17,11 +17,24 @@ namespace Dulich.Domain.AutoMapper
     {
         public MappingProfile() 
         {
-            CreateMap<VMMenu, Menu>(); 
-            CreateMap<ThongTinPhuongTien, ThongTinPhuongTien>(); 
-            CreateMap<ThongTinChuyenDi, ThongTinChuyenDi>(); 
-            CreateMap<VMAccount, Account>(); 
-            CreateMap<VMTour, Tour>(); 
+            CreateMap<VMMenu, Menu>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<Menu, VMMenu>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<ThongTinPhuongTien, ThongTinPhuongTien>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<ThongTinChuyenDi, ThongTinChuyenDi>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<VMAccount, Account>()
+
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<VMTour, Tour>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

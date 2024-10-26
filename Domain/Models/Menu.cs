@@ -10,17 +10,17 @@ namespace Dulich.Domain.Models
     {
         [Description("Tên menu")]
         [Required(ErrorMessage = "Tên không được bỏ trống")]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Description("Đường dẫn")]
         [Required(ErrorMessage = "Đường dẫn không được bỏ trống")]
-        public string Url { get; set; }
+        public required string Url { get; set; }
 
         [Description("Icon")]
         public string? Icon { get; set; }
 
         [Description("ID cấp cha")] // nếu ib khác 0 thì là cấp con
-        public int? IDParent { get; set; } = 0;
+        public int IDParent { get; set; } = 0;
 
         [Description("Trạng thái hoạt động")]
         public int IsActive { get; set; } = 1;

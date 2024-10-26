@@ -28,9 +28,11 @@ namespace Travel.Domain.Models
         public int CodeXa { get; set; }
 
         [Description("Giá cũ")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal GiaCu { get; set; }
 
         [Description("Giá mới")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal GiaMoi { get; set; }
 
         [Description("Giờ mở cửa")]

@@ -30,9 +30,11 @@ namespace Travel.Domain.Models
         public DateTime? NgayDi { get; set; }
 
         [Description("Tổng giá ")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal TongGia { get; set; }
 
         [Description("Khuyến mại")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Khuyenmai { get; set; }
 
         [Description("Thời gian")]

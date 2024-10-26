@@ -53,12 +53,14 @@ namespace Travel.Domain.Models
         public int TongKhach { get; set; }
 
         [Description("Tổng giá ")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal TongGia { get; set; }
 
         [Description("Tình trạng thanh toán ")]
         public int TinhTrang { get; set; }
 
         [Description("Khuyến mại")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Khuyenmai { get; set; }
     }
 }

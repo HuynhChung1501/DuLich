@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Travel.API.Controllers;
+using Travel.Application.ViewModels;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
@@ -42,6 +43,17 @@ namespace Travel.API.Controllers
 
             return Ok(Menus);
         }
+
+        [HttpGet]
+        [Route("GetById")]
+        [Authorize]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var menu = await _menuServices.GetById(id);
+
+            return Ok(menu);
+        }
+
         #endregion
 
         #region Thêm mới menu
@@ -85,7 +97,7 @@ namespace Travel.API.Controllers
         //}
 
         [HttpPut]
-        [Route("Delete")]
+        [Route("Update")]
         [Authorize]
         public async Task<IActionResult> Update(VMMenu menu)
         {

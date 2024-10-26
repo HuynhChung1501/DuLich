@@ -122,7 +122,8 @@ namespace Travel.Application.Services
 
         }
 
-        public async Task<Menu> update(VMMenu model)
+
+        public async Task<VMMenu> update(VMMenu model)
         {
             try
             {
@@ -133,10 +134,13 @@ namespace Travel.Application.Services
                 {
                     throw new AppException("Menu hiện không tồn tại hoặc đã bị xóa");
                 }
+                model.MenuChilds = await GetMenuChild(menu.ID);
                 _mapper.Map(model, menu);
                 _DasContext.Menus.Update(menu);
                 _DasContext.SaveChanges();
-                return menu;
+                _mapper.Map(menu, model);
+
+                return model;
             }
             catch (Exception e)
             {
@@ -144,6 +148,37 @@ namespace Travel.Application.Services
                 throw new AppException(e.Message);
             }
 
+        }
+
+        public async Task<VMMenu> GetById(int id)
+        {
+
+            var menu = await (from m in _travelRepo.MenuRepository.GetAll()
+                                 where m.ID == id
+                                 select m).FirstOrDefaultAsync();
+
+            if (menu == null)
+            {
+                throw new AppException("Dữ liệu không tồn tại hoặc đã bị xóa");
+            }
+            var vmMenu = _mapper.Map<VMMenu>(menu);
+
+            vmMenu.MenuChilds = await GetMenuChild(id);
+
+            return vmMenu;
+        }
+
+        public async Task<List<Menu>> GetMenuChild(int idParent)
+        {
+            List<Menu> menus = new List<Menu>();
+
+            if (idParent <= 0)
+                return menus;
+
+            var menuByParent = await (from m in _travelRepo.MenuRepository.GetAll()
+                                      where idParent == m.IDParent && m.IsActive == (int)EnumCommon.Status.Active
+                                      select m).ToListAsync();
+            return menuByParent;
         }
     }
 }

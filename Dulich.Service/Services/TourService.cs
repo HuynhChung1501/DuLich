@@ -16,7 +16,7 @@ using Travel.Domain.Models;
 
 namespace Travel.Application.Services
 {
-    public class TourService : BaseMasterService, ITourServicesService
+    public class TourService : BaseMasterService, ITourServices
     {
         private readonly IMapper _mapper;
         private readonly DASContext _DasContext;

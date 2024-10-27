@@ -42,7 +42,7 @@ namespace Travel.Application.Services
                     new Claim(ClaimTypes.Name, acount.FullName),
                     new Claim(ClaimTypes.Email, acount.Email ?? string.Empty),
                     new Claim("UsereName", acount.UsereName),
-                    new Claim("Id", acount.ID.ToString()),
+                    new Claim("IdUser", acount.ID.ToString()),
 
                     //Roles
 

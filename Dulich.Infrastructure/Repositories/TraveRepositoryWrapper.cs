@@ -20,6 +20,18 @@ namespace Travel.Infrastructure.Repositories
             _repoContext = repositoryContext;   
         }
 
+        private IDatTourRepository _datTourRepository;
+        public IDatTourRepository DatTourRepository
+        {
+            get
+            {
+                if (_datTourRepository == null)
+                {
+                    _datTourRepository = new DatTourRepository(_repoContext);
+                }
+                return _datTourRepository;
+            }
+        }
         private IMenuRepository _menuRepository;
         public IMenuRepository MenuRepository
         {

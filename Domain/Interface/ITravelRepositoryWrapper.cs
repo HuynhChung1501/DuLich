@@ -19,6 +19,7 @@ namespace Travel.Domain.Interface
         ITienIchPhongRepository TienIchPhongRepository { get; }
         IAccountRepository Account { get; }
         ITourRepository TourRepository { get; }
+        IDatTourRepository DatTourRepository { get; }
 
     }
 }

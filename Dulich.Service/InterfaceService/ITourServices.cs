@@ -11,7 +11,7 @@ using Travel.Domain.Models;
 
 namespace Dulich.Service.Interface
 {
-    public interface ITourServicesService
+    public interface ITourServices
     {
         Task<Tour> Get(int id);
         Task<List<Tour>> Search(string? searchMeta);

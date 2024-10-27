@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using Dulich.Domain.Models;
 using Dulich.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Travel.Application.Services;
 using Travel.Application.ViewModels;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
@@ -13,17 +11,17 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TourController : BaseController
+    public class DatTourController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ITourServices _tourServicesService;
+        private readonly IDatTourServices _datTourServices;
         private readonly ITravelRepositoryWrapper _travelRepo;
 
-        public TourController(IMapper mapper, ITourServices tourServicesService, ITravelRepositoryWrapper travelRepo)
+        public DatTourController(IMapper mapper, IDatTourServices datTourServicesService, ITravelRepositoryWrapper travelRepo)
         {
             _mapper = mapper;
             _travelRepo = travelRepo;
-            _tourServicesService = tourServicesService;
+            _datTourServices = datTourServicesService;
         }
 
         #region List
@@ -32,7 +30,7 @@ namespace Travel.API.Controllers
         [Authorize]
         public async Task<IActionResult> GetList(string? searchMeta)
         {
-            var tour = await _tourServicesService.Search(searchMeta);
+            var tour = await _datTourServices.Search(searchMeta);
 
             return Ok(tour);
 
@@ -43,9 +41,9 @@ namespace Travel.API.Controllers
         [HttpPost]
         [Route("Create")]
         [Authorize]
-        public async Task<IActionResult> Create(Tour tour)
+        public async Task<IActionResult> Create(DatTour tour)
         {
-            var rs = await _tourServicesService.Create(tour);
+            var rs = await _datTourServices.Create(tour);
 
             return Ok(rs);
         }
@@ -55,10 +53,19 @@ namespace Travel.API.Controllers
         [Authorize]
         [HttpPut]
         [Route("Update")]
-        public async Task<IActionResult> Update(VMTour tour)
+        public async Task<IActionResult> Update(DatTour tour)
         {
-            var rs = await _tourServicesService.update(tour);
+            var rs = await _datTourServices.Update(tour);
 
+            return Ok(rs);
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("UpdateTrangThai")]
+        public async Task<IActionResult> UpdateTrangThai(int id, int trangThai)
+        {
+            var rs = await _datTourServices.UpdateTrangThai(id, trangThai);
             return Ok(rs);
         }
         #endregion
@@ -69,7 +76,7 @@ namespace Travel.API.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-            var rs = await _tourServicesService.Delete(id);
+            var rs = await _datTourServices.Delete(id);
             return Ok(new { message = rs });
         }
 
@@ -78,10 +85,11 @@ namespace Travel.API.Controllers
         [Authorize]
         public async Task<IActionResult> Deletes([FromQuery] int[] ids)
         {
-            var rs = await _tourServicesService.Deletes(ids);
+            var rs = await _datTourServices.Deletes(ids);
             return Ok(new { message = rs });
         }
         #endregion
 
+        
     }
 }

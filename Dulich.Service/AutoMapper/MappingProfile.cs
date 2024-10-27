@@ -35,6 +35,9 @@ namespace Dulich.Domain.AutoMapper
 
             CreateMap<VMTour, Tour>()
             .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<DatTour, DatTour>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

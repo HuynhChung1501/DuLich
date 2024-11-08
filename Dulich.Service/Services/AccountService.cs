@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Travel.Application.Enums;
 using Travel.Application.Helpers;
@@ -37,10 +39,20 @@ namespace Travel.Application.Services
 
         public async Task<Account> Create(Account account)
         {
+            if(CheckValid(account.PassWord))
+            {
+                throw new AppException("Mật khẩu không được chứa ký tự đặc biệt");
+            }
+            if (account.PassWord.Length < 6 || account.PassWord.Length > 15)
+            {
+                throw new AppException("Độ dài mật khẩu phải từ 6-15 ký tự");
+            }
             if (await _travelRepo.Account.AnyAsync(a => a.UsereName == account.UsereName))
             {
                 throw new AppException($"UserName: {account.UsereName} đã tồn tại");
             }
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+            account.PassWord = BCrypt.Net.BCrypt.HashPassword(account.PassWord, salt);
             _DasContext.Add(account);
             _DasContext.SaveChanges();
             return account;
@@ -74,9 +86,22 @@ namespace Travel.Application.Services
                 var account = await _DasContext.Accounts.FirstOrDefaultAsync(a => a.ID == model.ID);
 
                 if (account == null) throw new AppException("Không tìm thấy dữ liệu phù hợp");
-
+                model.PassWord = model.PassWord ?? string.Empty;
+                if (model.PassWord != string.Empty && !CheckValid(model.PassWord))
+                {
+                    throw new AppException("Mật khẩu không được chứa ký tự đặc biệt");
+                }
+                if (model.PassWord != string.Empty && (model.PassWord.Length < 6 || model.PassWord.Length > 15))
+                {
+                    throw new AppException("Độ dài mật khẩu phải từ 6-15 ký tự");
+                }
+                if ( await _travelRepo.Account.AnyAsync(a => a.UsereName == model.UsereName && a.ID != model.ID))
+                {
+                    throw new AppException($"UserName: {model.UsereName} đã tồn tại");
+                }
+                string salt = BCrypt.Net.BCrypt.GenerateSalt();
+                model.PassWord = BCrypt.Net.BCrypt.HashPassword(model.PassWord, salt);
                 _mapper.Map(model, account);
-
                 _DasContext.Update(account);
                 _DasContext.SaveChanges();
 
@@ -128,6 +153,18 @@ namespace Travel.Application.Services
             return accountResult;
         }
         #endregion
+
+
+        #region validate password
+        public bool CheckValid(string password)
+        {
+            string pattern = @"^[a-zA-Z0-9]";
+
+            return Regex.IsMatch(password, pattern);
+        }
+        #endregion
+
+
 
     }
 }

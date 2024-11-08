@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Travel.Application.Helpers;
 using Travel.Application.InterfaceService;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
@@ -17,7 +18,7 @@ namespace Travel.API.Controllers
         private readonly IMapper _mapper;
         private readonly ITravelRepositoryWrapper _travelRepo;
         private readonly ILoginService _loginService;
-       
+
 
         public LoginController(IMapper mapper, ITravelRepositoryWrapper travelRepo, IConfiguration config, ILoginService loginService)
         {
@@ -30,24 +31,25 @@ namespace Travel.API.Controllers
         [Route("SignIn")]
         public async Task<IActionResult> SignIn(LoginModel model)
         {
-            var user = await _travelRepo.Account.SingleOrDefaultAsync(u => u.UsereName == model.UsereName && u.PassWord == model.PassWord);
-            if (user == null)
+            var user = await _travelRepo.Account.SingleOrDefaultAsync(u => u.UsereName == model.UsereName);
+
+            if (user == null || model.UsereName == string.Empty)
             {
-                return Ok(new ApiResponse
-                {
-                    Message = "UserName, Password không chính xác!",
-                    Success = true,
-                });
+                return Unauthorized(new { message = "Đăng nhập không thành công!" });
+            }
+
+            bool isPasswordMatch = BCrypt.Net.BCrypt.Verify(model.PassWord, user?.PassWord);
+            if (isPasswordMatch)
+            {
+                
+                return Ok(new { message = "Đăng nhập thành công!" , dataToken = _loginService.GenerateToken(user)});
             }
             else
             {
-                return Ok(new ApiResponse
-                {
-                    Message = "Đăng nhập thành công!",
-                    Success = true,
-                    Data = _loginService.GenerateToken(user)
-                });
+                return Unauthorized(new { message = "Đăng nhập không thành công!" });
             }
+
+
         }
 
 

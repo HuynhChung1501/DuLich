@@ -19,7 +19,7 @@ namespace Travel.Domain.Models
         public required string UsereName { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public required string PassWord { get; set; }
 
         [Required]

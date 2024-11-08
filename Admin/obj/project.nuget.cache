@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "gyToRumtYlE=",
+  "dgSpecHash": "GzFLk3yPBnk=",
   "success": true,
   "projectFilePath": "D:\\project\\DuLich\\Admin\\Travel.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Chung\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Chung\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Chung\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\Chung\\.nuget\\packages\\bcrypt-official\\0.1.109\\bcrypt-official.0.1.109.nupkg.sha512",
     "C:\\Users\\Chung\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\Chung\\.nuget\\packages\\efcore.bulkextensions\\3.2.7\\efcore.bulkextensions.3.2.7.nupkg.sha512",
     "C:\\Users\\Chung\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -225,5 +226,16 @@
     "C:\\Users\\Chung\\.nuget\\packages\\x.pagedlist\\10.0.3\\x.pagedlist.10.0.3.nupkg.sha512",
     "C:\\Users\\Chung\\.nuget\\packages\\x.pagedlist.mvc.core\\10.0.3\\x.pagedlist.mvc.core.10.0.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt-Official 0.1.109' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt-Official",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

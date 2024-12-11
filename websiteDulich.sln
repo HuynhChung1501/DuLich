@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.API", "Admin\Travel.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.Domain", "Domain\Travel.Domain.csproj", "{FEAF236C-B6E7-4792-8640-48A756EC7916}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel.Application", "Dulich.Service\Travel.Application.csproj", "{80647B91-9AED-458B-9F7A-DE4177310068}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.Application", "Dulich.Service\Travel.Application.csproj", "{80647B91-9AED-458B-9F7A-DE4177310068}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel.Infrastructure", "Dulich.Infrastructure\Travel.Infrastructure.csproj", "{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.Infrastructure", "Dulich.Infrastructure\Travel.Infrastructure.csproj", "{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel.Utility", "Travel.Utility\Travel.Utility.csproj", "{1C1F497A-6EAD-448A-9DD2-7D23C5F3CA6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CF3E9A6-8D5C-4AE0-A41E-92C1E70F40B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1F497A-6EAD-448A-9DD2-7D23C5F3CA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1F497A-6EAD-448A-9DD2-7D23C5F3CA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1F497A-6EAD-448A-9DD2-7D23C5F3CA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1F497A-6EAD-448A-9DD2-7D23C5F3CA6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

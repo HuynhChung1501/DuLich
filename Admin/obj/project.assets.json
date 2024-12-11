@@ -4122,6 +4122,16 @@
         "runtime": {
           "bin/placeholder/Travel.Infrastructure.dll": {}
         }
+      },
+      "Travel.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Travel.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Travel.Utility.dll": {}
+        }
       }
     }
   },
@@ -11388,6 +11398,11 @@
       "type": "project",
       "path": "../Dulich.Infrastructure/Travel.Infrastructure.csproj",
       "msbuildProject": "../Dulich.Infrastructure/Travel.Infrastructure.csproj"
+    },
+    "Travel.Utility/1.0.0": {
+      "type": "project",
+      "path": "../Travel.Utility/Travel.Utility.csproj",
+      "msbuildProject": "../Travel.Utility/Travel.Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11410,6 +11425,7 @@
       "Travel.Application >= 1.0.0",
       "Travel.Domain >= 1.0.0",
       "Travel.Infrastructure >= 1.0.0",
+      "Travel.Utility >= 1.0.0",
       "X.PagedList >= 10.0.3",
       "X.PagedList.Mvc.Core >= 10.0.3",
       "toastr >= 2.1.1"
@@ -11451,6 +11467,9 @@
             },
             "D:\\project\\DuLich\\Dulich.Service\\Travel.Application.csproj": {
               "projectPath": "D:\\project\\DuLich\\Dulich.Service\\Travel.Application.csproj"
+            },
+            "D:\\project\\DuLich\\Travel.Utility\\Travel.Utility.csproj": {
+              "projectPath": "D:\\project\\DuLich\\Travel.Utility\\Travel.Utility.csproj"
             }
           }
         }

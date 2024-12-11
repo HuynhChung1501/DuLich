@@ -38,6 +38,9 @@ namespace Dulich.Domain.AutoMapper
 
             CreateMap<DatTour, DatTour>()
             .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<KhachSan, DatTour>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

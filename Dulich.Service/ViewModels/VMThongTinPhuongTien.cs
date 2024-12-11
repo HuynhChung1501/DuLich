@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using Travel.Domain.Models;
 
 namespace Dulich.Application.ViewModels
 {
-    public class VMPhuongTien : BaseModel
+    public class VMThongTinPhuongTien : BaseModel
     {
         [Description("Tên Phương tiện")]
         public string Name { get; set; }
@@ -42,7 +43,6 @@ namespace Dulich.Application.ViewModels
         [Description("Hoạt động")]
         public int Active { get; set; }
 
-        public List<PhuongTien> PhuongTiens { get; set; }
-        public PhuongTien PhuongTien { get; set; }
+        public List<ThongTinPhuongTien> ThongTinPhuongTiens { get; set; } = new List<ThongTinPhuongTien> { };
     }
 }

@@ -122,7 +122,7 @@ namespace Dulich.Infrastructure
         public DbSet<ThongTinChuyenDi> ThongTinChuyenDis { get; set; }
         public DbSet<ThongTinPhuongTien> ThongTinPhuongTien { get; set; }
         public DbSet<DatPhong> DatPhong { get; set; }
-        public DbSet<KhachSan> KhachSan { get; set; }
+        public DbSet<KhachSan> KhachSans { get; set; }
         public DbSet<LoaiPhong> LoaiPhong { get; set; }
         public DbSet<PhongKS> PhongKS { get; set; }
         public DbSet<TienIchPhong> TienIchPhong { get; set; }

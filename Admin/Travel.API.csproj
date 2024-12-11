@@ -37,6 +37,8 @@
     <ProjectReference Include="..\Domain\Travel.Domain.csproj" />
     <ProjectReference Include="..\Dulich.Infrastructure\Travel.Infrastructure.csproj" />
     <ProjectReference Include="..\Dulich.Service\Travel.Application.csproj" />
+    <ProjectReference Include="..\Travel.Utility\Travel.Utility.csproj" />
+  
   </ItemGroup>
 
   <ItemGroup>

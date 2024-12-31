@@ -41,6 +41,7 @@ namespace Travel.Application.Services
                 Subject = new ClaimsIdentity(new[] {
                     new Claim(ClaimTypes.Name, acount.FullName),
                     new Claim(ClaimTypes.Email, acount.Email ?? string.Empty),
+                    new Claim(ClaimTypes.Role, acount.Email ?? string.Empty),
                     new Claim("UsereName", acount.UsereName),
                     new Claim("IdUser", acount.ID.ToString()),
 

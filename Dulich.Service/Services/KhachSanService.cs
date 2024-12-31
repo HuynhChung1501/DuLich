@@ -12,11 +12,13 @@ using System.Threading.Tasks;
 using Travel.Application.Enums;
 using Travel.Application.Helpers;
 using Travel.Application.InterfaceService;
+using Travel.Application.ViewModels;
 using Travel.Domain.Interface;
+using Travel.Utility;
 
 namespace Travel.Application.Services
 {
-    class KhachSanService :BaseMasterService, IKhachSanService
+    public class KhachSanService : BaseMasterService, IKhachSanService
     {
         private readonly IMapper _mapper;
         private readonly DASContext _DasContext;
@@ -29,13 +31,13 @@ namespace Travel.Application.Services
 
         }
 
-        public async Task<KhachSan> Create(KhachSan khachSan)
+        public async Task<KhachSan> Create(KhachSan tour)
         {
             try
             {
-                await _DasContext.AddAsync(khachSan);
+                await _DasContext.AddAsync(tour);
                 await _DasContext.SaveChangesAsync();
-                return khachSan;
+                return tour;
             }
             catch (Exception ex)
             {
@@ -47,12 +49,12 @@ namespace Travel.Application.Services
         {
             try
             {
-                var khachSan = await _travelRepo.KhachSanRepository.FirstOrDefaultAsync(x => x.ID == id);
-                if (khachSan == null) throw new AppException("KhachSan không tồn tại hoặc đã bị xóa");
+                var tour = await _travelRepo.KhachSanRepository.FirstOrDefaultAsync(x => x.ID == id);
+                if (tour == null) throw new AppException("Thông tin không tồn tại hoặc đã bị xóa");
 
-                _travelRepo.KhachSanRepository.Delete(khachSan);
+                _travelRepo.KhachSanRepository.Delete(tour);
                 _DasContext.SaveChanges();
-                return $"Xóa KhachSan: {khachSan.Name} thành công";
+                return $"Xóa khách sạn: {tour.Name} thành công";
             }
             catch (Exception ex)
             {
@@ -85,9 +87,9 @@ namespace Travel.Application.Services
         {
             try
             {
-                var khachSan = await _travelRepo.KhachSanRepository.FirstOrDefaultAsync(x => x.ID == id);
-                if (khachSan == null) throw new AppException("KhachSan không tồn tại hoặc đã bị xóa");
-                return khachSan;
+                var tour = await _travelRepo.KhachSanRepository.FirstOrDefaultAsync(x => x.ID == id);
+                if (tour == null) throw new AppException("Thông tin không tồn tại hoặc đã bị xóa");
+                return tour;
             }
             catch (Exception e)
             {
@@ -100,38 +102,42 @@ namespace Travel.Application.Services
         {
             try
             {
-                var khachSan = await (from M in _travelRepo.KhachSanRepository.GetAll().AsNoTracking()
+                var tour = await (from M in _travelRepo.KhachSanRepository.GetAll().AsNoTracking()
                                   where (string.IsNullOrEmpty(searchMeta) || M.Name.Contains(searchMeta))
+                                  && M.Active == (int)EnumCommon.Status.Active
                                   orderby M.ID descending
                                   select M).ToListAsync();
-                if (!khachSan.Any()) throw new AppException("Không tìm thấy dữ liệu phù hợp");
+                if (Utils.IsNotEmpty(tour)) throw new AppException("Không tìm thấy dữ liệu phù hợp");
 
-                return khachSan;
+
+
+
+
+                return tour;
             }
             catch (Exception e)
             {
+
                 throw new AppException(e.Message);
             }
 
         }
 
-
-        public async Task<VMKhachSan> update(VMKhachSan model)
+        public async Task<KhachSan> update(VMKhachSan model)
         {
             try
             {
-                var khachSan = await (from m in _travelRepo.KhachSanRepository.GetAll()
+                var tour = await (from m in _travelRepo.KhachSanRepository.GetAll()
                                   where m.ID == model.ID
                                   select m).FirstOrDefaultAsync();
-                if (khachSan == null)
+                if (tour == null)
                 {
-                    throw new AppException("KhachSan hiện không tồn tại hoặc đã bị xóa");
+                    throw new AppException("Thông tin hiện không tồn tại hoặc đã bị xóa");
                 }
-                _mapper.Map(khachSan, model);
-                _DasContext.KhachSans.Update(khachSan);
+                _mapper.Map(model, tour);
+                _DasContext.KhachSans.Update(tour);
                 _DasContext.SaveChanges();
-
-                return model;
+                return tour;
             }
             catch (Exception e)
             {
@@ -140,35 +146,5 @@ namespace Travel.Application.Services
             }
 
         }
-
-        public async Task<VMKhachSan> GetById(int id)
-        {
-
-            var khachSan = await (from m in _travelRepo.KhachSanRepository.GetAll()
-                              where m.ID == id
-                              select m).FirstOrDefaultAsync();
-
-            if (khachSan == null)
-            {
-                throw new AppException("Dữ liệu không tồn tại hoặc đã bị xóa");
-            }
-            var vmKhachSan = _mapper.Map<VMKhachSan>(khachSan);
-
-
-            return vmKhachSan;
-        }
-
-        //public async Task<List<KhachSan>> GetKhachSanChild(int idParent)
-        //{
-        //    List<KhachSan> khachSans = new List<KhachSan>();
-
-        //    if (idParent <= 0)
-        //        return khachSans;
-
-        //    var khachSanByParent = await (from m in _travelRepo.KhachSanRepository.GetAll()
-        //                              where idParent == m.IDParent && m.IsActive == (int)EnumCommon.Status.Active
-        //                              select m).ToListAsync();
-        //    return khachSanByParent;
-        //}
     }
 }

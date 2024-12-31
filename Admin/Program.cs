@@ -43,6 +43,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IThongTinPhuongTienService, ThongTinPhuongTienService>();
 builder.Services.AddScoped<IThongTinChuyenDiService, ThongTinChuyenDiService>();
 builder.Services.AddScoped<IMenuServices, MenuService>();
+builder.Services.AddScoped<IKhachSanService, KhachSanService>();
 builder.Services.AddScoped<ITravelRepositoryWrapper, TraveRepositoryWrapper>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IAccountService, AccountService>();

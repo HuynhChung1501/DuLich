@@ -10,9 +10,9 @@ using Travel.Domain.Interface;
 using Travel.Domain.Models;
 
 namespace Travel.API.Controllers
-{
-    [Route("api/[controller]")]
+{[Route("api/[controller]")]
     [ApiController]
+    
     public class TourController : BaseController
     {
         private readonly IMapper _mapper;

@@ -9,6 +9,6 @@ namespace Travel.Application.InterfaceService
 {
     public interface ILoginService
     {
-        string GenerateToken(Account acount);
+        Task<string> GenerateToken(Account acount);
     }
 }

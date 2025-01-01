@@ -20,6 +20,8 @@ namespace Travel.Domain.Interface
         IAccountRepository Account { get; }
         ITourRepository TourRepository { get; }
         IDatTourRepository DatTourRepository { get; }
+        IPhanQuyenReponsitory PhanQuyenReponsitory { get; }
+        IPermissionReponsitory PermissionReponsitory { get; }
 
     }
 }

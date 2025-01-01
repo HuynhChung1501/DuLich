@@ -1,15 +1,7 @@
 ﻿
-using System;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Dulich.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Microsoft.Extensions.DependencyInjection;
-using Travel.Domain;
 using Travel.Domain.Models;
 
 namespace Dulich.Infrastructure
@@ -131,9 +123,9 @@ namespace Dulich.Infrastructure
         public DbSet<DiaDiemDuLich> DiaDiemDuLich { get; set; }
         public DbSet<KhachHang> KhachHang { get; set; }
         public DbSet<PhanQuyen> PhanQuyen { get; set; }
-        public DbSet<ChucNang> ChucNang { get; set; }
         public DbSet<Tour> Tours { get; set; }
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
 
         #endregion
         //RenderHere

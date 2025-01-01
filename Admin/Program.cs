@@ -49,6 +49,7 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITourServices, TourService>();
 builder.Services.AddScoped<IDatTourServices, DatTourService>();
+builder.Services.AddScoped<IPhanQuyenService, PhanQuyenService>();
 builder.Services.AddScoped<GetIdUserJWT>();
 builder.Services.AddHttpContextAccessor();
 //builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));

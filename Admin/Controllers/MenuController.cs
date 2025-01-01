@@ -20,6 +20,7 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "SuaMenu,ThemMenu,XemMenu,XoaMenu")]
     public class MenuController :  BaseController
     {
         private readonly IMapper _mapper;
@@ -36,7 +37,6 @@ namespace Travel.API.Controllers
         #region search
         [HttpGet]
         [Route("List")]
-        [Authorize]
         public async Task<IActionResult> Index(string? searchMeta = "")
         {
             var Menus = await _menuServices.Search(searchMeta);
@@ -46,7 +46,6 @@ namespace Travel.API.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
             var menu = await _menuServices.GetById(id);
@@ -69,7 +68,6 @@ namespace Travel.API.Controllers
 
         [HttpPost]
         [Route("Create")]
-        [Authorize]
         public async Task<IActionResult> Create(Menu menu)
         {
             var rs = await _menuServices.Create(menu);
@@ -98,7 +96,6 @@ namespace Travel.API.Controllers
 
         [HttpPut]
         [Route("Update")]
-        [Authorize]
         public async Task<IActionResult> Update(VMMenu menu)
         {
             var rs = await _menuServices.update(menu);
@@ -110,7 +107,6 @@ namespace Travel.API.Controllers
         #region Delete
         [HttpDelete]
         [Route("Delete")]
-        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _menuServices.Delete(id);
@@ -119,7 +115,6 @@ namespace Travel.API.Controllers
 
         [HttpDelete]
         [Route("Deletes")]
-        [Authorize]
         public async Task<IActionResult> Deletes([FromQuery] int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);

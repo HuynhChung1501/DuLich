@@ -39,7 +39,7 @@ namespace Travel.Application.Services
 
         public async Task<Account> Create(Account account)
         {
-            if(CheckValid(account.PassWord))
+            if(!CheckValid(account.PassWord))
             {
                 throw new AppException("Mật khẩu không được chứa ký tự đặc biệt");
             }

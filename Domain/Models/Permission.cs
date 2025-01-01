@@ -6,22 +6,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace Travel.Domain
+namespace Travel.Domain.Models
 {
-    [Table("ChucNang")]
-    public class ChucNang
+    [Table("Permission")]
+    [Description("Chức năng")]
+    public class Permission
     {
-        [Description("Tên chức năng")]
-        public string? TenChucNang { get; set; }
-
         [Key]
         [Description("Mã chức năng")]
         [Required]
         public required string MaChucNang { get; set; }
-        
-        [Description("Mã chức năng")]
-        public string? NhomChucNang { get; set; }
-
+        [Description("Tên chức năng")]
+        [Required]
+        public required string TenChucNang { get; set; } 
+        [Description("Nhóm chức năng")]
+        public string? NhomChucNang { get; set; } 
     }
 }

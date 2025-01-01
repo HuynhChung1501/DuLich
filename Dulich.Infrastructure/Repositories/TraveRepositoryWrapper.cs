@@ -162,5 +162,30 @@ namespace Travel.Infrastructure.Repositories
             }
         }
 
+        private IPhanQuyenReponsitory _phanQuyenReponsitory;
+        public IPhanQuyenReponsitory PhanQuyenReponsitory
+        {
+            get
+            {
+                if (_phanQuyenReponsitory == null)
+                {
+                    _phanQuyenReponsitory = new PhanQuyenReponsitory(_repoContext);
+                }
+                return _phanQuyenReponsitory;
+            }
+        }
+        private IPermissionReponsitory _permissionReponsitory;
+        public IPermissionReponsitory PermissionReponsitory
+        {
+            get
+            {
+                if (_permissionReponsitory == null)
+                {
+                    _permissionReponsitory = new PermissionReponsitory(_repoContext);
+                }
+                return _permissionReponsitory;
+            }
+        }
+
     }
 }

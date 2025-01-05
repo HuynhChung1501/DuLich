@@ -10,17 +10,19 @@ using System.Threading.Tasks;
 
 namespace Travel.Domain.Models
 {
-    [Table("PhanQuyen")]
-    public class PhanQuyen : BaseModel
+    [Table("Group_Permission")]
+    public class GroupPermission : BaseModel
     {
-        [Description("ID Account")]
+        [Description("Tên nhóm quyền")]
+        [MaxLength(250)]
         [Required]
-        public required int IDAccount { get; set; }
+        public required string Name { get; set; }
 
-        [Description("Trường id bảng Permission")]
-        [DisplayName("Permission_Id")]
-        public int Permission_id { get; set; }
         [Description("Mô tả")]
-        public string? MoTa { get; set; }
+        public string Describe { get; set; } = string.Empty;
+
+        [Description("Trạng thái")]
+        public int Status { get; set; } = 1;
+
     }
 }

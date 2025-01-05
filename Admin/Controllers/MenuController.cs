@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Travel.API.Controllers;
+using Travel.Application.Enums;
 using Travel.Application.ViewModels;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;

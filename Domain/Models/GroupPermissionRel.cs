@@ -1,26 +1,24 @@
-﻿using Dulich.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dulich.Domain.Models;
 
 namespace Travel.Domain.Models
 {
-    [Table("PhanQuyen")]
-    public class PhanQuyen : BaseModel
+    [Table("Group_permission_rel")]
+    public class GroupPermissionRel : BaseModel
     {
-        [Description("ID Account")]
-        [Required]
-        public required int IDAccount { get; set; }
-
         [Description("Trường id bảng Permission")]
         [DisplayName("Permission_Id")]
         public int Permission_id { get; set; }
-        [Description("Mô tả")]
-        public string? MoTa { get; set; }
+
+        [Description("Trường id bảng Group Permission ")]
+        [DisplayName("Group_Permission_Id")]
+        public int Group_permission_id { get; set; }
     }
 }

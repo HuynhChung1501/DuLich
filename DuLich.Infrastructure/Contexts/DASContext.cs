@@ -126,6 +126,8 @@ namespace Dulich.Infrastructure
         public DbSet<Tour> Tours { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Permission> Permissions { get; set; }
+        public DbSet<GroupPermission> GroupPermission { get; set; }
+        public DbSet<GroupPermissionRel> GroupPermissionRel { get; set; }
 
         #endregion
         //RenderHere

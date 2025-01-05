@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Travel.Utility\Travel.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Permission\" />
+  </ItemGroup>
+
 </Project>

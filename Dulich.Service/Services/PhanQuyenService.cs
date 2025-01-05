@@ -77,25 +77,6 @@ namespace Travel.Application.Services
             }
         }
 
-        public async Task<List<PhanQuyen>> Search(string? searchMeta)
-        {
-            try
-            {
-                var phanQuyen = await (from M in _travelRepo.PhanQuyenReponsitory.GetAll().AsNoTracking()
-                                  where (string.IsNullOrEmpty(searchMeta) || M.MaChucNang.Contains(searchMeta))
-                                  orderby M.ID descending
-                                  select M).ToListAsync();
-                if (!phanQuyen.Any()) throw new AppException("Không tìm thấy dữ liệu phù hợp");
-
-                return phanQuyen;
-            }
-            catch (Exception e)
-            {
-                throw new AppException(e.Message);
-            }
-
-        }
-
         public async Task<VMPhanQuyen> update(VMPhanQuyen model)
         {
             try
@@ -122,11 +103,11 @@ namespace Travel.Application.Services
 
         }
 
-        public async Task<PhanQuyen> GetByMa(string MaPhanQuyen)
+        public async Task<PhanQuyen> GetByMa(int MaPhanQuyen)
         {
 
             var phanQuyen = await (from m in _travelRepo.PhanQuyenReponsitory.GetAll()
-                                 where m.MaChucNang == MaPhanQuyen
+                                 where m.ID == MaPhanQuyen
                                    select m).FirstOrDefaultAsync();
 
             if (phanQuyen == null)
@@ -144,7 +125,7 @@ namespace Travel.Application.Services
             }
             var permissions = (from per in _travelRepo.PermissionReponsitory.GetAllList()
                                join pq in _travelRepo.PhanQuyenReponsitory.GetAll().Where(x => x.IDAccount == idUser)
-                               on per.MaChucNang equals pq.MaChucNang
+                               on per.ID equals pq.ID
                                select per).ToList();
 
             if (permissions == null)

@@ -34,6 +34,10 @@ namespace Travel.Domain.Models
         [MaxLength(150)]
         public string? Phone { get; set; }
 
+        [Description("Trường id bảng Group Permission ")]
+        [DisplayName("Group_Permission_Id")]
+        public int Group_permission_id { get; set; }
+
         [DefaultValue("1")]
         public int Active { get; set; } = 1;
 

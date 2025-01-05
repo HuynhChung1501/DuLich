@@ -5,9 +5,8 @@ namespace Travel.Application.InterfaceService
 {
     public interface IPhanQuyenService 
     {
-        Task<PhanQuyen> GetByMa(string MaPhanQuyen);
+        Task<PhanQuyen> GetByMa(int MaPhanQuyen);
         Task<List<Permission>> GetRolesByUser(int idUser);
-        Task<List<PhanQuyen>> Search(string? searchMeta);
         Task<string> Delete(int id);
         Task<string> Deletes(int[] ids);
         Task<VMPhanQuyen> update(VMPhanQuyen model);

@@ -38,7 +38,7 @@ namespace Travel.Application.Services
             var secretKey = _config["AppSettings:SecretKey"];
             var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey ?? string.Empty);
 
-            var roles =await (_phanQuyenService.GetRolesByUser(acount.ID));
+            var roles = await (_phanQuyenService.GetRolesByUser(acount.ID));
 
             var claims = new List<Claim>
             {
@@ -49,7 +49,7 @@ namespace Travel.Application.Services
                     new Claim("IdUser", acount.ID.ToString()),
                     new Claim("TokenId", Guid.NewGuid().ToString())
             };
-            claims.AddRange(roles.Select(roles => new Claim(ClaimTypes.Role, roles.MaChucNang)));
+            claims.AddRange(roles.Select(roles => new Claim(ClaimTypes.Role, roles.Name)));
             
             var TokenDescription = new SecurityTokenDescriptor
             {

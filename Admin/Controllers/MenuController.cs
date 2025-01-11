@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Travel.API.Controllers;
 using Travel.Application.Enums;
+using Travel.Application.HasPermissionAttribute;
 using Travel.Application.ViewModels;
 using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
@@ -21,7 +22,7 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "SuaMenu,ThemMenu,XemMenu,XoaMenu")]
+    [HasPermission(Permissions = new[] { EnumPermission.Read }, Modules = new[] { EnumModule.Menu })]
     public class MenuController :  BaseController
     {
         private readonly IMapper _mapper;

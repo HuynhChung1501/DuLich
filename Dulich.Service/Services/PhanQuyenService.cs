@@ -25,6 +25,58 @@ namespace Travel.Application.Services
 
         }
 
+        #region Get
+        public async Task<PhanQuyen> GetById(int id)
+        {
+
+            var phanQuyen = await (from m in _travelRepo.PhanQuyenReponsitory.GetAll()
+                                   where m.ID == id
+                                   select m).FirstOrDefaultAsync();
+
+            if (phanQuyen == null)
+            {
+                throw new AppException("Dữ liệu không tồn tại hoặc đã bị xóa");
+            }
+
+            return phanQuyen;
+        }
+        public async Task<List<Permission>> GetRolesByUser(int idUser)
+        {
+            var user = await _travelRepo.Account.FirstOrDefaultAsync(x => x.ID == idUser);
+            if (user == null)
+            {
+                throw new AppException("Acount không tồn tại hoặc đã bị xóa");
+            }
+            var permissions = (from per in _travelRepo.PermissionReponsitory.GetAllList()
+                               join pq in _travelRepo.PhanQuyenReponsitory.GetAll().Where(x => x.IDAccount == idUser)
+                               on per.ID equals pq.ID
+                               select per).ToList();
+
+            if (permissions == null)
+            {
+                throw new AppException("Người dùng hiện không có quyền nào");
+            }
+
+            return permissions;
+        }
+        public async Task<List<PhanQuyen>> Search(string? searchMeta)
+        {
+            try
+            {
+                var phanQuyen = await (from M in _travelRepo.PhanQuyenReponsitory.GetAll().AsNoTracking()
+                                       orderby M.ID descending
+                                       select M).ToListAsync();
+                return phanQuyen;
+            }
+            catch (Exception e)
+            {
+                throw new AppException(e.Message);
+            }
+
+        }
+        #endregion
+
+        #region Create
         public async Task<PhanQuyen> Create(PhanQuyen phanQuyen)
         {
             try
@@ -38,7 +90,34 @@ namespace Travel.Application.Services
                 throw new AppException(ex.Message);
             }
         }
+        #endregion
 
+        #region Update
+        public async Task<PhanQuyen> update(PhanQuyen model)
+        {
+            try
+            {
+                var phanQuyen = await (from m in _travelRepo.PhanQuyenReponsitory.GetAll()
+                                       where m.ID == model.ID
+                                       select m).FirstOrDefaultAsync();
+                if (phanQuyen == null)
+                {
+                    throw new AppException("Thông tin hiện không tồn tại hoặc đã bị xóa");
+                }
+                _DasContext.PhanQuyen.Update(phanQuyen);
+                _DasContext.SaveChanges();
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                throw new AppException(e.Message);
+            }
+
+        }
+        #endregion
+
+        #region Delete
         public async Task<string> Delete(int id)
         {
             try
@@ -76,65 +155,6 @@ namespace Travel.Application.Services
                 throw new AppException(e.Message);
             }
         }
-
-        public async Task<VMPhanQuyen> update(VMPhanQuyen model)
-        {
-            try
-            {
-                var phanQuyen = await (from m in _travelRepo.PhanQuyenReponsitory.GetAll()
-                                  where m.ID == model.ID
-                                  select m).FirstOrDefaultAsync();
-                if (phanQuyen == null)
-                {
-                    throw new AppException("Thông tin hiện không tồn tại hoặc đã bị xóa");
-                }
-                _mapper.Map(model, phanQuyen);
-                _DasContext.PhanQuyen.Update(phanQuyen);
-                _DasContext.SaveChanges();
-                _mapper.Map(phanQuyen, model);
-
-                return model;
-            }
-            catch (Exception e)
-            {
-
-                throw new AppException(e.Message);
-            }
-
-        }
-
-        public async Task<PhanQuyen> GetByMa(int MaPhanQuyen)
-        {
-
-            var phanQuyen = await (from m in _travelRepo.PhanQuyenReponsitory.GetAll()
-                                 where m.ID == MaPhanQuyen
-                                   select m).FirstOrDefaultAsync();
-
-            if (phanQuyen == null)
-            {
-                throw new AppException("Dữ liệu không tồn tại hoặc đã bị xóa");
-            }
-
-            return phanQuyen;
-        }
-        public async Task<List<Permission>> GetRolesByUser(int idUser)
-        {
-            var user = await _travelRepo.Account.FirstOrDefaultAsync(x => x.ID == idUser);
-            if (user == null) { 
-                throw new AppException("Acount không tồn tại hoặc đã bị xóa");
-            }
-            var permissions = (from per in _travelRepo.PermissionReponsitory.GetAllList()
-                               join pq in _travelRepo.PhanQuyenReponsitory.GetAll().Where(x => x.IDAccount == idUser)
-                               on per.ID equals pq.ID
-                               select per).ToList();
-
-            if (permissions == null)
-            {
-                throw new AppException("Người dùng hiện không có quyền nào");
-            }
-
-            return permissions;
-        }
-
+        #endregion
     }
 }

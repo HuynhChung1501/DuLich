@@ -77,13 +77,14 @@ namespace Travel.Application.Services
         #endregion
 
         #region Create
-        public async Task<PhanQuyen> Create(PhanQuyen phanQuyen)
+        public async Task<PhanQuyen> Create(PhanQuyen model)
         {
             try
             {
-                await _DasContext.AddAsync(phanQuyen);
+                
+                await _DasContext.AddAsync(model);
                 await _DasContext.SaveChangesAsync();
-                return phanQuyen;
+                return model;
             }
             catch (Exception ex)
             {
@@ -97,13 +98,12 @@ namespace Travel.Application.Services
         {
             try
             {
-                var phanQuyen = await (from m in _travelRepo.PhanQuyenReponsitory.GetAll()
-                                       where m.ID == model.ID
-                                       select m).FirstOrDefaultAsync();
+                var phanQuyen = await _travelRepo.PhanQuyenReponsitory.FirstOrDefaultAsync(x => x.ID == model.ID);
                 if (phanQuyen == null)
                 {
                     throw new AppException("Thông tin hiện không tồn tại hoặc đã bị xóa");
                 }
+                _mapper.Map(model, phanQuyen);
                 _DasContext.PhanQuyen.Update(phanQuyen);
                 _DasContext.SaveChanges();
 
@@ -127,7 +127,7 @@ namespace Travel.Application.Services
 
                 _travelRepo.PhanQuyenReponsitory.Delete(phanQuyen);
                 _DasContext.SaveChanges();
-                return $"Xóa Phân Quyền thành công";
+                return $"Xóa phân quyền thành công";
             }
             catch (Exception ex)
             {

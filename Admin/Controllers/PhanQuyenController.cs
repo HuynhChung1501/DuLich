@@ -49,7 +49,7 @@ namespace Travel.API.Controllers
         [HttpPost]
         [Route("Create")]
         [Authorize]
-        public async Task<IActionResult> Create([FromBody] PhanQuyen phanQuyen)
+        public async Task<IActionResult> Create([FromHeader] PhanQuyen phanQuyen)
         {
             var rs = await _PhanQuyenService.Create(phanQuyen);
 
@@ -62,7 +62,7 @@ namespace Travel.API.Controllers
         [HttpPut]
         [Authorize]
         [Route("Update")]
-        public async Task<IActionResult> Update(PhanQuyen phanQuyen)
+        public async Task<IActionResult> Update([FromHeader] PhanQuyen phanQuyen)
         {
             var rs = await _PhanQuyenService.update(phanQuyen);
 

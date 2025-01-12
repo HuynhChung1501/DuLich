@@ -50,7 +50,7 @@ namespace Travel.API.Controllers
         [HttpPost]
         [Route("Create")]
         [Authorize]
-        public async Task<IActionResult> Create([FromBody] Permission permission)
+        public async Task<IActionResult> Create([FromHeader] Permission permission)
         {
             var rs = await _PermissionService.Create(permission);
 
@@ -63,7 +63,7 @@ namespace Travel.API.Controllers
         [HttpPut]
         [Authorize]
         [Route("Update")]
-        public async Task<IActionResult> Update(Permission permission)
+        public async Task<IActionResult> Update([FromHeader] Permission permission)
         {
             var rs = await _PermissionService.update(permission);
 

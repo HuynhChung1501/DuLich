@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Permission\**" />
+    <EmbeddedResource Remove="Permission\**" />
+    <None Remove="Permission\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt-Official" Version="0.1.109" />
     <PackageReference Include="MailKit" Version="4.7.1.1" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
@@ -22,10 +28,6 @@
     <ProjectReference Include="..\Domain\Travel.Domain.csproj" />
     <ProjectReference Include="..\Dulich.Infrastructure\Travel.Infrastructure.csproj" />
     <ProjectReference Include="..\Travel.Utility\Travel.Utility.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Permission\" />
   </ItemGroup>
 
 </Project>

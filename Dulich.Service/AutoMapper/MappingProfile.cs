@@ -41,6 +41,12 @@ namespace Dulich.Domain.AutoMapper
 
             CreateMap<KhachSan, DatTour>()
             .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<Permission, Permission>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<PhanQuyen, PhanQuyen>()
+            .ForAllMembers(options => options.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

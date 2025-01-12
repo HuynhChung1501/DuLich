@@ -86,12 +86,11 @@ namespace Travel.Application.Services
         {
             try
             {
-                var permission = await (from m in _travelRepo.PermissionReponsitory.GetAll()
-                                        select m).FirstOrDefaultAsync();
+                var permission = await _travelRepo.PermissionReponsitory.FirstOrDefaultAsync(x => x.ID == model.ID);
 
                 if (permission == null)
                 {
-                    throw new AppException("Phương tiện hiện không tồn tại hoặc đã bị xóa");
+                    throw new AppException("Quyền hiện không tồn tại hoặc đã bị xóa");
                 }
                 _mapper.Map(model, permission);
                 _DasContext.Permissions.Update(permission);

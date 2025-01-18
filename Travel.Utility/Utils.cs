@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text;
@@ -207,6 +208,27 @@ namespace Travel.Utility
             }
             return true;
         }
+        /// <summary>
+        /// Lấy mô tả từ enum dựa trên giá trị int
+        /// </summary>
+        /// <typeparam name="TEnum">Loại enum</typeparam>
+        /// <param name="intValue">Giá trị int</param>
+        /// <returns>Mô tả hoặc null nếu không tìm thấy</returns>
+        public static string GetEnumDescription<TEnum>(int intValue) where TEnum : Enum
+        {
+            if (Enum.IsDefined(typeof(TEnum), intValue))
+            {
+                var enumValue = (TEnum)Enum.ToObject(typeof(TEnum), intValue);
 
+                var field = typeof(TEnum).GetField(enumValue.ToString());
+                var attribute = (DescriptionAttribute)field
+                    .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                    .FirstOrDefault();
+
+                return attribute?.Description ?? enumValue.ToString();
+            }
+
+            return null; // Giá trị không hợp lệ
+        }
     }
 }

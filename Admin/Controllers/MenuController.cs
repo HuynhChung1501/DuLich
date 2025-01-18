@@ -21,7 +21,7 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[HasPermission(Permissions = new[] { EnumPermission.Read }, Modules = new[] { EnumModule.Menu })]
+    
     public class MenuController :  BaseController
     {
         private readonly IMapper _mapper;
@@ -38,6 +38,7 @@ namespace Travel.API.Controllers
         #region search
         [HttpGet]
         [Route("List")]
+        [HasPermission(Permissions = new[] { EnumPermission.Read }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Index(string? searchMeta = "")
         {
             var Menus = await _menuServices.Search(searchMeta);
@@ -47,6 +48,7 @@ namespace Travel.API.Controllers
 
         [HttpGet]
         [Route("GetById")]
+        [HasPermission(Permissions = new[] { EnumPermission.Read }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> GetById(int id)
         {
             var menu = await _menuServices.GetById(id);
@@ -57,18 +59,10 @@ namespace Travel.API.Controllers
         #endregion
 
         #region Thêm mới menu
-        //[httppost(name = "thêm mới menu")]
-        //public async task<iactionresult> create()
-        //{
-        //    var rs = new vmmenu();
-        //    rs.menus = _travelrepo.menu.getalllist().tolist() ?? new list<menu>();
-        //    viewdata["title"] = "thêm mới menu";
-        //    viewdata["linksubmit"] = "create";
-        //    return view("create", rs);
-        //}
 
         [HttpPost]
         [Route("Create")]
+        [HasPermission(Permissions = new[] { EnumPermission.Create }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Create(Menu menu)
         {
             var rs = await _menuServices.Create(menu);
@@ -78,25 +72,9 @@ namespace Travel.API.Controllers
         #endregion
 
         #region Update
-        //sử dụng khi dựng web
-        //public async Task<IActionResult> Update(int id)
-        //{
-        //    ViewData["Title"] = "Chỉnh sửa menu";
-        //    ViewData["linkSubmit"] = "Update";
-
-        //    var rs = await _menuServices.GetVmMenu(id);
-        //    if (rs == null)
-        //    {
-        //        return JSErrorResult("Menu không tồn tại");
-        //    }
-        //    rs.NameParent = _travelRepo.Menu.FirstOrDefault(x => x.ID == rs.Menu.IDParent)?.Name;
-
-        //    rs.Menus = _travelRepo.Menu.GetAllList().ToList() ?? new List<Menu>();
-        //    return View("Update", rs);
-        //}
-
         [HttpPut]
         [Route("Update")]
+        [HasPermission(Permissions = new[] { EnumPermission.Update }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Update(VMMenu menu)
         {
             var rs = await _menuServices.update(menu);
@@ -108,6 +86,7 @@ namespace Travel.API.Controllers
         #region Delete
         [HttpDelete]
         [Route("Delete")]
+        [HasPermission(Permissions = new[] { EnumPermission.Delete }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _menuServices.Delete(id);
@@ -116,6 +95,7 @@ namespace Travel.API.Controllers
 
         [HttpDelete]
         [Route("Deletes")]
+        [HasPermission(Permissions = new[] { EnumPermission.Delete }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Deletes([FromQuery] int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);

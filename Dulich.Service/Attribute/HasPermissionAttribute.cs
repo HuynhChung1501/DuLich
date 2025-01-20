@@ -14,15 +14,15 @@ using Microsoft.EntityFrameworkCore;
 using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 using System.Linq;
 using Travel.Infrastructure.Migrations;
+using System.Security.Claims;
+using Travel.Utility;
 public class HasPermissionAttribute : Attribute, IAuthorizationFilter
 {
-    public EnumPermission[] Permissions { get; set; }
-    public EnumModule[] Modules { get; set; }
+    public string Permissions { get; set; }
 
     public async void OnAuthorization(AuthorizationFilterContext context)
     {
-        Modules = Modules ?? new EnumModule[] {};
-        Permissions = Permissions ?? new EnumPermission[] {};
+        
         var user = context.HttpContext.User;
         if (user?.Identity == null || !user.Identity.IsAuthenticated)
         {
@@ -34,20 +34,19 @@ public class HasPermissionAttribute : Attribute, IAuthorizationFilter
         {
             throw new AppException("User ID claim is missing or invalid");
         }
-        var userId = userIdClaim.Value;
-        bool isAccess = false;
-        isAccess = await CheckPermission(userId, Modules, Permissions);
-        // Kiểm tra module
-        if (!isAccess)
+
+        var permission = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+        if (permission != null) {
+            string permissionValueint = Utils.GetDescriptionByValue(EnumPermission.Admin);
+            if (permissionValueint != Permissions)
+            {
+                context.Result = new ForbidResult(); // HTTP 403 nếu không thuộc module
+            }
+        }
+        else
         {
-            context.Result = new ForbidResult(); // HTTP 403 nếu không thuộc module
-            return;
+            throw new AppException("User hiện tại chưa được phần quyền");
         }
     }
 
-    public async Task<bool> CheckPermission(string userId, EnumModule[] Modules, EnumPermission[] Permissions)
-    {
-
-        return true;
-    }
 }

@@ -15,6 +15,7 @@ using Travel.Domain.CustomModels;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
 using Travel.Infrastructure.Migrations;
+using Travel.Utility;
 using X.PagedList.Extensions;
 
 namespace Travel.API.Controllers
@@ -38,7 +39,7 @@ namespace Travel.API.Controllers
         #region search
         [HttpGet]
         [Route("List")]
-        [HasPermission(Permissions = new[] { EnumPermission.Read }, Modules = new[] { EnumModule.Menu })]
+        [HasPermission(Permissions = "User" )]
         public async Task<IActionResult> Index(string? searchMeta = "")
         {
             var Menus = await _menuServices.Search(searchMeta);
@@ -48,7 +49,7 @@ namespace Travel.API.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        [HasPermission(Permissions = new[] { EnumPermission.Read }, Modules = new[] { EnumModule.Menu })]
+        [HasPermission(Permissions = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             var menu = await _menuServices.GetById(id);
@@ -62,7 +63,7 @@ namespace Travel.API.Controllers
 
         [HttpPost]
         [Route("Create")]
-        [HasPermission(Permissions = new[] { EnumPermission.Create }, Modules = new[] { EnumModule.Menu })]
+        [HasPermission(Permissions = "Admin")]
         public async Task<IActionResult> Create(Menu menu)
         {
             var rs = await _menuServices.Create(menu);
@@ -74,7 +75,6 @@ namespace Travel.API.Controllers
         #region Update
         [HttpPut]
         [Route("Update")]
-        [HasPermission(Permissions = new[] { EnumPermission.Update }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Update(VMMenu menu)
         {
             var rs = await _menuServices.update(menu);
@@ -86,7 +86,6 @@ namespace Travel.API.Controllers
         #region Delete
         [HttpDelete]
         [Route("Delete")]
-        [HasPermission(Permissions = new[] { EnumPermission.Delete }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Delete(int id)
         {
             var rs = await _menuServices.Delete(id);
@@ -95,7 +94,6 @@ namespace Travel.API.Controllers
 
         [HttpDelete]
         [Route("Deletes")]
-        [HasPermission(Permissions = new[] { EnumPermission.Delete }, Modules = new[] { EnumModule.Menu })]
         public async Task<IActionResult> Deletes([FromQuery] int[] ids)
         {
             var rs = await _menuServices.Deletes(ids);

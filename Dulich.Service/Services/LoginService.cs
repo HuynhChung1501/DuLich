@@ -47,13 +47,11 @@ namespace Travel.Application.Services
             {
                 new Claim(ClaimTypes.Name, acount.FullName),
                     new Claim(ClaimTypes.Email, acount.Email ?? string.Empty),
-                    new Claim(ClaimTypes.Role, acount.Email ?? string.Empty),
+                    new Claim(ClaimTypes.Role, acount.IsAdmin.ToString()),
                     new Claim("UsereName", acount.UsereName),
                     new Claim("IdUser", acount.ID.ToString()),
                     new Claim("TokenId", Guid.NewGuid().ToString())
             };
-            claims.AddRange(roles.Select(roles => new Claim("Permission", roles.Permission_type.ToString())));
-            claims.AddRange(roles.Select(roles => new Claim("Module", roles.Module_type.ToString())));
 
             var TokenDescription = new SecurityTokenDescriptor
             {

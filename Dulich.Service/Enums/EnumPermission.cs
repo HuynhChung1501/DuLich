@@ -26,14 +26,23 @@ namespace Travel.Application.Enums
     }
     public enum EnumPermission
     {
-        [Description("Xem")]
-        Read = 1,
-        [Description("Tạo mới")]
-        Create = 2,
-        [Description("Chỉnh sửa")]
-        Update = 3,
-        [Description("Xóa")]
-        Delete = 4,
+        [Description("User")]
+        User = 0,
+        [Description("Admin")]
+        Admin = 1,
 
     }
+
+    //public enum EnumPermission
+    //{
+    //    [Description("Xem")]
+    //    Read = 1,
+    //    [Description("Tạo mới")]
+    //    Create = 2,
+    //    [Description("Chỉnh sửa")]
+    //    Update = 3,
+    //    [Description("Xóa")]
+    //    Delete = 4,
+
+    //}
 }

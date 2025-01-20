@@ -40,6 +40,7 @@ namespace Travel.Domain.Models
 
         [DefaultValue("1")]
         public int Active { get; set; } = 1;
+        public int IsAdmin { get; set; }
 
     }
 }

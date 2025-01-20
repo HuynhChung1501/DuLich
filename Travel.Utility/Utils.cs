@@ -230,5 +230,41 @@ namespace Travel.Utility
 
             return null; // Giá trị không hợp lệ
         }
+        /// <summary>
+        /// Lấy ra Description và truyền vào Enum Value đó 
+        /// </summary>
+        /// <typeparam name="T">Enum</typeparam>
+        /// <param name="value">EnumValue (Enum.value)</param>
+        /// <returns></returns>
+        public static string GetDescriptionByValue<T>(T value) where T : Enum
+        {
+            string result = string.Empty;
+            Type typeFromHandle = typeof(T);
+            Array enumValues = typeFromHandle.GetEnumValues();
+            try
+            {
+                foreach (T item in enumValues)
+                {
+                    if (item.Equals(value))
+                    {
+                        MemberInfo element = typeFromHandle.GetMember(item.ToString()).First();
+                        DescriptionAttribute customAttribute = element.GetCustomAttribute<DescriptionAttribute>();
+                        if (customAttribute != null)
+                        {
+                            result = customAttribute.Description;
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return result;
+            }
+
+            return result;
+        }
+        
+
     }
 }

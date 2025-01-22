@@ -22,8 +22,8 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
-    public class MenuController :  BaseController
+    [HasPermission(Permissions = "Admin")]
+    public class MenuController : BaseController
     {
         private readonly IMapper _mapper;
         private readonly IMenuServices _menuServices;
@@ -39,7 +39,6 @@ namespace Travel.API.Controllers
         #region search
         [HttpGet]
         [Route("List")]
-        [HasPermission(Permissions = "User" )]
         public async Task<IActionResult> Index(string? searchMeta = "")
         {
             var Menus = await _menuServices.Search(searchMeta);
@@ -49,7 +48,6 @@ namespace Travel.API.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        [HasPermission(Permissions = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             var menu = await _menuServices.GetById(id);
@@ -63,7 +61,6 @@ namespace Travel.API.Controllers
 
         [HttpPost]
         [Route("Create")]
-        [HasPermission(Permissions = "Admin")]
         public async Task<IActionResult> Create(Menu menu)
         {
             var rs = await _menuServices.Create(menu);

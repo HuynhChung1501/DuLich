@@ -10,6 +10,7 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [HasPermission(Permissions = "Admin")]
     public class PhanQuyenController : ControllerBase
     {
         private readonly IMapper _mapper;

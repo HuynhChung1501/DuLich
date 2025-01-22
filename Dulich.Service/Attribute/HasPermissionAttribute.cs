@@ -37,7 +37,7 @@ public class HasPermissionAttribute : Attribute, IAuthorizationFilter
 
         var permission = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
         if (permission != null) {
-            string permissionValueint = Utils.GetDescriptionByValue(EnumPermission.Admin);
+            string permissionValueint = Utils.GetEnumDescription<EnumPermission>(int.Parse(permission.Value));
             if (permissionValueint != Permissions)
             {
                 context.Result = new ForbidResult(); // HTTP 403 nếu không thuộc module

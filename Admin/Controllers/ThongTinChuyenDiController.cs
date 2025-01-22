@@ -12,6 +12,7 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [HasPermission(Permissions = "Admin")]
     public class ThongTinChuyenDiController : BaseController
     {
         private readonly IMapper _mapper;

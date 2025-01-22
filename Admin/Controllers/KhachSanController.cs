@@ -13,6 +13,7 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [HasPermission(Permissions = "Admin")]
     public class KhachSanController : BaseController
     {
 

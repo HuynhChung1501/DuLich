@@ -7,6 +7,7 @@ using Travel.Application.Helpers;
 using Travel.Application.InterfaceService;
 using Travel.Domain.Interface;
 using Travel.Domain.Models;
+using Travel.Utility;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Travel.API.Controllers
@@ -31,6 +32,10 @@ namespace Travel.API.Controllers
         [Route("SignIn")]
         public async Task<IActionResult> SignIn(LoginModel model)
         {
+            if (Utils.IsNullOrEmpty(model.UsereName) && Utils.IsNullOrEmpty(model.PassWord) )
+            {
+                return BadRequest(new { message = "Trường UserName và Password không được để trống!" });
+            }
             var user = await _travelRepo.Account.SingleOrDefaultAsync(u => u.UsereName == model.UsereName);
 
             if (user == null || model.UsereName == string.Empty)
@@ -41,7 +46,6 @@ namespace Travel.API.Controllers
             bool isPasswordMatch = BCrypt.Net.BCrypt.Verify(model.PassWord, user?.PassWord);
             if (isPasswordMatch)
             {
-                
                 return Ok(new { message = "Đăng nhập thành công!" , dataToken = _loginService.GenerateToken(user)});
             }
             else

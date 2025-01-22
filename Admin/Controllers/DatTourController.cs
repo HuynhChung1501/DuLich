@@ -11,6 +11,7 @@ namespace Travel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [HasPermission(Permissions = "Admin")]
     public class DatTourController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -90,6 +91,6 @@ namespace Travel.API.Controllers
         }
         #endregion
 
-        
+
     }
 }
